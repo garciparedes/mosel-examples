@@ -25,8 +25,9 @@ model "Actividades-recursos"
 	forall(j in servicios)
 		x(j) is_binary
 		
-	fopen("tema-2-p1-output.dat",F_OUTPUT)
-	
+	fopen("tema-2-p1-output.csv",F_OUTPUT)
+	writeln("max_distance, services")
+
 	forall(k in distancias) do
 		forall(i in demandas)
 			rec(i):= sum(j in servicios | a(i,j) <= k) 
