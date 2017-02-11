@@ -1,0 +1,46 @@
+model "Actividades-recursos"
+	uses "mmxprs"
+	declarations
+		n =30
+		m = 30
+		d = 250
+		servicios = 1..n
+		demandas = 1.. m
+		dc = 50
+		a:array(demandas,servicios) of real
+		x:array(servicios)of mpvar
+	end-declarations
+
+	fopen("tema-2-p1.dat",F_INPUT)
+	
+	forall(i in demandas)
+		forall(j in servicios)
+			read(a(i,j))
+			
+	fclose(F_INPUT)
+
+	ganancia:=sum(j in servicios)
+		x(j)
+	forall(i in demandas)
+		rec(i):= sum(j in servicios | a(i,j) <= dc) 
+			x(j) >= 1
+	forall(j in servicios)
+		x(j) is_binary
+	
+	exportprob(EP_MIN,"",ganancia)
+	minimize(ganancia)
+	
+	
+	writeln("Ganancia total: ",getobjval)
+	
+	forall(j in servicios)
+		writeln("variable x(",j,") = ", x(j).sol,
+			"\t\tcosto reducido = ",x(j).rcost)
+	
+	writeln
+	
+	!forall(i in demandas)
+	!	writeln("demandas ",i,
+	!			"\tholgura = ", rec(i).slack,
+	!			"\t\tprecio sombra = ",rec(i).dual)
+end-model
