@@ -1,0 +1,81 @@
+
+model "MPK example"
+	uses "mmxprs";
+
+	!declarations
+	!	n = 5;
+	!	m = 5;
+	!
+	!	recursos = 1..m;
+	!	actividades = 1..n;
+	!
+	!	b:array(recursos) of real
+	!	c:array(actividades) of real
+	!	a:array(recursos, actividades) of real
+	!	x:array(actividades)of mpvar
+	!
+	!end-declarations
+	!
+	!b::[4.8, 6.0, 4.8, 4.2, 3.5]
+	!c::[10.8, 4.8, 3.2, 4.44, 12.25 ]
+	!a::[1.8, 1.2, 1.2, 1.4, 1.6,
+	!	2.4, 1.8, 1.0, 1.4, 2.1,
+	!	2.4, 2.4, 0.0, 1.2, 2.5,
+	!	1.8, 0.6, 0.48, 1.2, 2.0,
+	!	1.5, 0.5, 0.0, 1.2, 1.8]
+
+	declarations
+		n, m, opt: integer;
+	end-declarations
+	fopen("multidimensional-knapsack.dat",F_INPUT)
+	read(n, m, opt)
+
+
+	declarations
+		recursos = 1..m;
+		actividades = 1..n;
+
+		b:array(recursos) of real
+		c:array(actividades) of real
+		a:array(recursos, actividades) of real
+		x:array(actividades)of mpvar
+	end-declarations
+	forall(j in actividades)
+		read(c(j))
+
+	forall(i in recursos, j in actividades)
+		read(a(i, j))
+
+	forall(i in recursos)
+		read(b(i))
+
+	fclose(F_INPUT)
+
+
+	ganancia:=sum(j in actividades) c(j)*x(j)
+
+	forall(i in recursos)
+		rec(i):= sum(j in actividades) a(i,j) * x(j) <= b(i)
+
+	forall(j in actividades)
+		x(j) is_binary
+
+	exportprob(EP_MAX, "", ganancia)
+
+	maximize(ganancia)
+
+	writeln("Ganancia total: ", getobjval)
+
+	forall(j in actividades)
+		writeln("variable x(",j,") = ",x(j).sol,
+				"\t\tcosto reducido = ",x(j).rcost)
+
+	writeln
+
+	forall(i in recursos)
+		writeln("recurso ",i,
+				"\tholgura = ",rec(i).slack,
+				"\t\tprecio sombra = ",rec(i).dual)
+
+
+end-model
