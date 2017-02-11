@@ -7,7 +7,6 @@ model "Actividades-recursos"
 		servicios = 1..n
 		demandas = 1.. m
 		distancias = 1..d
-		dc = 250
 		a:array(demandas,servicios) of real
 		x:array(servicios)of mpvar
 	end-declarations
@@ -23,30 +22,18 @@ model "Actividades-recursos"
 	ganancia:=sum(j in servicios)
 		x(j)
 	
-	!fopen("tema-2-p1-output.dat",F_OUTPUT)
-	!	forall(d in distancias)
-	!fclose(F_OUTPUT)
-	
-	forall(i in demandas)
-		rec(i):= sum(j in servicios | a(i,j) <= dc) 
-			x(j) >= 1
 	forall(j in servicios)
 		x(j) is_binary
+		
+	fopen("tema-2-p1-output.dat",F_OUTPUT)
 	
-	exportprob(EP_MIN,"",ganancia)
-	minimize(ganancia)
+	forall(k in distancias) do
+		forall(i in demandas)
+			rec(i):= sum(j in servicios | a(i,j) <= k) 
+				x(j) >= 1		
+		minimize(ganancia)
+		writeln(k,", ", getobjval)
+	end-do
 	
-	
-	writeln("Ganancia total: ",getobjval)
-	
-	forall(j in servicios)
-		writeln("variable x(",j,") = ", x(j).sol,
-			"\t\tcosto reducido = ",x(j).rcost)
-	
-	writeln
-	
-	!forall(i in demandas)
-	!	writeln("demandas ",i,
-	!			"\tholgura = ", rec(i).slack,
-	!			"\t\tprecio sombra = ",rec(i).dual)
+	fclose(F_OUTPUT)
 end-model
