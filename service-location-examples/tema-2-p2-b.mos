@@ -1,0 +1,50 @@
+model "Sparse Matrix Partitioning Problem"
+
+	uses "mmxprs"
+
+	declarations
+		n: integer
+	 	m: integer
+	end-declarations
+
+	initializations from "tema-2-p2-b.dat"
+		n
+		m
+	end-initializations
+
+	declarations
+		servicios = 1..n
+		demandas = 1..m
+		c: array(servicios) of real
+		a: array(demandas, servicios) of real
+		x: array(servicios)of mpvar
+	end-declarations
+
+
+	initializations from "tema-2-p2-b.dat"
+		a
+		c
+	end-initializations
+
+	forall(j in servicios)
+		x(j) is_binary
+
+
+	ganancia:=sum(j in servicios)
+		x(j)*c(j)
+
+	forall(i in demandas)
+		rec(i):= sum(j in servicios | a(i,j) = 1)
+			x(j) = 1
+
+	exportprob(EP_MIN,"",ganancia)
+
+	minimize(XPRS_LIN, ganancia)
+
+
+	writeln("Ganancia total: ",getobjval)
+
+	forall(j in servicios)
+		writeln("variable x(",j,") = ", x(j).sol)
+
+end-model
