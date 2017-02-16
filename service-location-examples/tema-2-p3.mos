@@ -7,7 +7,7 @@ model "Sparse Matrix Sayre-PriorsCrew Scheduling"
 	 	m: integer
 	end-declarations
 
-	initializations from "tema-2-p2-b.dat"
+	initializations from "tema-2-p3.dat"
 		n
 		m
 	end-initializations
@@ -21,7 +21,7 @@ model "Sparse Matrix Sayre-PriorsCrew Scheduling"
 	end-declarations
 
 
-	initializations from "tema-2-p2-b.dat"
+	initializations from "tema-2-p3.dat"
 		a
 		c
 	end-initializations
