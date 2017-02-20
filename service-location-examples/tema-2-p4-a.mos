@@ -1,0 +1,72 @@
+model ""
+	uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+	
+	declarations
+		n: integer
+	 	m: integer
+	end-declarations
+
+	initializations from "tema-2-p4-a.dat"
+		n
+		m
+	end-initializations
+	
+	declarations
+		
+		p: integer
+		pservicio = 1..n
+		pdemanda = 1..m
+		
+		a:array(pdemanda, pservicio) of integer
+		
+		porcent:real
+		
+		x:array(pservicio) of mpvar 
+		z:array(pdemanda) of mpvar
+		 
+	end-declarations
+	
+	initializations from "tema-2-p4-a.dat"
+		a
+		dem
+	end-initializations
+	
+	writeln("Problema de cubrimiento, m = ", m, ", n = ", n, "\n")
+	
+	dem_cub:=sum(i in pdemanda)
+		z(i)
+	
+	forall(i in pdemanda)
+		rescub(i):= sum(j in pservicio)
+			a(i,j) * x(j) >= z(i)
+			
+	forall(j in pservicio)
+		x(j)is_binary
+	
+	forall(i in pdemanda)
+		z(i)is_binary
+	
+	!exportprob(EP_MAX,"",dem_cub)
+	!writeln("Demanda m?xima: ",max(i in pdemanda)dem(i))
+	
+	forall(k in pservicio)do
+		p := k
+		
+		rest:= sum(j in pservicio) 
+			x(j) = p
+			
+		maximize(dem_cub)
+		
+		!writeln("Demanda cubierta: ",getobjval)
+		porcent := 100 * getobjval / m
+		
+		writeln("p = ", p)
+		writeln("Porcentaje cubierto: ", porcent, " %")
+		write("Puntos abiertos: ")
+		forall(j in pservicio | x(j).sol = 1)
+			write(j, "  ")
+			
+		writeln("\n")
+	end-do
+	
+end-model
