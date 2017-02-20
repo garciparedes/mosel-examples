@@ -12,7 +12,6 @@ model ""
 	end-initializations
 	
 	declarations
-		p: integer
 		pservicio = 1..n
 		pdemanda = 1..m
 		
@@ -49,8 +48,7 @@ model ""
 	!exportprob(EP_MAX,"",dem_cub)
 	!writeln("Demanda m?xima: ",max(i in pdemanda)dem(i))
 	
-	forall(k in pservicio)do
-		p := k
+	forall(p in pservicio)do
 		
 		rest:= sum(j in pservicio) 
 			x(j) = p
