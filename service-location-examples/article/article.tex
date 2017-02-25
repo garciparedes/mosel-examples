@@ -36,12 +36,12 @@
 		\begin{eqfloat}
 			\begin{equation}
 				\begin{array}{ll@{}ll}
-				\text{minimize}  & \displaystyle\sum\limits_{j=1}^{m} w_{j}&x_{j} &\\
-				\text{subject to}& \displaystyle\sum\limits_{j:e_{i} \in S_{j}}   &x_{j} \geq 1,  &i=1 ,..., n\\
-												 &                                                &x_{j} \in \{0,1\}, &j=1 ,..., m
+					\text{Minimizar}	& \displaystyle\sum\limits_{j=1}^{n} c_{j}	&	x_{j} &\\
+					\text{sujeto a}		& \displaystyle\sum\limits_{j = 1}^n a_{ij}	&	x_{j} \geq 1,  &i=1 ,..., m\\
+													 	&                                           &	x_{j} \in \{0,1\}, &j=1 ,..., n
 				\end{array}
 			\end{equation}
-      \caption{Equation caption here.}
+      \caption{Formulación del Problema de Cubrimiento Total.}
       \label{eq:set_covering}
     \end{eqfloat}
 
@@ -67,12 +67,16 @@
 		\begin{eqfloat}
 			\begin{equation}
 				\begin{array}{ll@{}ll}
-				\text{minimize}  & \displaystyle\sum\limits_{j=1}^{m} w_{j}&x_{j} &\\
-				\text{subject to}& \displaystyle\sum\limits_{j:e_{i} \in S_{j}}   &x_{j} \geq 1,  &i=1 ,..., n\\
-												 &                                                &x_{j} \in \{0,1\}, &j=1 ,..., m
+					\text{Maximizar}
+						& \displaystyle\sum\limits_{i = 1}^{m} h_{i} & z_{i} 			&							\\
+					\text{sujeto a}
+						& \displaystyle\sum\limits_{j = 1}^n 	& x_{j} \geq z_i,		&i=1 ,..., m	\\
+						& \displaystyle\sum\limits_{j = 1}^n 	& x_{j} \leq p,  		& 						\\
+						&                                     &	x_{j} \in \{0,1\},&j=1 ,..., n 	\\
+						&                                     &	z_{i} \in \{0,1\},&i=1 ,..., m  \\
 				\end{array}
 			\end{equation}
-      \caption{Equation caption here.}
+			\caption{Formulación del Problema de Cubrimiento Máximo.}
       \label{eq:max_covering}
     \end{eqfloat}
 
@@ -85,24 +89,36 @@
 		\begin{eqfloat}
 			\begin{equation}
 				\begin{array}{ll@{}ll}
-				\text{minimize}  & \displaystyle\sum\limits_{j=1}^{m} w_{j}&x_{j} &\\
-				\text{subject to}& \displaystyle\sum\limits_{j:e_{i} \in S_{j}}   &x_{j} \geq 1,  &i=1 ,..., n\\
-												 &                                                &x_{j} \in \{0,1\}, &j=1 ,..., m
+					\text{Minimizar}
+						& \displaystyle\sum\limits_{i = 1}^m
+							\displaystyle\sum\limits_{j = 1}^n	& h_i d_{ij} y_{ij}	&							\\
+					\text{sujeto a}
+						& \displaystyle\sum\limits_{j = 1}^n 	& y_{ij} = 1,		& i = 1,..., m	\\
+						& 																	 	& y_{ij} \leq x_{j},  		& i=1 ,..., m,j=1 ,..., n  \\
+						& \displaystyle\sum\limits_{j = 1}^n 	& x_{j} = p,  		& 						\\
+						&                                     &	x_{j} \in \{0,1\},&j=1 ,..., n 	\\
+						&                                     &	y_{ij} \in \{0,1\},&i=1 ,..., m, j=1 ,..., n  \\
 				\end{array}
 			\end{equation}
-      \caption{Equation caption here.}
+			\caption{Formulación del Problema de la P-mediana.}
       \label{eq:p_median}
     \end{eqfloat}
 
 		\begin{eqfloat}
 			\begin{equation}
 				\begin{array}{ll@{}ll}
-				\text{minimize}  & \displaystyle\sum\limits_{j=1}^{m} w_{j}&x_{j} &\\
-				\text{subject to}& \displaystyle\sum\limits_{j:e_{i} \in S_{j}}   &x_{j} \geq 1,  &i=1 ,..., n\\
-												 &                                                &x_{j} \in \{0,1\}, &j=1 ,..., m
+					\text{Minimizar}
+						& 																 		& w	&							\\
+					\text{sujeto a}
+						& \displaystyle\sum\limits_{j = 1}^n 	& y_{ij} = 1,		&i=1 ,..., m	\\
+						& \displaystyle\sum\limits_{j = 1}^n 	& t_{ij}y_{ij} \leq w,  		& i=1 ,..., m \\
+						& 																	 	& y_{ij} \leq x_{j},  		& i=1 ,..., m,j=1 ,..., n  \\
+						& \displaystyle\sum\limits_{j = 1}^n 	& x_{j} = p,  		& 						\\
+						&                                     &	x_{j} \in \{0,1\},&j=1 ,..., n 	\\
+						&                                     &	y_{ij} \in \{0,1\},&i=1 ,..., m, j=1 ,..., n  \\
 				\end{array}
 			\end{equation}
-      \caption{Equation caption here.}
+			\caption{Formulación del Problema del P-Centro.}
       \label{eq:p_center}
     \end{eqfloat}
 
