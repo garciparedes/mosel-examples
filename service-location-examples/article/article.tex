@@ -2,6 +2,7 @@
 
 \usepackage{./mystyle}
 \usepackage{./myvars}
+\usepackage{./mylinearprogramming}
 
 
 
@@ -27,12 +28,83 @@
 %-----------------------------
 
 
-  \section{Introducción}
+  \section{Set Covering Problem: Distancias}
+
+    \paragraph{}
+		Prueba.
+
+		\begin{eqfloat}
+			\begin{equation}
+				\begin{array}{ll@{}ll}
+				\text{minimize}  & \displaystyle\sum\limits_{j=1}^{m} w_{j}&x_{j} &\\
+				\text{subject to}& \displaystyle\sum\limits_{j:e_{i} \in S_{j}}   &x_{j} \geq 1,  &i=1 ,..., n\\
+												 &                                                &x_{j} \in \{0,1\}, &j=1 ,..., m
+				\end{array}
+			\end{equation}
+      \caption{Equation caption here.}
+      \label{eq:set_covering}
+    \end{eqfloat}
+
+	\section{Set Covering Problem: Datos dispersos}
 
     \paragraph{}
 		Prueba.
 
 
+
+	\section{Set Covering Problem: Sayre-Priors}
+
+		\paragraph{}
+		Prueba.
+
+
+
+	\section{Max Covering Problem}
+
+		\paragraph{}
+		Prueba.
+
+		\begin{eqfloat}
+			\begin{equation}
+				\begin{array}{ll@{}ll}
+				\text{minimize}  & \displaystyle\sum\limits_{j=1}^{m} w_{j}&x_{j} &\\
+				\text{subject to}& \displaystyle\sum\limits_{j:e_{i} \in S_{j}}   &x_{j} \geq 1,  &i=1 ,..., n\\
+												 &                                                &x_{j} \in \{0,1\}, &j=1 ,..., m
+				\end{array}
+			\end{equation}
+      \caption{Equation caption here.}
+      \label{eq:max_covering}
+    \end{eqfloat}
+
+
+	\section{P-Median Problem y P-Center Problem}
+
+		\paragraph{}
+		Prueba.
+
+		\begin{eqfloat}
+			\begin{equation}
+				\begin{array}{ll@{}ll}
+				\text{minimize}  & \displaystyle\sum\limits_{j=1}^{m} w_{j}&x_{j} &\\
+				\text{subject to}& \displaystyle\sum\limits_{j:e_{i} \in S_{j}}   &x_{j} \geq 1,  &i=1 ,..., n\\
+												 &                                                &x_{j} \in \{0,1\}, &j=1 ,..., m
+				\end{array}
+			\end{equation}
+      \caption{Equation caption here.}
+      \label{eq:p_median}
+    \end{eqfloat}
+
+		\begin{eqfloat}
+			\begin{equation}
+				\begin{array}{ll@{}ll}
+				\text{minimize}  & \displaystyle\sum\limits_{j=1}^{m} w_{j}&x_{j} &\\
+				\text{subject to}& \displaystyle\sum\limits_{j:e_{i} \in S_{j}}   &x_{j} \geq 1,  &i=1 ,..., n\\
+												 &                                                &x_{j} \in \{0,1\}, &j=1 ,..., m
+				\end{array}
+			\end{equation}
+      \caption{Equation caption here.}
+      \label{eq:p_center}
+    \end{eqfloat}
 
 %-----------------------------
 %	BIBLIOGRAPHY
