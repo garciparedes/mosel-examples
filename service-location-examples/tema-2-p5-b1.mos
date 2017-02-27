@@ -1,0 +1,76 @@
+model ""
+	uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+	
+	declarations
+		n: integer
+	 	m: integer
+	end-declarations
+
+	initializations from "tema-2-p5-b1.dat"
+		n
+		m
+	end-initializations
+	
+	declarations
+		
+		servicios = 1..n
+		demandas = 1..m
+		p = 5
+		d:array(demandas, servicios) of integer
+		h:array(demandas) of integer
+		
+		d_max:real
+		
+		x:array(servicios) of mpvar 
+		y:array(demandas, servicios) of mpvar
+		 
+	end-declarations
+	
+	forall(j in servicios)
+		x(j)is_binary
+	
+	forall(i in demandas)
+		forall(j in servicios)
+			y(i, j)is_binary
+			
+	initializations from "tema-2-p5-b1.dat"
+		h
+		d
+	end-initializations
+			
+			
+	z := sum(i in demandas)
+		sum(j in servicios)
+			h(i) * d(i,j) * y(i,j)
+	
+	forall(i in demandas)
+		rescub(i):= sum(j in servicios)
+			y(i,j) = 1
+			
+	forall(i in demandas)
+		forall(j in servicios)
+			res2(i, j):= y(i,j) <= x(j)
+	
+	!exportprob(EP_MIN,"",dem_cub)
+	
+	
+		
+	rest := sum(j in servicios) 
+		x(j) = p
+		
+	minimize(z)
+
+	d_max := max(i in demandas)
+		 		max(j in servicios) 
+		 			h(i) * d(i,j) * y(i,j).sol
+		 		
+		 		
+	writeln("p = ", p)
+	writeln("d_promedio = ", getobjval / m)
+	writeln("d_max = ", d_max)
+	write("x_abiertos = { ")
+	forall(j in servicios | x(j).sol = 1)
+		write(j, " ")
+	writeln("}\n")
+	
+end-model

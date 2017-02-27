@@ -1,0 +1,28 @@
+!@encoding CP1252
+model ModelName
+	uses "mmive"
+	uses "mmsystem"
+	
+	declarations
+		n = 100
+		points = 1..n
+		cx, cy: array(points) of integer
+	end-declarations
+	
+	forall(i in points) do
+		cx(i) := round(random*200)
+		cy(i) := round(random*200)
+	end-do
+	
+	id1 := IVEaddplot("points", IVE_GREEN)
+	
+	forall(i in points) 
+		IVEdrawpoint(id1, cx(i), cy(i))
+	
+	IVEdrawline(id1, cx(1), cy(1), cx(100), cy(100))
+	
+	
+	id2 := IVEaddplot("indices", IVE_BLACK)
+	forall(i in points) 
+		IVEdrawlabel(id2, cx(i), cy(i),""+i)
+end-model
