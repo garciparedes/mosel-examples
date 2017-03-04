@@ -1,8 +1,8 @@
 \documentclass[spanish]{article}
 
-\usepackage{./mystyle}
-\usepackage{./myvars}
-\usepackage{./mylinearprogramming}
+\usepackage{mystyle}
+\usepackage{myvars}
+\usepackage{mylinearprogramming}
 
 
 
@@ -20,7 +20,7 @@
 %-----------------------------
 
 	\begin{abstract}
-		\noindent Abstract
+		\noindent Problemas de Localización de servicios \url{https://github.com/garciparedes/mosel-examples/tree/master/service-location-examples}\cite{garciparedes:mosel-examples}
 	\end{abstract}
 
 %-----------------------------
@@ -29,9 +29,11 @@
 
 
   \section{Set Covering Problem: Distancias}
+	\label{sec:1}
 
     \paragraph{}
-		Prueba.
+		El problema de \emph{set convering} o \emph{cubrimiento máximo} consiste en la asignación de un conjunto de recursos $n$ recursos $x_{j}$ cuyo uso tiene un coste de $c_{j}$ para cumplir $m$ necesidades. Las necesidades que cubre cada recurso se representan a través de $a_{ij}$. La modelización matemática de este problema se muestra en la ecuación \eqref{eq:set_covering}.
+
 
 		\begin{eqfloat}
 			\begin{equation}
@@ -45,14 +47,93 @@
       \label{eq:set_covering}
     \end{eqfloat}
 
+		\subsection{Distancia de cubrimiento inferior a 50km}
+		\label{sec:1.1}
+
+			\paragraph{}
+			En este caso se ha propuesto resolver el problema de cubrimiento máximo para la asignación de los lugares donde situar los puntos de servicio de entre 30 ciudades (por tanto $m = n = 30$) para poder abastecer a todos ellos en una distancia inferior a 50 km. Puesto que todos los recursos presentan el mismo coste, en este caso $\forall j \ c_{j} = 1$.
+
+			\paragraph{}
+			La solución a este problema se muestra en la equación \eqref{eq:sol-1.1}, la cual requiere de \textbf{18} recursos
+
+			\begin{equation}
+			\label{eq:sol-1.1}
+				x_{j} =
+					\begin{cases}
+		      	1 & j \in S = \{2,  4,  5,  9,  10,  11,  12,  13,  14,  16,  17,  18,  21,  22,  27,  28,  29,  30 \} \\
+		      	0 & otherwise
+			   	\end{cases}
+			\end{equation}
+
+		\subsection{Distancia de cubrimiento desde 1 a 250km}
+		\label{sec:1.2}
+
+			\paragraph{}
+			En este caso, se ha resuelto el mismo problema que en el apartado anterior, pero esta vez de manera iterativa conforme a las distancias necesarias mínimas de cubrimiento en el intervalo $dc \in [1, 250]$. Dichos resultados se muestran en la figura \ref{fig:sol-1.2}. Los resultados completos de todas las iteracciones pueden obtenerse ejecutando el correspondiente fichero mosel\cite{garciparedes:mosel-examples} y examinando el fichero CSV resultante.
+
+			\begin{figure}[h]
+				\begin{center}
+					\includegraphics[width=0.7\textwidth]{tema-2-p1-output}
+				\end{center}
+				\caption{Relación entre la distancia mínima de para que una ciudad se considere cubierta y el número de recursos necesarios para dicha tarea.}
+				\label{fig:sol-1.2}
+			\end{figure}
+
 	\section{Set Covering Problem: Datos dispersos}
+	\label{sec:2}
 
     \paragraph{}
-		Prueba.
+		En este caso, el problema posee las mismas características que el descrito en la sección \ref{sec:1}, cuya modelización matemática se muestra en la ecuación \eqref{eq:set_covering}. Sin embargo, la novedad que tiene este respecto del anterior es que en este caso los datos son suministrados en forma una matriz dispersa, lo que reduce el tamaño del fichero de datos por lo que se prescinde de las entradas cuyo valor es $0$.
 
+		\subsection{Localización de centros de Ambulancias}
+		\label{sec:2.1}
+
+			\paragraph{}
+			En este caso se pide resolver el problema de cubrir $m = 20$ distritos a partir de $n = 10$ centros de ambulancias. Para conocer en qué distritos son cubiertos por qué puntos de servicio se suministra además la matriz dispersa $a$ codificada tal y como se infica en la \eqref{eq:binary-encoding}. Tal y como ocurre en el apartado anterior, los costes también son constantes por lo que $\forall j \ c_{j} = 1$
+
+			\begin{equation}
+			\label{eq:binary-encoding}
+				a_{ij}  =
+					\begin{cases}
+		      	1 & \text{El distrito i es cubierto por el centro de ambulancias j}\\
+		      	0 & otherwise
+			   	\end{cases}
+			\end{equation}
+
+			\paragraph{}
+			Los puntos de asignación óptimos para este problema se muestran en la equación \eqref{eq:sol-2.1}, es decir, para cubrir las necesidades de todos los distritos se han de colocar $6$ centros de ambulancias.
+
+			\begin{equation}
+			\label{eq:sol-2.1}
+				x_{j} =
+					\begin{cases}
+		      	1 & j \in S = \{2,  3,  4,  6,  8,  10 \} \\
+		      	0 & otherwise
+			   	\end{cases}
+			\end{equation}
+
+
+		\subsection{Planificación de Viajes en Empresa de aviación American Airlines}
+		\label{sec:2.2}
+
+			\paragraph{}
+			Este problema se basa en la planificación acerca de la tripulación de una empresa de aviación, de tal manera que se aproveche lo más posible la jornada labolar de sus trabajadores. En este caso, se trata de planificar la tripulación que formará parte de $m = 12$ vuelos, que se compone de un total de $n = 15$ trabajadores. En este caso la codificación de la matriz $a$ sigue la misma distribución qu el ejercicio \ref{sec:2.1}, por lo que la descripción de la ecuación \eqref{eq:binary-encoding} sigue siendo válida. La principal novedad con respecto a los casos anteriores es que el vector de costes $c_j$ en este caso ya no toma el valor unidad, sino que se refiere al sueldo de cada uno de los trabajadores, es decir, $c_j = \text{Sueldo del trabajador j}$.
+
+			\paragraph{}
+			La asignación óptima se muestra en la ecuación \eqref{eq:sol-2.2} y presenta un coste total de $9100 = 2900 + 2600 + 3600$.
+
+			\begin{equation}
+			\label{eq:sol-2.2}
+				x_{j} =
+					\begin{cases}
+		      	1 & j \in S = \{ 1, 9, 12  \} \\
+		      	0 & otherwise
+			   	\end{cases}
+			\end{equation}
 
 
 	\section{Set Covering Problem: Sayre-Priors}
+	\label{sec:3}
 
 		\paragraph{}
 		Prueba.
@@ -60,6 +141,7 @@
 
 
 	\section{Max Covering Problem}
+	\label{sec:4}
 
 		\paragraph{}
 		Prueba.
@@ -82,6 +164,7 @@
 
 
 	\section{P-Median Problem y P-Center Problem}
+	\label{sec:5}
 
 		\paragraph{}
 		Prueba.
