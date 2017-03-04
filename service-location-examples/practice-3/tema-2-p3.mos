@@ -43,8 +43,9 @@ model "Sparse Matrix Sayre-PriorsCrew Scheduling"
 
 
 	writeln("Ganancia total: ",getobjval)
-
-	forall(j in servicios)
-		writeln("variable x(",j,") = ", x(j).sol)
+	write("Asignacion: {")
+	forall(j in servicios| x(j).sol = 1)
+		write(" ", j, ", ")
+	writeln("}")
 
 end-model

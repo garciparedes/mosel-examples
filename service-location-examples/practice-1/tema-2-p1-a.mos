@@ -16,7 +16,6 @@ model "Actividades-recursos"
 	forall(i in demandas)
 		forall(j in servicios)
 			read(a(i,j))
-			
 	fclose(F_INPUT)
 
 	ganancia:=sum(j in servicios)
@@ -27,20 +26,15 @@ model "Actividades-recursos"
 	forall(j in servicios)
 		x(j) is_binary
 	
-	exportprob(EP_MIN,"",ganancia)
+	!exportprob(EP_MIN,"",ganancia)
 	minimize(ganancia)
 	
 	
 	writeln("Ganancia total: ",getobjval)
-	
-	forall(j in servicios)
-		writeln("variable x(",j,") = ", x(j).sol,
-			"\t\tcosto reducido = ",x(j).rcost)
+	write("Asignacion: {")
+	forall(j in servicios| x(j).sol = 1)
+		write(" ", j, ", ")
+	writeln("}")
 	
 	writeln
-	
-	!forall(i in demandas)
-	!	writeln("demandas ",i,
-	!			"\tholgura = ", rec(i).slack,
-	!			"\t\tprecio sombra = ",rec(i).dual)
 end-model
