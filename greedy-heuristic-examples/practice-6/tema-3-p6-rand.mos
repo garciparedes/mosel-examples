@@ -1,9 +1,11 @@
 model "Actividades-recursos"
 	uses "mmxprs"
-	
+	uses "mmsystem"
 	declarations
 		n: integer
 	 	m: integer
+	 	
+		k_win: integer
 	end-declarations
 
 	initializations from "tema-3-p6.dat"
@@ -16,13 +18,17 @@ model "Actividades-recursos"
 		demandas 	= 1..m
 		dist:		array(demandas,servicios) of integer
 		d:			array(servicios) of integer 
+		d_marca:	array(servicios) of integer
 		cubierta,w: array(demandas) of integer
 		solu,fijada:array(servicios) of integer
 		a:			array(demandas,servicios) of integer
 		dc 			= 80
+		k_max		= 4
+		k_iter      = 1..k_max
+		k_list:		array(k_iter) of integer
 	end-declarations
-
-			
+	
+	
 	initializations from "tema-3-p6.dat"
 		dist
 	end-initializations
@@ -35,6 +41,8 @@ model "Actividades-recursos"
 	end-do
 	
 	
+	!Greedy
+	!########################################################################################
 	nfilcub := 0
 	while(nfilcub < m) do
 	
@@ -99,7 +107,102 @@ model "Actividades-recursos"
 	forall(j in servicios | solu(j) = 1) write(j,"  ")
 	writeln("")
 	
+	forall(i in demandas) do
+		cubierta(i) := 0
+		w(i) := 0
+	end-do
+	forall(j in servicios) do
+		d(j) := 0
+		fijada(j):=0
+		solu(j):=0
+	end-do
 	
+	
+	
+	
+	
+	!Greedy Random
+	!########################################################################################
+	!Seleccion random
+	!writeln(ceil(random*k_max))
+			
+	nfilcub := 0
+	while(nfilcub < m) do
+	
+		forall(j in servicios | fijada(j) = 0) do
+			d(j) := 0
+			forall(i in demandas) do
+				if(cubierta(i) = 0 and a(i,j) = 1) then
+					d(j) := d(j) + 1
+				end-if
+			end-do
+			
+			if(d(j) = 0) then
+				fijada(j):= 1
+				solu(j) := 0
+			end-if
+
+		end-do
+		
+		!Random Selection
+		
+		forall(j in servicios) d_marca(j):=0
+		forall(k in k_iter) do
+			aux := -99
+			forall(j in servicios | (fijada(j) = 0 and d_marca(j) = 0)) do
+				if(d(j) > aux) then
+					aux := d(j)
+					jmax := j
+				end-if
+			end-do
+			d_marca(jmax):=1
+			k_list(k):=jmax
+		end-do
+		
+		
+		k_win := ceil(random*k_max)
+		solu(k_list(k_win)) := 1
+		fijada(k_list(k_win)) := 1
+		
+		
+		forall(i in demandas) do
+			if(cubierta(i) = 0 and a(i, jmax) = 1) then
+				cubierta(i) := 1
+				nfilcub := nfilcub +1
+			end-if
+		end-do
+		
+		! ELIMINACION DE COLUMNAS COMPLETADAS
+		forall(i in demandas) do
+			w(i):=0
+			forall(j in servicios) do
+				if(solu(j)=1 and a(i,j)=1)then 
+					w(i):=w(i)+1
+				end-if
+			end-do
+		end-do
+		forall(k in servicios | solu(k)=1) do
+			elimin:= 1
+			forall(i in demandas) do
+				if(w(i) <1+a(i,k))then
+					elimin :=0
+				end-if
+			end-do
+			if(elimin=1) then 
+				solu(k) :=0
+				forall(i in demandas)w(i):=w(i)-a(i,k)
+			end-if
+		end-do
+	end-do
+	
+	writeln("greedy random solution: ")
+	writeln("instalations: \t", sum(j in servicios) solu(j))
+	write("opened: \t")
+	forall(j in servicios | solu(j) = 1) write(j,"  ")
+	writeln("")
+	
+	! Xpress
+	!########################################################################################
 	
 	declarations
 		x:array(servicios)of mpvar
@@ -122,4 +225,5 @@ model "Actividades-recursos"
 	write("opened: \t")
 	forall(j in servicios | x(j).sol = 1) write(j,"  ")
 	writeln("")
+	
 end-model
