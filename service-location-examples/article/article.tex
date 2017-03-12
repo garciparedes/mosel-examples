@@ -32,7 +32,7 @@
 	\label{sec:1}
 
     \paragraph{}
-		El problema de \emph{set convering} o \emph{cubrimiento máximo} consiste en la asignación de un conjunto de recursos $n$ recursos $x_{j}$ cuyo uso tiene un coste de $c_{j}$ para cumplir $m$ necesidades. Las necesidades que cubre cada recurso se representan a través de $a_{ij}$. La modelización matemática de este problema se muestra en la ecuación \eqref{eq:set_covering}.
+		El problema de \emph{set convering} o \emph{cubrimiento de conjuntos} consiste en la asignación de un conjunto de recursos $n$ recursos $x_{j}$ cuyo uso tiene un coste de $c_{j}$ para cumplir $m$ necesidades. Las necesidades que cubre cada recurso se representan a través de $a_{ij}$. La modelización matemática de este problema se muestra en la ecuación \eqref{eq:set_covering}.
 
 
 		\begin{eqfloat}
@@ -155,7 +155,7 @@
 	\label{sec:4}
 
 		\paragraph{}
-		Prueba.
+		En esta sección se trata el \emph{problema de cubrimiento máximo} o \emph{max covering problem}. El problema consiste en lo siguiente: Sea $m$ el número de puntos de demandas y $n$ el de puntos de servicio. El objetivo se trata de maximizar el beneficio $h_i$ obtenido de cubrir el í-esimo punto de demanda. Para modelizar dicho cubrimiento se utiliza la variable binaria $z_i$. Para representar los puntos de servicio utilizados se utiliza la variable de tipo binario $x_j$. La motivación del problema consiste en encontrar el conjunto de variables $x_j$ con cardinalidad máxima denominada por $p$ y prefijada previamente, que máximize la ganancia debida al cubrimiento de los puntos de servicio $z_i$.
 
 		\begin{eqfloat}
 			\begin{equation}
@@ -163,7 +163,7 @@
 					\text{Maximizar}
 						& \displaystyle\sum\limits_{i = 1}^{m} h_{i} & z_{i} 			&							\\
 					\text{sujeto a}
-						& \displaystyle\sum\limits_{j = 1}^n 	& x_{j} \geq z_i,		&i=1 ,..., m	\\
+						& \displaystyle\sum\limits_{j \in N_i}& x_{j} \geq z_i,		&i=1 ,..., m	\\
 						& \displaystyle\sum\limits_{j = 1}^n 	& x_{j} \leq p,  		& 						\\
 						&                                     &	x_{j} \in \{0,1\},&j=1 ,..., n 	\\
 						&                                     &	z_{i} \in \{0,1\},&i=1 ,..., m  \\
@@ -174,7 +174,7 @@
     \end{eqfloat}
 
 			\paragraph{}
-
+			En esta sección se proponen tres ejercicios para resolver este problema, los cuales han sido resueltos para distintos valores de $p$.
 
 		\subsection{Usuarios Alcanzados a partir de anuncios en $p$ Revistas}
 		\label{sec:4.1}
