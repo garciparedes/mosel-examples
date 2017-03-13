@@ -245,10 +245,7 @@
 		\label{sec:4.3}
 
 			\paragraph{}
-			Este ejercicio se refiere a la resolución dos problemas de cubrimiento máximo de gran tamaño. Se pide resolver para los valores de $p = [1, 10] \in N$ en ambos casos. Debido al tamaño del problema, en este caso se considera que una zona de demanda $i$ ha sido cubierta si existe una zona de servicio $j$ a una distancia $dc \leq 250$ kilómetros. Al igual que en el caso anterior, también se proporciona un vector $h$, que en la posición $h_i$ representa la demanda en la zona $i$. El objetivo a maximizar por tanto es la demanda cubierta total. En este caso, la matriz $a$ no es de carácter binario, sino que se compone de atributos reales, positivos, almacenando la posición $a_{ij}$ la distancia en hectómetros de la zona de demanda $i$ al punto de servicio $j$. Por lo tanto, para utilizar la misma unidad de medida para todas las variables, se transforma la variable $dc = 250 * 10 = 2500$ hectómetros.
-
-			\paragraph{}
-			[TODO terminar ejercicio con NEOS server]
+			Este ejercicio se refiere a la resolución dos problemas de cubrimiento máximo de gran tamaño. Se pide resolver para los valores de $p = [1, 10] \in N$ en ambos casos. Debido al tamaño del problema, en este caso se considera que una zona de demanda $i$ ha sido cubierta si existe una zona de servicio $j$ a una distancia $dc \leq 25$ kilómetros. Al igual que en el caso anterior, también se proporciona un vector $h$, que en la posición $h_i$ representa la demanda en la zona $i$. El objetivo a maximizar por tanto es la demanda cubierta total. En este caso, la matriz $a$ no es de carácter binario, sino que se compone de atributos reales, positivos, almacenando la posición $a_{ij}$ la distancia en hectómetros de la zona de demanda $i$ al punto de servicio $j$. Por lo tanto, para utilizar la misma unidad de medida para todas las variables, se transforma la variable $dc = 25 * 10 = 250$ hectómetros.
 
 			\paragraph{}
 			En el caso del primer fichero de datos de entrada denominado \textbf{aint1.dat} se recogen un total de $m = 356$ puntos de demanda y $n=22$ puntos de servicio. La solución para los distintos valores de $p$ se recogen en la tabla \ref{table:sol-4.3a}.
@@ -257,21 +254,21 @@
 				\begin{center}
 					\begin{tabular}{|c || c || l || c | }
 						\hline
-						$p$		&	\% Cubierto	& Puntos Abiertos 					& f.objetivo \\ \hline \hline
-						$1$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$2$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$3$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$4$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$5$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$6$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$7$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$8$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$9$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$10$ 	& $0\%$ & $\{\}$ 										& $0$ \\
+						$p$		&	\% Cubierto	& Puntos Abiertos 						 	\\ \hline \hline
+						$1$ 	& $48.0194\%$ & $\{5\}$ 											\\ \hline
+						$2$ 	& $66.2764\%$ & $\{5,6\}$ 										\\ \hline
+						$3$ 	& $77.9437\%$ & $\{5,6,12\}$ 									\\ \hline
+						$4$ 	& $85.8574\%$ & $\{11,12,16,20\}$ 						\\ \hline
+						$5$ 	& $91.7617\%$ & $\{5,6,12,17,19\}$ 						\\ \hline
+						$6$ 	& $94.4597\%$ & $\{5,6,9,12,17,19\}$ 					\\ \hline
+						$7$ 	& $96.7204\%$ & $\{2,11,12,14,16,17,20\}$ 		\\ \hline
+						$8$ 	& $97.9665\%$ & $\{2,3,6,9,12,17,19,20\}$ 		\\ \hline
+						$9$ 	& $98.3855\%$ & $\{2,6,8,9,15,17,18,19,22\}$	\\ \hline
+						$10$ 	& $98.7804\%$ & $\{2,3,6,8,9,15,16,17,18,19\}$\\
 						\hline
 					\end{tabular}
 				\end{center}
-				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.3}.a.}
+				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.3} para \emph{aint1.dat}.}
 				\label{table:sol-4.3a}
 			\end{table}
 
@@ -282,21 +279,21 @@
 				\begin{center}
 					\begin{tabular}{|c || c || l || c | }
 						\hline
-						$p$		&	\% Cubierto	& Puntos Abiertos 					& f.objetivo \\ \hline \hline
-						$1$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$2$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$3$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$4$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$5$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$6$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$7$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$8$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$9$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
-						$10$ 	& $0\%$ & $\{\}$ 										& $0$ \\
+						$p$		&	\% Cubierto	& Puntos Abiertos 						 	\\ \hline \hline
+						$1$ 	& $69.514\%$ 	& $\{11\}$ 											\\ \hline
+						$2$ 	& $84.8082\%$ & $\{4,11\}$ 										\\ \hline
+						$3$ 	& $95.3173\%$ & $\{3,4,14\}$ 									\\ \hline
+						$4$ 	& $98.1185\%$ & $\{3,4,6,14\}$ 								\\ \hline
+						$5$ 	& $99.0051\%$ & $\{2,3,4,6,14\}$ 							\\ \hline
+						$6$ 	& $99.5137\%$ & $\{1,2,3,4,13,14\}$ 					\\ \hline
+						$7$ 	& $99.7671\%$ & $\{1,2,3,4,9,13,14\}$ 				\\ \hline
+						$8$ 	& $99.9904\%$ & $\{1,2,5,6,7,12,13,17\}$ 			\\ \hline
+						$9$ 	& $100\%$ 		& $\{1,2,4,5,6,7,13,14,17\}$		\\ \hline
+						$10$ 	& $100\%$ 		& $\{1,2,4,5,6,7,10,13,17,18\}$	\\
 						\hline
 					\end{tabular}
 				\end{center}
-				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.3}.b.}
+				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.3} para \emph{aint5.dat}.}
 				\label{table:sol-4.3b}
 			\end{table}
 
@@ -414,17 +411,51 @@
 				\label{table:sol-5.1center}
 			\end{table}
 
-		\subsection{[Ejercicio 5.2]}
+		\subsection{Problema de la p-mediana sobre aint1.dat y aint5.dat}
 		\label{sec:5.2}
 
 			\paragraph{}
+			[TODO]
 
-
-		\subsection{[Ejercicio 5.3]}
+		\subsection{Problema de la p-mediana sobre datos de coordenadas}
 		\label{sec:5.3}
 
 			\paragraph{}
+			[TODO]
 
+
+			\begin{table}[h]
+				\begin{center}
+					\begin{tabular}{|c || c || c || l | }
+						\hline
+						$p$		& Dist. Total 	& Dist. Promedio	& Puntos Abiertos	 \\ \hline \hline
+						$1$ 	& $1101.53$ 		& $153.525$						& $\{13\}$ \\ \hline
+						$2$ 	& $705.127$ 		& $103.697$					& $\{1,5\}$ \\ \hline
+						$3$ 	& $527.847$ 		& $68.2422$					& $\{5,8,14\}$ \\ \hline
+						$4$ 	& $422.303$ 		& $68.2422$					& $\{1,5,8,14\}$ \\ \hline
+						$5$ 	& $329.953$ 		& $48.1041$					& $\{1,4,8,14,15\}$ \\
+						\hline
+					\end{tabular}
+				\end{center}
+				\caption{Resultados del ejercicio \ref{sec:5}.\ref{sec:5.1}.1 para el problema de la p-mediana.}
+				\label{table:sol-5.3.1}
+			\end{table}
+
+			\begin{table}[h]
+				\begin{center}
+					\begin{tabular}{|c || c || c || l | }
+						\hline
+						$p$		& Dist. Total 	& Dist. Promedio	& Puntos Abiertos	 \\ \hline \hline
+						$7$ 	& $0$ 					& $0$						& $\{\}$ \\ \hline
+						$8$ 	& $0$ 					& $0$					& $\{\}$ \\ \hline
+						$9$ 	& $0$ 					& $0$					& $\{\}$ \\ \hline
+						$10$ 	& $0$ 					& $0$					& $\{\}$ \\
+						\hline
+					\end{tabular}
+				\end{center}
+				\caption{Resultados del ejercicio \ref{sec:5}.\ref{sec:5.1}.2 para el problema de la p-mediana.}
+				\label{table:sol-5.3.2}
+			\end{table}
 
 
 %-----------------------------
