@@ -54,7 +54,7 @@
 			En este caso se ha propuesto resolver el problema de cubrimiento máximo para la asignación de los lugares donde situar los puntos de servicio de entre 30 ciudades (por tanto $m = n = 30$) para poder abastecer a todos ellos en una distancia inferior a 50 km. Puesto que todos los recursos presentan el mismo coste, en este caso $\forall j \ c_{j} = 1$.
 
 			\paragraph{}
-			La solución a este problema se muestra en la equación \eqref{eq:sol-1.1}, la cual requiere de \textbf{18} recursos
+			La solución a este problema se muestra en la ecuación \eqref{eq:sol-1.1}, la cual requiere de \textbf{18} recursos
 
 			\begin{equation}
 			\label{eq:sol-1.1}
@@ -101,7 +101,7 @@
 			\end{equation}
 
 			\paragraph{}
-			Los puntos de asignación óptimos para este problema se muestran en la equación \eqref{eq:sol-2.1}, es decir, para cubrir las necesidades de todos los distritos se han de colocar $6$ centros de ambulancias.
+			Los puntos de asignación óptimos para este problema se muestran en la ecuación \eqref{eq:sol-2.1}, es decir, para cubrir las necesidades de todos los distritos se han de colocar $6$ centros de ambulancias.
 
 			\begin{equation}
 			\label{eq:sol-2.1}
@@ -139,7 +139,7 @@
 		El ejercicio de \emph{Sayre-Priors} presenta el mismo planteamiento que el anterior del apartado \ref{sec:2.2}, por tanto la descripción que se ha realizado en el anterior caso es válida para este. Los únicos cambios son los datos de entrada, que en este caso tienen la siguiente dimensionalidad: Se debe encontrar el resultado óptimo para $m = 10$ vuelos y una tripulación de $n = 37$ trabajadores.
 
 		\paragraph{}
-		La asignación óptima se muestra en la equación \eqref{eq:sol-3} y genera un coste de $2 + 2 + 3 + 3 = 10 $ mil dolares.
+		La asignación óptima se muestra en la ecuación \eqref{eq:sol-3} y genera un coste de $2 + 2 + 3 + 3 = 10 $ mil dolares.
 
 \begin{equation}
 		\label{eq:sol-3}
@@ -304,7 +304,18 @@
 	\label{sec:5}
 
 		\paragraph{}
-		Prueba.
+		En esta sección se resuelven ejercicios del problema de la p-mediana y el p-centro. Por lo tanto, a continuación se describe el modelo matemático de cada uno de estos problemas, así como una descripción acerca del resultado que pretenden optimizar.
+
+
+		\paragraph{}
+		En el caso del problema de la p-mediana, modelizado matemáticamente en la ecuación \ref{eq:p_median}, el objetivo es minimizar la distancia global de cada uno de los $p$ puntos de servicio abiertos al conjunto globla de puntos de demanda, de manera que los $j$ puntos de servicio abierto mantengan la menor distancia en promedio a los $i$ puntos de demanda.
+
+		\paragraph{}
+		En este problema, al igual que en los anteriores, se utiliza un vector de demanda denominado $h$, que en la componente $h_{i}$ almacena la demanda necesaria por el punto de demanda $i$. También existe una matriz de distancias de $d$, que en la posición $d_{ij}$ recoge la distancia del punto de demanda $i$ al punto de servicio $j$.
+
+		\paragraph{}
+		Para resolver este problema, además de las variables de decisión $x_j$ utilizadas en casos anteriores, que represntan que el punto de servicio $j$ está activo, se añaden las variables $y_ij$, que representan que el punto de demanda $i$ es servido por el punto de servicio $j$, lo que conlleva que en esta modelización cada punto de demanda sea servido únicamente por un único servicio.
+
 
 		\begin{eqfloat}
 			\begin{equation}
@@ -324,6 +335,9 @@
       \label{eq:p_median}
     \end{eqfloat}
 
+		\paragraph{}
+		El problema del p-centro se modeliza de forma matemática tal y como se representa en la ecuación \ref{eq:p_center}. Tal y como se puede apreciar, este problema es un muy similar al de la p-mediana, pero en este caso, la característica que se desea minimizar es la distancia del punto de demanda cubierto que se encuentra a mayor distancia, nótese que con esta estrategia se consigue una minimización del conjunto global de distancias, pero de una manera más equilibrada y uniforme, dado que en el problema anterior, podían existir distancias muy grandes compensadas por otras muy pequeñas como solución óptima, mientras que en este caso es más complicado que se dé una situación semejante.
+
 		\begin{eqfloat}
 			\begin{equation}
 				\begin{array}{ll@{}ll}
@@ -331,7 +345,7 @@
 						& 																 		& w	&							\\
 					\text{sujeto a}
 						& \displaystyle\sum\limits_{j = 1}^n 	& y_{ij} = 1,		&i=1 ,..., m	\\
-						& \displaystyle\sum\limits_{j = 1}^n 	& t_{ij}y_{ij} \leq w,  		& i=1 ,..., m \\
+						& \displaystyle\sum\limits_{j = 1}^n 	& d_{ij}y_{ij} \leq w,  		& i=1 ,..., m \\
 						& 																	 	& y_{ij} \leq x_{j},  		& i=1 ,..., m,j=1 ,..., n  \\
 						& \displaystyle\sum\limits_{j = 1}^n 	& x_{j} = p,  		& 						\\
 						&                                     &	x_{j} \in \{0,1\},&j=1 ,..., n 	\\
