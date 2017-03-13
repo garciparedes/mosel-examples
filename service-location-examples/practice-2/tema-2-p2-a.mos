@@ -27,14 +27,15 @@ model "Sparce Matrix Set Covering"
 		rec(i):= sum(j in servicios | a(i,j) = 1)
 			x(j) >= 1
 
-	exportprob(EP_MIN,"",ganancia)
+	!exportprob(EP_MIN,"",ganancia)
 
 	minimize(XPRS_LIN, ganancia)
 
 
 	writeln("Ganancia total: ",getobjval)
-
-	forall(j in servicios)
-		writeln("variable x(",j,") = ", x(j).sol)
+	write("Asignacion: {")
+	forall(j in servicios| x(j).sol = 1)
+		write(" ", j, ", ")
+	writeln("}")
 
 end-model
