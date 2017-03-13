@@ -180,12 +180,65 @@
 		\label{sec:4.1}
 
 			\paragraph{}
+			En este problema se trata de encontrar el máximo número de personas cubiertas a partir de la publicación de anunciós en revistas. Los datos de entrada están formados por $n = 10$ revistas que pueden ser alcanzadas por $m = 50$  personas. Para ello se proporciona la matriz $a$ de carácter binario representando la posición $a_{ij}$ que la revista $j$ es leida por la persona $i$. Se pide resolver el problema para los valores de $p = [1, 10] \in N$. Los resultados se muestran en la tabla \ref{table:sol-4.1}.
+
+			\begin{table}[h]
+				\begin{center}
+					\begin{tabular}{|c || c || l |}
+						\hline
+						$p$		&	\% Cubierto	& Puntos Abiertos \\ \hline \hline
+						$1$ 	& $32\%$ & $\{5\}$ \\ \hline
+		     		$2$ 	& $48\%$ & $\{5, 6\}$ \\ \hline
+						$3$ 	& $64\%$ & $\{2,3,5\}$ \\ \hline
+						$4$ 	& $76\%$ & $\{3,5,6,7\}$ \\ \hline
+						$5$ 	& $84\%$ & $\{3,5,6,7,8\}$ \\ \hline
+						$6$ 	& $90\%$ & $\{1,3,5,6,7,8\}$ \\ \hline
+						$7$ 	& $94\%$ & $\{1,3,5,6,7,8,10\}$ \\ \hline
+						$8$ 	& $96\%$ & $\{1,3,4,5,6,7,8,10\}$ \\ \hline
+						$9$ 	& $98\%$ & $\{1,3,4,5,6,7,8,9,10 \}$ \\ \hline
+						$10$	& $98\%$ & $\{1,2,3,4,5,6,7,8,9,10\}$ \\
+						\hline
+					\end{tabular}
+				\end{center}
+				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.1}.}
+				\label{table:sol-4.1}
+			\end{table}
 
 
 		\subsection{Zonas Cubiertas a partir de $p$ de centros de Ambulancias}
 		\label{sec:4.2}
 
 			\paragraph{}
+			En este ejercicio se pide resolver el problema de máximo cubrimiento para los valores de $p = [1, 10] \in N$ al igual que en la sección anterior. En este caso el problema se refiere al cubrimiento de $m = 20$ zonas geográficas a partir de $n=10$ ambulancias, por tanto se trata de encontrar el máximo número de zonas cubiertas con la utilización de $p$ ambulancias.
+
+			\paragraph{}
+			En este caso, además de la matriz $a$ que codifica de manera binaria en $a_{ij}$ que la zona $i$ es cubierta por la variable $j$, se proporciona el vector $h$, que representa en la componente $h_i$ el beneficio obtenido por cubrir la zona $i$. Esto podría interpretarse como el número de personas que se abarcan en dicha zona.
+
+			\paragraph{}
+			Los resultados de en este caso se muestran en la tabla \ref{table:sol-4.2}. Tras analizar los resultados obtenidos se puede obtener como conclusión que el valor óptimo es $p = 6$, es decir, con la utilización de 6 ambulancias se cubren las 20 zonas.
+
+
+			\begin{table}[h]
+				\begin{center}
+					\begin{tabular}{|c || c || l || c | }
+						\hline
+						$p$		&	\% Cubierto	& Puntos Abiertos 					& f.objetivo \\ \hline \hline
+						$1$ 	& $44.18\%$ & $\{4\}$ 										& $115.8$ \\ \hline
+		     		$2$ 	& $63.94\%$ & $\{4, 6\}$									& $156.9$ \\ \hline
+						$3$ 	& $77.59\%$ & $\{4,5,9\}$ 								& $190.4$ \\ \hline
+						$4$ 	& $83.63\%$ & $\{3,4,5,9\}$ 							& $212.6$ \\ \hline
+						$5$ 	& $93.76\%$ & $\{3,4,6,8,10\}$ 						& $230.4$ \\ \hline
+						$6$ 	& $100\%$ 	& $\{2,3,4,6,8,10\}$					& $245.4$ \\ \hline
+						$7$ 	& $100\%$ 	& $\{1,2,3,5,6,8,10 \}$				& $245.4$ \\ \hline
+						$8$ 	& $100\%$ 	& $\{1,2,3,4,5,6,8,10\}$			& $245.4$ \\ \hline
+						$9$ 	& $100\%$ 	& $\{2,3,4,5,6,7,8,9,10\}$ 		& $245.4$ \\ \hline
+						$10$	& $100\%$ 	& $\{1,2,3,4,5,6,7,8,9,10\}$	& $245.4$ \\
+						\hline
+					\end{tabular}
+				\end{center}
+				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.2}.}
+				\label{table:sol-4.2}
+			\end{table}
 
 
 		\subsection{Zonas Cubiertas a partir de $p$ centros de Servicio Sanitario}
