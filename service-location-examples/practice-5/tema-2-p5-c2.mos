@@ -1,31 +1,31 @@
 model ""
 	uses "mmxprs"; !gain access to the Xpress-Optimizer solver
-	
+
 	declarations
 		n: integer
 	 	m: integer
 	end-declarations
 
 	fopen("tema-2-p5-c2.dat",F_INPUT)
-	
+
 	read(n)
-	
+
 	declarations
-		
+
 		poblaciones = 1..n
 		p_range = 7..10
-		
+
 		d:array(poblaciones, poblaciones) of real
 		h:array(poblaciones) of integer
-		
+
 		d_max:real
 		pob: array(poblaciones, 1..2) of integer
-		
-		x:array(poblaciones) of mpvar 
+
+		x:array(poblaciones) of mpvar
 		y:array(poblaciones, poblaciones) of mpvar
-		 
+
 	end-declarations
-	
+
 	forall(i in poblaciones) do
 		read(m)
 		read(pob(i, 1))
@@ -33,54 +33,56 @@ model ""
 		read(h(i))
 	end-do
 	fclose(F_INPUT)
-	
+
 	forall(i in poblaciones)
 		forall(j in poblaciones)
 			d(i,j) :=  + sqrt((pob(i,1) - pob(j,1))^2 + (pob(i,2) - pob(j,2))^2)
 
-	
+
 	forall(j in poblaciones)
 		x(j)is_binary
-	
+
 	forall(i in poblaciones)
 		forall(j in poblaciones)
 			y(i, j)is_binary
-			
-			
+
+
 	z := sum(i in poblaciones)
 		sum(j in poblaciones)
 			h(i) * d(i,j) * y(i,j)
-	
+
 	forall(i in poblaciones)
 		rescub(i):= sum(j in poblaciones)
 			y(i,j) = 1
-			
+
 	forall(i in poblaciones)
 		forall(j in poblaciones)
 			res2(i, j):= y(i,j) <= x(j)
-	
+
 	!exportprob(EP_MIN,"",z)
-	
-	
+
+
 	forall(p in p_range)do
-		
-		rest := sum(j in poblaciones) 
+
+		rest := sum(j in poblaciones)
 		x(j) = p
-		
+
 		minimize(z)
-	
+
+		d_total:=  sum(i in poblaciones)
+						h(i)
+
 		d_max := max(i in poblaciones)
-			 		max(j in poblaciones) 
-			 			h(i) * d(i,j) * y(i,j).sol
-			 		
-			 		
+					max(j in poblaciones)
+						d(i,j) * y(i,j).sol
+
 		writeln("p = ", p)
-		writeln("d_promedio = ", getobjval / n)
+		writeln("d_promedio = ", getobjval / d_total)
 		writeln("d_max = ", d_max)
 		write("x_abiertos = { ")
 		forall(j in poblaciones | x(j).sol = 1)
 			write(j, " ")
 		writeln("}\n")
 		end-do
-	
+
 end-model
