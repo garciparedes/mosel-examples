@@ -60,6 +60,7 @@ model ""
 		
 		writeln("p = ", p)
 		writeln("Porcentaje cubierto: ", porcent, " %")
+		writeln("Valor fObjetivo: ", getobjval)
 		write("Puntos abiertos: ")
 		forall(j in pservicio | x(j).sol = 1)
 			write(j, "  ")
