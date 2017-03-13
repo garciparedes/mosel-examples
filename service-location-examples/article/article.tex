@@ -245,8 +245,60 @@
 		\label{sec:4.3}
 
 			\paragraph{}
+			Este ejercicio se refiere a la resolución dos problemas de cubrimiento máximo de gran tamaño. Se pide resolver para los valores de $p = [1, 10] \in N$ en ambos casos. Debido al tamaño del problema, en este caso se considera que una zona de demanda $i$ ha sido cubierta si existe una zona de servicio $j$ a una distancia $dc \leq 250$ kilómetros. Al igual que en el caso anterior, también se proporciona un vector $h$, que en la posición $h_i$ representa la demanda en la zona $i$. El objetivo a maximizar por tanto es la demanda cubierta total. En este caso, la matriz $a$ no es de carácter binario, sino que se compone de atributos reales, positivos, almacenando la posición $a_{ij}$ la distancia en hectómetros de la zona de demanda $i$ al punto de servicio $j$. Por lo tanto, para utilizar la misma unidad de medida para todas las variables, se transforma la variable $dc = 250 * 10 = 2500$ hectómetros.
 
+			\paragraph{}
+			[TODO terminar ejercicio con NEOS server]
 
+			\paragraph{}
+			En el caso del primer fichero de datos de entrada denominado \textbf{aint1.dat} se recogen un total de $m = 356$ puntos de demanda y $n=22$ puntos de servicio. La solución para los distintos valores de $p$ se recogen en la tabla \ref{table:sol-4.3a}.
+
+			\begin{table}[h]
+				\begin{center}
+					\begin{tabular}{|c || c || l || c | }
+						\hline
+						$p$		&	\% Cubierto	& Puntos Abiertos 					& f.objetivo \\ \hline \hline
+						$1$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$2$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$3$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$4$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$5$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$6$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$7$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$8$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$9$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$10$ 	& $0\%$ & $\{\}$ 										& $0$ \\
+						\hline
+					\end{tabular}
+				\end{center}
+				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.3}.a.}
+				\label{table:sol-4.3a}
+			\end{table}
+
+			\paragraph{}
+			En el caso del segundo fichero de datos de entrada denominado \textbf{aint5.dat} se recogen un total de $m = 328$ puntos de demanda y $n=19$ puntos de servicio. La solución para los distintos valores de $p$ se recogen en la tabla \ref{table:sol-4.3b}.
+
+			\begin{table}[h]
+				\begin{center}
+					\begin{tabular}{|c || c || l || c | }
+						\hline
+						$p$		&	\% Cubierto	& Puntos Abiertos 					& f.objetivo \\ \hline \hline
+						$1$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$2$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$3$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$4$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$5$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$6$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$7$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$8$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$9$ 	& $0\%$ & $\{\}$ 										& $0$ \\ \hline
+						$10$ 	& $0\%$ & $\{\}$ 										& $0$ \\
+						\hline
+					\end{tabular}
+				\end{center}
+				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.3}.b.}
+				\label{table:sol-4.3b}
+			\end{table}
 
 	\section{P-Median Problem y P-Center Problem}
 	\label{sec:5}
