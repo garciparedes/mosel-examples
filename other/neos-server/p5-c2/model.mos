@@ -1,68 +1,73 @@
 model ""
 	uses "mmxprs"; !gain access to the Xpress-Optimizer solver
-	
+
 	declarations
+		p_init: integer
+		p_end: integer
 		n: integer
+	 	m: integer
 	end-declarations
 
 	initializations from "model.dat"
+		p_init
+		p_end
 		n
+		m
 	end-initializations
-	
 	declarations
 		poblaciones = 1..n
-		p_range = 7..10
+		p_range = p_init..p_end
 		
 		d:array(poblaciones, poblaciones) of real
 		h:array(poblaciones) of integer
-		
+
 		d_max:real
 		data: array(poblaciones, 1..4) of integer
-		
-		x:array(poblaciones) of mpvar 
+
+		x:array(poblaciones) of mpvar
 		y:array(poblaciones, poblaciones) of mpvar
-		 
+
 	end-declarations
-	
+
 	initializations from "model.dat"
 		data
 	end-initializations
-	
+
 	forall(i in poblaciones) do
 		h(i) := data(i,4)
 	end-do
-	
-	
+
+
 	fclose(F_INPUT)
-	
+
 	forall(i in poblaciones)
 		forall(j in poblaciones)
-			d(i,j) :=  + sqrt((data(i,2) - data(j,2))^2 + (data(i,3) - data(j,3))^2)
+			d(i,j) :=  sqrt((data(i,2) - data(j,2))^2 + (data(i,3) - data(j,3))^2)
 
-	
+
 	forall(j in poblaciones)
 		x(j)is_binary
-	
+
 	forall(i in poblaciones)
 		forall(j in poblaciones)
 			y(i, j)is_binary
-			
-			
+
+
 	z := sum(i in poblaciones)
 		sum(j in poblaciones)
 			h(i) * d(i,j) * y(i,j)
-	
+
 	forall(i in poblaciones)
 		rescub(i):= sum(j in poblaciones)
 			y(i,j) = 1
-			
+
 	forall(i in poblaciones)
 		forall(j in poblaciones)
 			res2(i, j):= y(i,j) <= x(j)
-	
+
 	!exportprob(EP_MIN,"",z)
-	
-	
+
+
 	forall(p in p_range)do
 
 		rest := sum(j in poblaciones)
@@ -86,5 +91,5 @@ model ""
 			write(j, " ")
 		writeln("}\n")
 	end-do
-	
+
 end-model
