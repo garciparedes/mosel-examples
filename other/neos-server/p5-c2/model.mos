@@ -12,12 +12,11 @@ model ""
 		p_init
 		p_end
 		n
-		m
 	end-initializations
 	declarations
 		poblaciones = 1..n
 		p_range = p_init..p_end
-		
+
 		d:array(poblaciones, poblaciones) of real
 		h:array(poblaciones) of integer
 
