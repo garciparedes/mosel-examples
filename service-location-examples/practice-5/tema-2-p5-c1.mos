@@ -36,7 +36,7 @@ model ""
 
 	forall(i in poblaciones)
 		forall(j in poblaciones)
-			d(i,j) :=  + sqrt((pob(i,1) - pob(j,1))^2 + (pob(i,2) - pob(j,2))^2)
+			d(i,j) :=  sqrt((pob(i,1) - pob(j,1))^2 + (pob(i,2) - pob(j,2))^2)
 
 
 	forall(j in poblaciones)
@@ -70,14 +70,15 @@ model ""
 		minimize(z)
 
 		d_total:=  sum(i in poblaciones)
-						h(i)
+					sum(j in poblaciones)
+						d(i,j) * y(i,j).sol
 
 		d_max := max(i in poblaciones)
 					max(j in poblaciones)
 						d(i,j) * y(i,j).sol
 
 		writeln("p = ", p)
-		writeln("d_promedio = ", getobjval / d_total)
+		writeln("d_total = ", d_total)
 		writeln("d_max = ", d_max)
 		write("x_abiertos = { ")
 		forall(j in poblaciones | x(j).sol = 1)

@@ -60,7 +60,7 @@ model ""
 
 	minimize(z)
 
-	d_total:=  sum(i in demandas)
+	aux:=  sum(i in demandas)
 					h(i)
 
 	d_max := max(i in demandas)
@@ -68,7 +68,7 @@ model ""
 					d(i,j) * y(i,j).sol
 
 	writeln("p = ", p)
-	writeln("d_promedio = ", getobjval / d_total)
+	writeln("d_promedio = ", getobjval / aux)
 	writeln("d_max = ", d_max)
 	write("x_abiertos = { ")
 	forall(j in servicios | x(j).sol = 1)

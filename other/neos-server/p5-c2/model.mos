@@ -64,24 +64,27 @@ model ""
 	
 	
 	forall(p in p_range)do
-		
-		rest := sum(j in poblaciones) 
+
+		rest := sum(j in poblaciones)
 		x(j) = p
-		
+
 		minimize(z)
-	
+
+		d_total:=  sum(i in poblaciones)
+					sum(j in poblaciones)
+						d(i,j) * y(i,j).sol
+
 		d_max := max(i in poblaciones)
-			 		max(j in poblaciones) 
-			 			h(i) * d(i,j) * y(i,j).sol
-			 		
-			 		
+					max(j in poblaciones)
+						d(i,j) * y(i,j).sol
+
 		writeln("p = ", p)
-		writeln("d_promedio = ", getobjval / n)
+		writeln("d_total = ", d_total)
 		writeln("d_max = ", d_max)
 		write("x_abiertos = { ")
 		forall(j in poblaciones | x(j).sol = 1)
 			write(j, " ")
 		writeln("}\n")
-		end-do
+	end-do
 	
 end-model
