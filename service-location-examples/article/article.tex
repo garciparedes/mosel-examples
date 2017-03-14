@@ -245,7 +245,10 @@
 		\label{sec:4.3}
 
 			\paragraph{}
-			Este ejercicio se refiere a la resolución dos problemas de cubrimiento máximo de gran tamaño. Se pide resolver para los valores de $p = [1, 10] \in N$ en ambos casos. Debido al tamaño del problema, en este caso se considera que una zona de demanda $i$ ha sido cubierta si existe una zona de servicio $j$ a una distancia $dc \leq 25$ kilómetros. Al igual que en el caso anterior, también se proporciona un vector $h$, que en la posición $h_i$ representa la demanda en la zona $i$. El objetivo a maximizar por tanto es la demanda cubierta total. En este caso, la matriz $a$ no es de carácter binario, sino que se compone de atributos reales, positivos, almacenando la posición $a_{ij}$ la distancia en hectómetros de la zona de demanda $i$ al punto de servicio $j$. Por lo tanto, para utilizar la misma unidad de medida para todas las variables, se transforma la variable $dc = 25 * 10 = 250$ hectómetros.
+			Este ejercicio se refiere a la resolución dos problemas de cubrimiento máximo de gran tamaño. Se pide resolver para los valores de $p = [1, 10] \in N$ en ambos casos. Debido al tamaño del problema, en este caso se considera que una zona de demanda $i$ ha sido cubierta si existe una zona de servicio $j$ a una distancia $dc \leq 25$ kilómetros. Al igual que en el caso anterior, también se proporciona un vector $h$, que en la posición $h_i$ representa la demanda en la zona $i$.
+
+			\paragraph{}
+			El objetivo a maximizar por tanto es la demanda cubierta total. En este caso, la matriz $a$ no es de carácter binario, sino que se compone de atributos reales, positivos, almacenando la posición $a_{ij}$ la distancia en hectómetros de la zona de demanda $i$ al punto de servicio $j$. Por lo tanto, para utilizar la misma unidad de medida para todas las variables, se transforma la variable $dc = 25 * 10 = 250$ hectómetros.
 
 			\paragraph{}
 			En el caso del primer fichero de datos de entrada denominado \textbf{aint1.dat} se recogen un total de $m = 356$ puntos de demanda y $n=22$ puntos de servicio. La solución para los distintos valores de $p$ se recogen en la tabla \ref{table:sol-4.3a}.
@@ -415,7 +418,10 @@
 		\label{sec:5.2}
 
 			\paragraph{}
-			En este caso, se pide utilizar los conjuntos de datos previamente utilizados en la sección \ref{sec:4.3}, por lo tanto tanto la descripción de los datos como del contexto del problema se ha obviado para evitar la repetición. En este caso, el problema que se pide resolver es el de la p-mediana, es decir, la minimización de la distancia máxima de un punto de demanda $i$ a un punto de servicio $j$. En este caso se ha resuelto para ambos datos de entrada para $p = 5$ instalaciones. Debido al tamaño del conjunto de datos de entrada, que tal y como se dijo anteriormente presenta $m = 356$ y $n = 22$ en el caso de \emph{aint1.dat} y $m = 328 $ y $n = 19$ en el de \emph{aint1.dat}, el número de variables necesarias para la resolución del problema de la p-mediana es muy elevado, por lo que se ha optado por su resolución en el servidor externo \textbf{Neos Server}\cite{tool:neos-server}. Las soluciones a cada ejercicio se muestran respectivamente en las tablas \ref{table:sol-5.2.1} y \ref{table:sol-5.2.2}.
+			En este caso, se pide utilizar los conjuntos de datos previamente utilizados en la sección \ref{sec:4.3}, por lo tanto tanto la descripción de los datos como del contexto del problema se ha obviado para evitar la repetición. En este caso, el problema que se pide resolver es el de la p-mediana, es decir, la minimización de la distancia máxima de un punto de demanda $i$ a un punto de servicio $j$. En este caso se ha resuelto para ambos datos de entrada para $p = 5$ instalaciones.
+
+			\paragraph{}
+			Debido al tamaño del conjunto de datos de entrada, que tal y como se dijo anteriormente presenta $m = 356$ y $n = 22$ en el caso de \emph{aint1.dat} y $m = 328 $ y $n = 19$ en el de \emph{aint1.dat}, el número de variables necesarias para la resolución del problema de la p-mediana es muy elevado, por lo que se ha optado por su resolución en el servidor externo \textbf{Neos Server}\cite{tool:neos-server}. Las soluciones a cada ejercicio se muestran respectivamente en las tablas \ref{table:sol-5.2.1} y \ref{table:sol-5.2.2}.
 
 
 			\begin{table}[h]
@@ -449,7 +455,14 @@
 		\label{sec:5.3}
 
 			\paragraph{}
-			[TODO]
+			Los ejercicios que se resuelven en esta sección tienen como novedad respecto de los anteriores la siguiente cateracterística: En este caso los datos de entrada no se presentan a partir de la matriz de distancias, tal y como sucedia en el resto, sino que se ofrecen las coordenadas $x$ e $y$ de cada localización. Esto hace que el problema permita una mayor versatilidad en el sentido de calcular un mayor número de resultados, pero a la vez añade la complicación de requerir el cálculo de las distancias entre puntos.
+
+			\paragraph{}
+			Para la tarea de calcular las distancias se ha utilizado la \emph{distancia euclidea} para espacios de 2 dimensiones $(x,y)$, que se define matemáticamente como $d(p, q) = \sqrt{(p_x - q_x)^2 + (p_y - q_y)^2}$. Por lo tanto, para la modelización del problema de la p-mediana, es necesario calcular dicha medida para todas las posibles combinaciones de localizaciones, de tal manera que la matriz $d$ sea construida siguiendo la expresión $d_{ij} = d(l_i, l_j)$ donde $l_i$ y $l_j$ representan las coordenadas de las localizaciones $i$ y $j$ respectivamente.
+
+
+			\paragraph{}
+			En esta sección hay que resolver dos ejercicios. El primero de ellos consiste en las coordenadas $(x,y)$ de $n = m = 15$ poblaciones, para las cuales se pide resolver el problema de la p-mediana para $p = [1,5] \in N$. Dichos resultados se muestran en la tabla \ref{table:sol-5.3.1}.
 
 
 			\begin{table}[h]
@@ -457,17 +470,20 @@
 					\begin{tabular}{|c || c || c || l | }
 						\hline
 						$p$		& Dist. Total 	& Dist. Promedio	& Puntos Abiertos	 \\ \hline \hline
-						$1$ 	& $1101.53$ 		& $72.9997$						& $\{13\}$ \\ \hline
-						$2$ 	& $705.127$ 		& $47.6867$					& $\{1,5\}$ \\ \hline
-						$3$ 	& $527.847$ 		& $35.2967$					& $\{5,8,14\}$ \\ \hline
-						$4$ 	& $422.303$ 		& $28.1655$					& $\{1,5,8,14\}$ \\ \hline
-						$5$ 	& $329.953$ 		& $21.8831$					& $\{1,4,8,14,15\}$ \\
+						$1$ 	& $1101.53$ 		& $72.9997$				& $\{13\}$ \\ \hline
+						$2$ 	& $705.127$ 		& $47.6867$				& $\{1,5\}$ \\ \hline
+						$3$ 	& $527.847$ 		& $35.2967$				& $\{5,8,14\}$ \\ \hline
+						$4$ 	& $422.303$ 		& $28.1655$				& $\{1,5,8,14\}$ \\ \hline
+						$5$ 	& $329.953$ 		& $21.8831$				& $\{1,4,8,14,15\}$ \\
 						\hline
 					\end{tabular}
 				\end{center}
 				\caption{Resultados del ejercicio \ref{sec:5.3}.1 para el problema de la p-mediana.}
 				\label{table:sol-5.3.1}
 			\end{table}
+
+			\paragraph{}
+			El segundo caso a resolver presenta las mísmas características y problemática que el anterior, sin embargo, el número de poblaciones es diferente, ascendiendo hasta $n = m = 100$, y requiriendose un total de $p = [7,10] \in N$ instalaciones para el problema de la p-mediana. Debido a la complejidad generada por el aumento del tamaño del problema, en este caso el problema se ha resuelto utilizando \textbf{Neos Server}\cite{tool:neos-server}. Los resultados en este caso se muestran en la tabla \ref{table:sol-5.3.2}.
 
 			\begin{table}[h]
 				\begin{center}
