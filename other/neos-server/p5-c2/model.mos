@@ -74,6 +74,9 @@ model ""
 
 		minimize(z)
 
+		aux:=  sum(i in demandas)
+						h(i)
+
 		d_total:=  sum(i in poblaciones)
 					sum(j in poblaciones)
 						d(i,j) * y(i,j).sol
@@ -84,6 +87,7 @@ model ""
 
 		writeln("p = ", p)
 		writeln("d_total = ", d_total)
+		writeln("d_promedio = ", getobjval / aux)
 		writeln("d_max = ", d_max)
 		write("x_abiertos = { ")
 		forall(j in poblaciones | x(j).sol = 1)
