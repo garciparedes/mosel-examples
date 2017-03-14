@@ -200,7 +200,7 @@
 						\hline
 					\end{tabular}
 				\end{center}
-				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.1}.}
+				\caption{Resultados del ejercicio \ref{sec:4.1}.}
 				\label{table:sol-4.1}
 			\end{table}
 
@@ -236,7 +236,7 @@
 						\hline
 					\end{tabular}
 				\end{center}
-				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.2}.}
+				\caption{Resultados del ejercicio \ref{sec:4.2}.}
 				\label{table:sol-4.2}
 			\end{table}
 
@@ -268,7 +268,7 @@
 						\hline
 					\end{tabular}
 				\end{center}
-				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.3} para \emph{aint1.dat}.}
+				\caption{Resultados del ejercicio \ref{sec:4.3} para \emph{aint1.dat}.}
 				\label{table:sol-4.3a}
 			\end{table}
 
@@ -293,7 +293,7 @@
 						\hline
 					\end{tabular}
 				\end{center}
-				\caption{Resultados del ejercicio \ref{sec:4}.\ref{sec:4.3} para \emph{aint5.dat}.}
+				\caption{Resultados del ejercicio \ref{sec:4.3} para \emph{aint5.dat}.}
 				\label{table:sol-4.3b}
 			\end{table}
 
@@ -365,25 +365,25 @@
 
 			\begin{table}[h]
 				\begin{center}
-					\begin{tabular}{|c || c || c || l | }
+					\begin{tabular}{|c || c || c || l || l |}
 						\hline
-						$p$		& Dist. Máxima 	& Dist. Promedio	& Puntos Abiertos	 \\ \hline \hline
-						$1$ 	& $48$ 					& $25.79$					& $\{9\}$ \\ \hline
-						$2$ 	& $33$ 					& $17$						& $\{7,9\}$ \\ \hline
-						$3$ 	& $30$ 					& $13.18$					& $\{1,6,11\}$ \\ \hline
-						$4$ 	& $28$ 					& $10.18$					& $\{1,6,8,10\}$ \\ \hline
-						$5$ 	& $28$ 					& $7.8$						& $\{1,6,8,10,12\}$ \\ \hline
-						$6$ 	& $28$ 					& $5.85$					& $\{1,6,8,10,11,12\}$ \\ \hline
-						$7$ 	& $15$ 					& $4.04$					& $\{1,3,6,8,10,11,12\}$ \\ \hline
-						$8$ 	& $15$ 					& $2.87$					& $\{1,3,4,6,8,10,11,12\}$ \\ \hline
-						$9$ 	& $15$ 					& $1.98$					& $\{1,3,4,6,7,8,10,11,12\}$ \\ \hline
-						$10$ 	& $15$ 					& $1.13$					& $\{1,3,4,6,7,8,9,10,11,12\}$ \\ \hline
-						$11$ 	& $12$ 					& $0.32$					& $\{1,2,3,4,6,7,8,9,10,11,12\}$ \\ \hline
-						$12$ 	& $0$ 					& $0$							& $\{1,2,3,4,5,6,7,8,9,10,11,12\}$ \\
+						$p$		& Máx. 	& Medio		& Puntos Abiertos	 										& Max de $P_i$\\ \hline \hline
+						$1$ 	& $48$ 	& $25.79$	& $\{9\}$ 													& $\{48,42,20,24,24,12,45,30,0,38,19,19\}$\\ \hline
+						$2$ 	& $33$ 	& $17$		& $\{7,9\}$													& $\{18,33,20,24,24,12,0,15,0,22,19,19\}$ \\ \hline
+						$3$ 	& $30$ 	& $13.18$	& $\{1,6,11\}$											& $\{0,15,30,12,24,0,18,25,12,19,0,21\}$ \\ \hline
+						$4$ 	& $28$ 	& $10.18$	& $\{1,6,8,10\}$										& $\{0,15,28,12,12,0,15,0,12,0,19,22\}$ 	\\ \hline
+						$5$ 	& $28$ 	& $7.8$		& $\{1,6,8,10,12\}$									& $\{0,15,28,12,12,0,15,0,12,0,19,0\}$ \\ \hline
+						$6$ 	& $28$ 	& $5.85$	& $\{1,6,8,10,11,12\}$							& $\{0,15,28,12,12,0,15,0,12,0,0,0\}$ \\ \hline
+						$7$ 	& $15$ 	& $4.04$	& $\{1,3,6,8,10,11,12\}$						& $\{0,15,0,12,12,0,15,0,12,0,0,0\}$ \\ \hline
+						$8$ 	& $15$ 	& $2.87$	& $\{1,3,4,6,8,10,11,12\}$					& $\{0,15,0,0,12,0,15,0,12,0,0,0\}$ \\ \hline
+						$9$ 	& $15$ 	& $1.98$	& $\{1,3,4,6,7,8,10,11,12\}$ 				& $\{0,15,0,0,12,0,0,0,12,0,0,0\}$\\ \hline
+						$10$ 	& $15$ 	& $1.13$	& $\{1,3,4,6,7,8,9,10,11,12\}$ 			& $\{0,15,0,0,12,0,0,0,0,0,0,0\}$\\ \hline
+						$11$ 	& $12$ 	& $0.32$	& $\{1,2,3,4,6,7,8,9,10,11,12\}$ 		& $\{0,0,0,0,12,0,0,0,0,0,0,0\}$\\ \hline
+						$12$ 	& $0$ 	& $0$			& $\{1,2,3,4,5,6,7,8,9,10,11,12\}$	& $\{0,0,0,0,0,0,0,0,0,0,0,0\}$ \\
 						\hline
 					\end{tabular}
 				\end{center}
-				\caption{Resultados del ejercicio \ref{sec:5}.\ref{sec:5.1} para el problema del p-mediana.}
+				\caption{Resultados del ejercicio \ref{sec:5.1} para el problema del p-mediana.}
 				\label{table:sol-5.1median}
 			\end{table}
 
@@ -407,7 +407,7 @@
 						\hline
 					\end{tabular}
 				\end{center}
-				\caption{Resultados del ejercicio \ref{sec:5}.\ref{sec:5.1} para el problema del p-centro.}
+				\caption{Resultados del ejercicio \ref{sec:5.1} para el problema del p-centro.}
 				\label{table:sol-5.1center}
 			\end{table}
 
@@ -415,9 +415,37 @@
 		\label{sec:5.2}
 
 			\paragraph{}
-			[TODO]
+			En este caso, se pide utilizar los conjuntos de datos previamente utilizados en la sección \ref{sec:4.3}, por lo tanto tanto la descripción de los datos como del contexto del problema se ha obviado para evitar la repetición. En este caso, el problema que se pide resolver es el de la p-mediana, es decir, la minimización de la distancia máxima de un punto de demanda $i$ a un punto de servicio $j$. En este caso se ha resuelto para ambos datos de entrada para $p = 5$ instalaciones. Debido al tamaño del conjunto de datos de entrada, que tal y como se dijo anteriormente presenta $m = 356$ y $n = 22$ en el caso de \emph{aint1.dat} y $m = 328 $ y $n = 19$ en el de \emph{aint1.dat}, el número de variables necesarias para la resolución del problema de la p-mediana es muy elevado, por lo que se ha optado por su resolución en el servidor externo \textbf{Neos Server}\cite{tool:neos-server}. Las soluciones a cada ejercicio se muestran respectivamente en las tablas \ref{table:sol-5.2.1} y \ref{table:sol-5.2.2}.
 
-		\subsection{Problema de la p-mediana sobre datos de coordenadas}
+
+			\begin{table}[h]
+				\begin{center}
+					\begin{tabular}{|c || c || c || l | }
+						\hline
+						$p$ 	& Dist. Promedio	&	Dist. Max & Puntos Abiertos	 \\ \hline \hline
+						$5$		& $94.6455$				&	$406$					& $\{1,2,11,17,22\}$ \\
+						\hline
+					\end{tabular}
+				\end{center}
+				\caption{Resultados del ejercicio \ref{sec:5.2}.1 del problema de la p-mediana para $p=5$.}
+				\label{table:sol-5.2.1}
+			\end{table}
+
+			\begin{table}[h]
+				\begin{center}
+					\begin{tabular}{|c || c || c || c || l | }
+						\hline
+						$p$ 	& Dist. Promedio	&	Dist. Max & Puntos Abiertos	 \\ \hline \hline
+						$5$		& $59.2697$				&	$353$					& $\{1,3,6,8,12\}$ \\
+						\hline
+					\end{tabular}
+				\end{center}
+				\caption{Resultados del ejercicio \ref{sec:5.2}.2 del problema de la p-mediana para $p=5$.}
+				\label{table:sol-5.2.2}
+			\end{table}
+
+
+		\subsection{Problema de la p-mediana sobre datos geográficos}
 		\label{sec:5.3}
 
 			\paragraph{}
@@ -429,15 +457,15 @@
 					\begin{tabular}{|c || c || c || l | }
 						\hline
 						$p$		& Dist. Total 	& Dist. Promedio	& Puntos Abiertos	 \\ \hline \hline
-						$1$ 	& $1101.53$ 		& $153.525$						& $\{13\}$ \\ \hline
-						$2$ 	& $705.127$ 		& $103.697$					& $\{1,5\}$ \\ \hline
-						$3$ 	& $527.847$ 		& $68.2422$					& $\{5,8,14\}$ \\ \hline
-						$4$ 	& $422.303$ 		& $68.2422$					& $\{1,5,8,14\}$ \\ \hline
-						$5$ 	& $329.953$ 		& $48.1041$					& $\{1,4,8,14,15\}$ \\
+						$1$ 	& $1101.53$ 		& $72.9997$						& $\{13\}$ \\ \hline
+						$2$ 	& $705.127$ 		& $47.6867$					& $\{1,5\}$ \\ \hline
+						$3$ 	& $527.847$ 		& $35.2967$					& $\{5,8,14\}$ \\ \hline
+						$4$ 	& $422.303$ 		& $28.1655$					& $\{1,5,8,14\}$ \\ \hline
+						$5$ 	& $329.953$ 		& $21.8831$					& $\{1,4,8,14,15\}$ \\
 						\hline
 					\end{tabular}
 				\end{center}
-				\caption{Resultados del ejercicio \ref{sec:5}.\ref{sec:5.1}.1 para el problema de la p-mediana.}
+				\caption{Resultados del ejercicio \ref{sec:5.3}.1 para el problema de la p-mediana.}
 				\label{table:sol-5.3.1}
 			\end{table}
 
@@ -446,14 +474,14 @@
 					\begin{tabular}{|c || c || c || l | }
 						\hline
 						$p$		& Dist. Total 	& Dist. Promedio	& Puntos Abiertos	 \\ \hline \hline
-						$7$ 	& $0$ 					& $0$						& $\{\}$ \\ \hline
-						$8$ 	& $0$ 					& $0$					& $\{\}$ \\ \hline
-						$9$ 	& $0$ 					& $0$					& $\{\}$ \\ \hline
-						$10$ 	& $0$ 					& $0$					& $\{\}$ \\
+						$7$ 	& $2510.48$ 		& $24.9789$				& $\{4,6,28,42,59,60,90\}$ \\ \hline
+						$8$ 	& $2290.24$ 		& $22.6172$				& $\{4,6,28,41,42,89,90,92\}$ \\ \hline
+						$9$ 	& $2122.31$ 		& $21.039$				& $\{4,6,28,41,42,66,86,89,92\}$ \\ \hline
+						$10$ 	& $1957.9$ 			& $19.5009$				& $\{4,15,21,28,41,42,66,86,89,92\}$ \\
 						\hline
 					\end{tabular}
 				\end{center}
-				\caption{Resultados del ejercicio \ref{sec:5}.\ref{sec:5.1}.2 para el problema de la p-mediana.}
+				\caption{Resultados del ejercicio \ref{sec:5.3}.2 para el problema de la p-mediana.}
 				\label{table:sol-5.3.2}
 			\end{table}
 
