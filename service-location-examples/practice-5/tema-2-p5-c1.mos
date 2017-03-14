@@ -1,6 +1,8 @@
 model ""
 	uses "mmxprs"; !gain access to the Xpress-Optimizer solver
-
+	uses "mmive"
+	uses "mmsystem"
+	
 	declarations
 		n: integer
 	 	m: integer
@@ -61,14 +63,22 @@ model ""
 
 	!exportprob(EP_MIN,"",z)
 
-
+	id1 := IVEaddplot("points", IVE_RED)
+	id2 := IVEaddplot("indices", IVE_BLACK)
+	
+	forall(i in poblaciones) do
+			IVEdrawpoint(id1, pob(i,1), pob(i,2))
+			IVEdrawlabel(id2, pob(i,1)+2, pob(i,2)+2,"" + i)
+	end-do
 	forall(p in p_range)do
 
 		rest := sum(j in poblaciones)
 		x(j) = p
 
 		minimize(z)
-
+		
+		
+		
 		aux:=  sum(i in poblaciones)
 						h(i)
 	
@@ -88,6 +98,10 @@ model ""
 		forall(j in poblaciones | x(j).sol = 1)
 			write(j, " ")
 		writeln("}\n")
-		end-do
+		
+		id3 := IVEaddplot("p" + p, IVE_BLUE)
+		forall(j in poblaciones | x(j).sol = 1)
+			IVEdrawpoint(id3, pob(j,1), pob(j,2))
+	end-do
 
 end-model
