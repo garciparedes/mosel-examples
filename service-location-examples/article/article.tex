@@ -20,7 +20,7 @@
 %-----------------------------
 
 	\begin{abstract}
-		\noindent Problemas de Localización de servicios \url{https://github.com/garciparedes/mosel-examples/tree/master/service-location-examples}\cite{garciparedes:mosel-examples}
+		\noindent En este documento se resuelven \emph{Problemas de Localización de servicios} a partir del entorno de desarrollo \emph{Xpress-Mosel}\cite{tool:xpress-mosel}. Los problemas que se tratan son de \emph{Programación Lineal Binaria} por lo que todas las variables de decisión restringen sus valores al rango booleano. Los modelos que se discuten son el \emph{Problema de Cubrimiento de Conjuntos}, \emph{Problema de Cubrimiento Máximo}, \emph{Problema de la p-mediana} y \emph{Problema del p-centro}.
 	\end{abstract}
 
 %-----------------------------
@@ -462,7 +462,7 @@
 
 
 			\paragraph{}
-			En esta sección hay que resolver dos ejercicios. El primero de ellos consiste en las coordenadas $(x,y)$ de $n = m = 15$ poblaciones, para las cuales se pide resolver el problema de la p-mediana para $p = [1,5] \in N$. Dichos resultados se muestran en la tabla \ref{table:sol-5.3.1}.
+			En esta sección hay que resolver dos ejercicios. El primero de ellos consiste en las coordenadas $(x,y)$ de $n = m = 15$ poblaciones, para las cuales se pide resolver el problema de la p-mediana para $p = [1,5] \in N$. Dichos resultados se muestran en la tabla \ref{table:sol-5.3.1}. Además, se proporciona la solución gráfica a este problema para $p = [0,5] \in N$ en la figura \ref{fig:sol-5.3.1}. Nótese que el caso $p = 0$ es el caso $\forall x_j = 0$, es decir, el problema sin resolver.
 
 
 			\begin{table}[h]
@@ -482,10 +482,54 @@
 				\label{table:sol-5.3.1}
 			\end{table}
 
+
+			\begin{figure}[h]
+			\centering
+			\begin{subfigure}{.5\textwidth}
+			  \centering
+			  \includegraphics[width=\linewidth]{tema-2-p5-c1-0}
+			  \caption{$p=0$}
+			  \label{fig:sub1}
+			\end{subfigure}%
+			\begin{subfigure}{.5\textwidth}
+				\centering
+				\includegraphics[width=\linewidth]{tema-2-p5-c1-1}
+				\caption{$p=1$}
+				\label{fig:sub1}
+			\end{subfigure} \\
+			\begin{subfigure}{.5\textwidth}
+				\centering
+				\includegraphics[width=\linewidth]{tema-2-p5-c1-2}
+				\caption{$p=2$}
+				\label{fig:sub1}
+			\end{subfigure}%
+			\begin{subfigure}{.5\textwidth}
+				\centering
+				\includegraphics[width=\linewidth]{tema-2-p5-c1-3}
+				\caption{$p=3$}
+				\label{fig:sub1}
+			\end{subfigure} \\
+			\begin{subfigure}{.5\textwidth}
+				\centering
+				\includegraphics[width=\linewidth]{tema-2-p5-c1-4}
+				\caption{$p=4$}
+				\label{fig:sub1}
+			\end{subfigure}%
+			\begin{subfigure}{.5\textwidth}
+				\centering
+				\includegraphics[width=\linewidth]{tema-2-p5-c1-5}
+				\caption{$p=5$}
+				\label{fig:sub1}
+			\end{subfigure}%
+			\caption{Solución gráfica al problema de la p-mediana \ref{sec:5.3}.1}
+			\label{fig:sol-5.3.1}
+			\end{figure}
+
+
 			\paragraph{}
 			El segundo caso a resolver presenta las mísmas características y problemática que el anterior, sin embargo, el número de poblaciones es diferente, ascendiendo hasta $n = m = 100$, y requiriendose un total de $p = [7,10] \in N$ instalaciones para el problema de la p-mediana. Debido a la complejidad generada por el aumento del tamaño del problema, en este caso el problema se ha resuelto utilizando \textbf{Neos Server}\cite{tool:neos-server}. Los resultados en este caso se muestran en la tabla \ref{table:sol-5.3.2}.
 
-			\begin{table}[h]
+			\begin{table}[H]
 				\begin{center}
 					\begin{tabular}{|c || c || c || l | }
 						\hline
@@ -501,11 +545,15 @@
 				\label{table:sol-5.3.2}
 			\end{table}
 
+			\paragraph{}
+			En este caso no se proporciona solución gráfica debido a la dificultad debida al número de variables, que restringen las capacidades de resolución en el entorno local.
+
 
 %-----------------------------
 %	BIBLIOGRAPHY
 %-----------------------------
 	\nocite{subject:mio}
+	\nocite{garciparedes:mosel-examples}
 	\bibliographystyle{acm}
   \bibliography{bib/misc}
 
