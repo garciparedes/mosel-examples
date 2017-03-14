@@ -74,7 +74,7 @@ model ""
 
 		minimize(z)
 
-		aux:=  sum(i in demandas)
+		aux:=  sum(i in poblaciones)
 						h(i)
 
 		d_total:=  sum(i in poblaciones)

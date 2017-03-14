@@ -73,6 +73,10 @@ model ""
 		write("x_abiertos = { ")
 		forall(j in servicios | x(j).sol = 1)
 			write(j, " ")
+		writeln("}")
+		write("d_max_demandas = { ")
+		forall(i in demandas)
+				write(max(j in servicios | y(i,j).sol = 1) d(i,j), " ")
 		writeln("}\n")
 	end-do
 	
