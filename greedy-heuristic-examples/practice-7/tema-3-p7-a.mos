@@ -1,9 +1,11 @@
 model ""
 	uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+	uses "mmsystem"
 
 	declarations
 		p_init: integer
 		p_max: integer
+		k_max: integer
 		n: integer
 	 	m: integer
 	 	dc: integer
@@ -12,6 +14,7 @@ model ""
 	initializations from "aint1.dat"
 		p_init
 		p_max
+		k_max
 		n
 		m
 		dc
@@ -31,6 +34,11 @@ model ""
 		solu:			array(servicios) of integer
 		partial_sums:	array(servicios) of integer
 		
+		!Random Greedy Vars
+		k_iter      	= 1..k_max
+		k_list:			array(k_iter) of integer
+		k_marca:		array(servicios) of integer
+
 		
 		!Xpress Vars
 		x:				array(servicios) of mpvar
@@ -74,8 +82,8 @@ model ""
 		! Greedy Solution
 		!############################################################
 		
-		nfilcub := 0
-		while(nfilcub < p) do
+		n_cub := 0
+		while(n_cub < p) do
 			forall(j in servicios | solu(j) = 0) do
 				partial_sums(j):= sum(i in demandas | d(i,j) <= dc and cubierta(i) = 0) h(i)
 			end-do
@@ -93,7 +101,7 @@ model ""
 			forall(i in demandas | d(i,selected) <= dc)
 					cubierta(i):=1
 					
-			nfilcub := nfilcub + 1
+			n_cub := n_cub + 1
 		end-do
 		
 		writeln("\tgreedy solution: ")
@@ -105,6 +113,8 @@ model ""
 			write(j,"  ")
 		writeln("\n")
 		
+		
+		!RESET Matrices
 		forall(i in demandas) do
 			cubierta(i) := 0
 		end-do
@@ -117,7 +127,53 @@ model ""
 		! Random Greedy Solution
 		!############################################################
 		
+		n_cub := 0
+		while(n_cub < p) do
+			forall(j in servicios | solu(j) = 0) do
+				partial_sums(j):= sum(i in demandas | d(i,j) <= dc and cubierta(i) = 0) h(i)
+			end-do
+			
+			forall(j in servicios) k_marca(j):=0
+			forall(k in k_iter) do
+				aux := -99
+				forall(j in servicios | (solu(j) = 0 and k_marca(j) = 0)) do
+					if(aux < partial_sums(j)) then
+						aux := partial_sums(j)
+						jmax := j
+					end-if
+				end-do
+				k_marca(jmax):=1
+				k_list(k):=jmax
+			end-do
+			
+			k_win := ceil(random*k_max)
+			selected := k_list(k_win)
+			
+			
+			solu(selected) := 1
+			forall(i in demandas | d(i,selected) <= dc)
+					cubierta(i):=1
+					
+			n_cub := n_cub + 1
+		end-do
 		
+		writeln("\tgreedy random solution: ")
+		
+		percent := 100 * sum(i in demandas|cubierta(i) = 1) h(i) / h_total
+		writeln("\tpercent: ", percent, " %")
+		write("\topened: ")
+		forall(j in servicios | solu(j) = 1) 
+			write(j,"  ")
+		writeln("\n")
+		
+		
+		!RESET Matrices
+		forall(i in demandas) do
+			cubierta(i) := 0
+		end-do
+		forall(j in servicios) do
+			solu(j):=0
+		end-do
 		
 		! Xpress Solution
 		!############################################################
