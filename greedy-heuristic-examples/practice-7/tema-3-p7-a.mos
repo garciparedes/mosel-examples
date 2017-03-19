@@ -18,18 +18,27 @@ model ""
 	end-initializations
 
 	declarations
-		p_range = p_init..p_max
+		p_range 		= p_init..p_max
 			
-		servicios = 1..n
-		demandas = 1..m
+		servicios 		= 1..n
+		demandas 		= 1..m
 
-		d:array(demandas, servicios) of integer
-		h:array(demandas) of integer
+		d:				array(demandas, servicios) of integer
+		h:				array(demandas) of integer
 
-		x:array(servicios) of mpvar
-		z:array(demandas) of mpvar
+		!Greedy Vars
+		cubierta: 		array(demandas) of integer
+		solu:			array(servicios) of integer
+		partial_sums:	array(servicios) of integer
+		
+		
+		!Xpress Vars
+		x:				array(servicios) of mpvar
+		z:				array(demandas) of mpvar
 		
 	end-declarations
+	!Xpress Solution Constant Restrictions
+	!################################################################
 
 	forall(j in servicios)
 		x(j)is_binary
@@ -50,11 +59,51 @@ model ""
 		rescub(i):= sum(j in servicios | d(i,j) <= dc)
 			x(j) >= z(i)
 	
+	!Solving
+	!################################################################
+	
 	forall(p in p_range)do
 		writeln("p = ", p)
 		
 		! Greedy Solution
 		!############################################################
+		
+		nfilcub := 0
+		while(nfilcub < p) do
+			forall(j in servicios | solu(j) = 0) do
+				partial_sums(j):= sum(i in demandas | d(i,j) <= dc and cubierta(i) = 0) h(i)
+			end-do
+			
+			aux:=-999
+			selected:=-1
+			forall(j in servicios | solu(j) = 0) do
+				if(aux < partial_sums(j)) then
+					aux := partial_sums(j)
+					selected := j
+				end-if
+			end-do
+			
+			solu(selected) := 1
+			forall(i in demandas | d(i,selected) <= dc)
+					cubierta(i):=1
+					
+			nfilcub := nfilcub + 1
+		end-do
+		
+		writeln("\tgreedy solution: ")
+		write("\topened: ")
+		forall(j in servicios | solu(j) = 1) 
+			write(j,"  ")
+		writeln("\n")
+		
+		forall(i in demandas) do
+			cubierta(i) := 0
+		end-do
+		forall(j in servicios) do
+			fijada(j):=0
+			solu(j):=0
+		end-do
+		
 		
 		
 		! Random Greedy Solution
@@ -69,7 +118,8 @@ model ""
 			x(j) = p
 			
 		maximize(dem_cub)
-		write("opened: ")
+		writeln("\txpress solution: ")
+		write("\topened: ")
 		forall(j in servicios | x(j).sol = 1)
 			write(j, "  ")
 		writeln("\n")
