@@ -37,20 +37,18 @@ model ""
 		z:				array(demandas) of mpvar
 		
 	end-declarations
-	!Xpress Solution Constant Restrictions
-	!################################################################
 
-	forall(j in servicios)
-		x(j)is_binary
-
-	forall(j in servicios)
-		z(j)is_binary
 
 	initializations from "aint1.dat"
 		h
 		d
 	end-initializations
+	
+	h_total:=sum(i in demandas) h(i)
 
+
+	!Xpress Solution Constant Restrictions
+	!################################################################
 
 	dem_cub:=sum(i in demandas)
 		h(i) * z(i)
@@ -59,6 +57,14 @@ model ""
 		rescub(i):= sum(j in servicios | d(i,j) <= dc)
 			x(j) >= z(i)
 	
+	
+	forall(j in servicios)
+		x(j)is_binary
+
+	forall(i in demandas)
+		z(i)is_binary
+		
+		
 	!Solving
 	!################################################################
 	
@@ -91,6 +97,9 @@ model ""
 		end-do
 		
 		writeln("\tgreedy solution: ")
+		
+		percent := 100 * sum(i in demandas|cubierta(i) = 1) h(i) / h_total
+		writeln("\tpercent: ", percent, " %")
 		write("\topened: ")
 		forall(j in servicios | solu(j) = 1) 
 			write(j,"  ")
@@ -100,7 +109,6 @@ model ""
 			cubierta(i) := 0
 		end-do
 		forall(j in servicios) do
-			fijada(j):=0
 			solu(j):=0
 		end-do
 		
@@ -119,6 +127,8 @@ model ""
 			
 		maximize(dem_cub)
 		writeln("\txpress solution: ")
+		percent := 100 * getobjval / h_total
+		writeln("\tpercent: ", percent, " %")
 		write("\topened: ")
 		forall(j in servicios | x(j).sol = 1)
 			write(j, "  ")
