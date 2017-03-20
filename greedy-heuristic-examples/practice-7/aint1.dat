@@ -1,4 +1,7 @@
-p:5
+p_init:1
+p_max:6
+k_max:4
+dc:250
 m:356
 n:22
 h:[

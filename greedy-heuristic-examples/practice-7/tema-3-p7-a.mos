@@ -1,80 +1,194 @@
 model ""
 	uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+	uses "mmsystem"
 
 	declarations
-		p: integer
+		p_init: integer
+		p_max: integer
+		k_max: integer
 		n: integer
 	 	m: integer
+	 	dc: integer
 	end-declarations
 
 	initializations from "aint1.dat"
-		p
+		p_init
+		p_max
+		k_max
 		n
 		m
+		dc
 	end-initializations
 
 	declarations
+		p_range 		= p_init..p_max
+			
+		servicios 		= 1..n
+		demandas 		= 1..m
 
-		servicios = 1..n
-		demandas = 1..m
+		d:				array(demandas, servicios) of integer
+		h:				array(demandas) of integer
 
-		d:array(demandas, servicios) of integer
-		h:array(demandas) of integer
+		!Greedy Vars
+		cubierta: 		array(demandas) of integer
+		solu:			array(servicios) of integer
+		partial_sums:	array(servicios) of integer
+		
+		!Random Greedy Vars
+		k_iter      	= 1..k_max
+		k_list:			array(k_iter) of integer
+		k_marca:		array(servicios) of integer
 
-		d_max:real
-
-		x:array(servicios) of mpvar
-		y:array(demandas, servicios) of mpvar
-
+		
+		!Xpress Vars
+		x:				array(servicios) of mpvar
+		z:				array(demandas) of mpvar
+		
 	end-declarations
 
-	forall(j in servicios)
-		x(j)is_binary
-
-	forall(i in demandas)
-		forall(j in servicios)
-			y(i, j)is_binary
 
 	initializations from "aint1.dat"
 		h
 		d
 	end-initializations
+	
+	h_total:=sum(i in demandas) h(i)
 
 
-	z := sum(i in demandas)
-		sum(j in servicios)
-			h(i) * d(i,j) * y(i,j)
+	!Xpress Solution Constant Restrictions
+	!################################################################
+
+	dem_cub:=sum(i in demandas)
+		h(i) * z(i)
+	
+	forall(i in demandas)
+		rescub(i):= sum(j in servicios | d(i,j) <= dc)
+			x(j) >= z(i)
+	
+	
+	forall(j in servicios)
+		x(j)is_binary
 
 	forall(i in demandas)
-		rescub(i):= sum(j in servicios)
-			y(i,j) = 1
-
-	forall(i in demandas)
-		forall(j in servicios)
-			res2(i, j):= y(i,j) <= x(j)
-
-	!exportprob(EP_MIN,"",dem_cub)
-
-
-	rest := sum(j in servicios)
-		x(j) = p
-
-	minimize(z)
-
-	aux:=  sum(i in demandas)
-					h(i)
-
-	d_max := max(i in demandas)
-				max(j in servicios)
-					d(i,j) * y(i,j).sol
-
-	writeln("p = ", p)
-	writeln("d_promedio = ", getobjval / aux)
-	writeln("d_max = ", d_max)
-	write("x_abiertos = { ")
-	forall(j in servicios | x(j).sol = 1)
-		write(j, " ")
-	writeln("}\n")
-
-
+		z(i)is_binary
+		
+		
+	!Solving
+	!################################################################
+	
+	forall(p in p_range)do
+		writeln("p = ", p)
+		
+		! Greedy Solution
+		!############################################################
+		
+		n_cub := 0
+		while(n_cub < p) do
+			forall(j in servicios | solu(j) = 0) do
+				partial_sums(j):= sum(i in demandas | d(i,j) <= dc and cubierta(i) = 0) h(i)
+			end-do
+			
+			aux:=-999
+			selected:=-1
+			forall(j in servicios | solu(j) = 0) do
+				if(aux < partial_sums(j)) then
+					aux := partial_sums(j)
+					selected := j
+				end-if
+			end-do
+			
+			solu(selected) := 1
+			forall(i in demandas | d(i,selected) <= dc)
+					cubierta(i):=1
+					
+			n_cub := n_cub + 1
+		end-do
+		
+		writeln("\tgreedy solution: ")
+		
+		percent := 100 * sum(i in demandas|cubierta(i) = 1) h(i) / h_total
+		writeln("\tpercent: ", percent, " %")
+		write("\topened: ")
+		forall(j in servicios | solu(j) = 1) 
+			write(j,"  ")
+		writeln("\n")
+		
+		
+		!RESET Matrices
+		forall(i in demandas) do
+			cubierta(i) := 0
+		end-do
+		forall(j in servicios) do
+			solu(j):=0
+		end-do
+		
+		
+		
+		! Random Greedy Solution
+		!############################################################
+		
+		n_cub := 0
+		while(n_cub < p) do
+			forall(j in servicios | solu(j) = 0) do
+				partial_sums(j):= sum(i in demandas | d(i,j) <= dc and cubierta(i) = 0) h(i)
+			end-do
+			
+			forall(j in servicios) k_marca(j):=0
+			forall(k in k_iter) do
+				aux := -99
+				forall(j in servicios | (solu(j) = 0 and k_marca(j) = 0)) do
+					if(aux < partial_sums(j)) then
+						aux := partial_sums(j)
+						jmax := j
+					end-if
+				end-do
+				k_marca(jmax):=1
+				k_list(k):=jmax
+			end-do
+			
+			k_win := ceil(random*k_max)
+			selected := k_list(k_win)
+			
+			
+			solu(selected) := 1
+			forall(i in demandas | d(i,selected) <= dc)
+					cubierta(i):=1
+					
+			n_cub := n_cub + 1
+		end-do
+		
+		writeln("\tgreedy random solution: ")
+		
+		percent := 100 * sum(i in demandas|cubierta(i) = 1) h(i) / h_total
+		writeln("\tpercent: ", percent, " %")
+		write("\topened: ")
+		forall(j in servicios | solu(j) = 1) 
+			write(j,"  ")
+		writeln("\n")
+		
+		
+		!RESET Matrices
+		forall(i in demandas) do
+			cubierta(i) := 0
+		end-do
+		forall(j in servicios) do
+			solu(j):=0
+		end-do
+		
+		! Xpress Solution
+		!############################################################
+		
+		rest:= sum(j in servicios) 
+			x(j) = p
+			
+		maximize(dem_cub)
+		writeln("\txpress solution: ")
+		percent := 100 * getobjval / h_total
+		writeln("\tpercent: ", percent, " %")
+		write("\topened: ")
+		forall(j in servicios | x(j).sol = 1)
+			write(j, "  ")
+		writeln("\n")
+		
+	end-do
 end-model
