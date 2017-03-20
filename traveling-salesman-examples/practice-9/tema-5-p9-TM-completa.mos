@@ -1,6 +1,6 @@
 model ""
 	uses "mmxprs";
-	setparam("XPRS_MAXTIME", 20)
+	setparam("XPRS_MAXTIME", 60)
 	
 	declarations
 		n:		integer
@@ -56,9 +56,9 @@ model ""
 	
 	
 	t := 1
-	write("path: ", t)
+	write("path: ")
 	forall(i in nodes) do
-		forall(j in nodes | t <> 1 and x(t,j).sol = 1) do
+		forall(j in nodes | x(t,j).sol = 1) do
 			write(" -> ",t)
 			t := j
 		end-do
