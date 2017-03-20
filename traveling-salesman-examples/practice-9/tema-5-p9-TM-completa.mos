@@ -1,6 +1,7 @@
 model ""
 	uses "mmxprs";
-
+	setparam("XPRS_MAXTIME", 20)
+	
 	declarations
 		n:		integer
 	end-declarations
@@ -13,6 +14,7 @@ model ""
 		nodes 	= 1..n
 		d:		array(nodes, nodes) of integer
 		x:		array(nodes, nodes) of mpvar
+		u:		array(nodes) of mpvar
 	end-declarations
 
 	initializations from "br17.dat"
@@ -34,13 +36,32 @@ model ""
 		forall(j in nodes)
 			x(i,j) is_binary
 			
+			
+	
+	
+	
+	forall(i in nodes | i <> 1) do
+		res_u_down(i) := 2 <= u(i) 
+		res_u_up(i) := u(i) <= n
+	end-do
+	res_u := u(1) = 1
+	
+	
+	
+	forall(i in nodes)
+		forall(j in nodes | i <> 1 and j <> 1)
+			res_MTZ(i, j) := (u(i) - u(j) +1) <= ((n-1)*(1 - x(i,j)))
 	
 	minimize(obj)
 	
-	forall(i in nodes)
-		forall(j in nodes | x(i,j).sol = 1)
-			writeln("(",i,",",j,") ")
-
-
+	
+	t := 1
+	write("path: ", t)
+	forall(i in nodes) do
+		forall(j in nodes | t <> 1 and x(t,j).sol = 1) do
+			write(" -> ",t)
+			t := j
+		end-do
+	end-do
 
 end-model
