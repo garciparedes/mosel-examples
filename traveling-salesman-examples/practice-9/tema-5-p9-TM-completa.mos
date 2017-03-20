@@ -1,0 +1,46 @@
+model ""
+	uses "mmxprs";
+
+	declarations
+		n:		integer
+	end-declarations
+
+	initializations from "br17.dat"
+		n
+	end-initializations
+	
+	declarations
+		nodes 	= 1..n
+		d:		array(nodes, nodes) of integer
+		x:		array(nodes, nodes) of mpvar
+	end-declarations
+
+	initializations from "br17.dat"
+		d
+	end-initializations
+	
+	forall(i in nodes)
+		res_j(i) := sum(j in nodes) x(i,j) = 1
+	
+
+	forall(j in nodes)
+		res_i(j) := sum(i in nodes) x(i,j) = 1
+		
+	obj := sum(i in nodes)
+			sum(j in nodes)
+				d(i,j) * x(i,j)
+	
+	forall(i in nodes)
+		forall(j in nodes)
+			x(i,j) is_binary
+			
+	
+	minimize(obj)
+	
+	forall(i in nodes)
+		forall(j in nodes | x(i,j).sol = 1)
+			writeln("(",i,",",j,") ")
+
+
+
+end-model
