@@ -37,7 +37,7 @@ model ""
 		res_i(j) := sum(i in nodes) x(i,j) = 1
 		
 	obj := sum(i in nodes)
-			sum(j in nodes | i <> j)
+			sum(j in nodes)
 				d(i,j) * x(i,j)
 	
 	forall(i in nodes)
