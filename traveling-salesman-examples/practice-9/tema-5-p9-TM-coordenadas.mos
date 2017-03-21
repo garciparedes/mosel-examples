@@ -27,7 +27,7 @@ model ""
 	
 	forall(i in nodes)
 		forall(j in nodes)
-			d(i,j) :=  ceil(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
+			d(i,j) :=  round(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
 	
 	forall(i in nodes)
 		res_j(i) := sum(j in nodes) x(i,j) = 1
@@ -37,7 +37,7 @@ model ""
 		res_i(j) := sum(i in nodes) x(i,j) = 1
 		
 	obj := sum(i in nodes)
-			sum(j in nodes)
+			sum(j in nodes | i <> j)
 				d(i,j) * x(i,j)
 	
 	forall(i in nodes)
