@@ -1,0 +1,66 @@
+model ""
+	uses "mmxprs";
+	uses "mmsystem"
+	
+	setparam("XPRS_MAXTIME", 60)
+	
+	declarations
+		n:		integer
+	end-declarations
+
+	initializations from "n21_1.dat"
+		n
+	end-initializations
+	
+	declarations
+		nodes 	= 1..n
+		d:		array(nodes, nodes) of integer
+		visited:array(nodes) of integer
+		result:	array(nodes, nodes) of integer
+	end-declarations
+
+	initializations from "n21_1.dat"
+		d
+	end-initializations
+	
+	forall(i in nodes) visited(i) := 0 
+	forall(i in nodes, j in nodes) result(i, j) := 0 
+	
+	initial := ceil(random * n)
+	current := initial
+	visited(current) :=1
+	forall(t in nodes) do
+		aux := MAX_INT
+		selected:=-1
+		forall(i in nodes | visited(i) = 0) do
+			if(aux > d(current, i)) then
+				aux := d(current, i)
+				selected := i
+			end-if
+		end-do
+		if(selected = -1) then
+			selected := initial
+		end-if
+		result(current, selected) := 1
+		current := selected
+		visited(current):= 1
+	end-do
+	
+	t := initial
+	write("path: ")
+	forall(i in nodes) do
+		forall(j in nodes | result(t,j) = 1) do
+			write(" -> ", t)
+			t := j
+		end-do
+	end-do
+	writeln("\n")
+	
+	writeln("edges: ")
+	forall(i in nodes) do
+		forall(j in nodes | result(i,j) = 1) do
+			writeln("(", i, ", ", j, ")")
+		end-do
+	end-do
+
+end-model
