@@ -23,7 +23,7 @@ model ""
 		p_range = p_min..p_max
 
 		raw_data: array(nodes, 1..4) of integer
-		d:array(nodes, nodes) of real
+		d:array(nodes, nodes) of integer
 
 		h:array(nodes) of integer
 
@@ -40,7 +40,7 @@ model ""
 	forall(i in nodes) do
 		h(i) := raw_data(i,4)
 		forall(j in nodes) do
-			d(i,j) :=  sqrt((raw_data(i,2) - raw_data(j,2))^2 + (raw_data(j,3) - raw_data(j,3))^2)
+			d(i,j) :=  round(sqrt((raw_data(i,2) - raw_data(j,2))^2 + (raw_data(i,3) - raw_data(j,3))^2))
 		end-do
 	end-do
 
@@ -49,9 +49,9 @@ model ""
 
 	!XPRESS CONSTANT RESTRICTIONS
 	forall(j in nodes)
-		x(j)is_binary
+		x(j) is_binary
 	forall(i in nodes, j in nodes)
-		y(i, j)is_binary
+		y(i, j) is_binary
 	z := sum(i in nodes, j in nodes)
 			h(i) * d(i,j) * y(i,j)
 	forall(i in nodes)
@@ -62,27 +62,33 @@ model ""
 
 
 	forall(p in p_range)do
-
+		writeln("p = ", p)
+		
 		!GREEDY SOLUTION
 		!#############################################################################
+
+		![TODO]
+
 
 		!LOCAL SEARCH SOLUTION
 		!#############################################################################
 
+		![TODO]
+		
+
 		!XPRESS SOLUTION
 		!#############################################################################
+		
 		rest_p := sum(j in nodes) x(j) = p
 		minimize(z)
 
-		writeln("p = ", p)
-		writeln("d_total = ", sum(i in nodes, j in nodes | y(i,j).sol = 1) d(i,j))
-		writeln("d_promedio = ", getobjval / sum(i in nodes) h(i))
-		writeln("d_max = ", max(i in nodes, j in nodes | y(i,j).sol = 1) d(i,j))
-		write("x_abiertos = { ")
+		
+		writeln("\td_total = ", sum(i in nodes, j in nodes | y(i,j).sol = 1) d(i,j))
+		writeln("\td_promedio = ", getobjval / sum(i in nodes) h(i))
+		writeln("\td_max = ", max(i in nodes, j in nodes | y(i,j).sol = 1) d(i,j))
+		write("\tx_abiertos = { ")
 		forall(j in nodes | x(j).sol = 1)
 			write(j, " ")
 		writeln("}\n")
-
 	end-do
-
 end-model
