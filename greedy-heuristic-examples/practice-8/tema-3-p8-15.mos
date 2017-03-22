@@ -1,0 +1,88 @@
+model ""
+	uses "mmxprs"; !gain access to the Xpress-Optimizer solver
+	uses "mmive"
+	uses "mmsystem"
+
+
+	! INITIALIZATION AND FILE INPUT
+	!##############################################################################
+	declarations
+		n:		integer
+		p_min:	integer
+		p_max:	integer
+	end-declarations
+
+	initializations from "coordenadas_15.dat"
+		n
+		p_min
+		p_max
+	end-initializations
+
+	declarations
+		nodes = 1..n
+		p_range = p_min..p_max
+
+		raw_data: array(nodes, 1..4) of integer
+		d:array(nodes, nodes) of real
+
+		h:array(nodes) of integer
+
+		!XPRESS Vars
+		x:array(nodes) of mpvar
+		y:array(nodes, nodes) of mpvar
+
+	end-declarations
+
+	initializations from "coordenadas_15.dat"
+		raw_data
+	end-initializations
+
+	forall(i in nodes) do
+		h(i) := raw_data(i,4)
+		forall(j in nodes) do
+			d(i,j) :=  sqrt((raw_data(i,2) - raw_data(j,2))^2 + (raw_data(j,3) - raw_data(j,3))^2)
+		end-do
+	end-do
+
+	! COMPUTATION
+	!##############################################################################
+
+	!XPRESS CONSTANT RESTRICTIONS
+	forall(j in nodes)
+		x(j)is_binary
+	forall(i in nodes, j in nodes)
+		y(i, j)is_binary
+	z := sum(i in nodes, j in nodes)
+			h(i) * d(i,j) * y(i,j)
+	forall(i in nodes)
+		res_y(i):= sum(j in nodes)
+			y(i,j) = 1
+	forall(i in nodes, j in nodes)
+		res_x_y(i, j):= y(i,j) <= x(j)
+
+
+	forall(p in p_range)do
+
+		!GREEDY SOLUTION
+		!#############################################################################
+
+		!LOCAL SEARCH SOLUTION
+		!#############################################################################
+
+		!XPRESS SOLUTION
+		!#############################################################################
+		rest_p := sum(j in nodes) x(j) = p
+		minimize(z)
+
+		writeln("p = ", p)
+		writeln("d_total = ", sum(i in nodes, j in nodes | y(i,j).sol = 1) d(i,j))
+		writeln("d_promedio = ", getobjval / sum(i in nodes) h(i))
+		writeln("d_max = ", max(i in nodes, j in nodes | y(i,j).sol = 1) d(i,j))
+		write("x_abiertos = { ")
+		forall(j in nodes | x(j).sol = 1)
+			write(j, " ")
+		writeln("}\n")
+
+	end-do
+
+end-model
