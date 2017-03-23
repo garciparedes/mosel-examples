@@ -7,9 +7,9 @@ model ""
 	! INITIALIZATION AND FILE INPUT
 	!##############################################################################
 	declarations
-		n:		integer
-		p_min:	integer
-		p_max:	integer
+		n:				integer
+		p_min:			integer
+		p_max:			integer
 	end-declarations
 
 	initializations from "coordenadas_15.dat"
@@ -19,18 +19,22 @@ model ""
 	end-initializations
 
 	declarations
-		nodes = 1..n
-		p_range = p_min..p_max
+		nodes 			= 1..n
+		p_range 		= p_min..p_max
 
-		raw_data: array(nodes, 1..4) of integer
-		d:array(nodes, nodes) of integer
+		raw_data: 		array(nodes, 1..4) of integer
+		d:				array(nodes, nodes) of integer
 
-		h:array(nodes) of integer
+		h:				array(nodes) of integer
 
 		!XPRESS Vars
-		x:array(nodes) of mpvar
-		y:array(nodes, nodes) of mpvar
-
+		x:				array(nodes) of mpvar
+		y:				array(nodes, nodes) of mpvar
+		
+		!Greedy Vars
+		solu:			array(nodes) of integer
+		fijada:			array(nodes) of integer
+		temp_fijada: 	array(nodes) of integer
 	end-declarations
 
 	initializations from "coordenadas_15.dat"
@@ -40,7 +44,11 @@ model ""
 	forall(i in nodes) do
 		h(i) := raw_data(i,4)
 		forall(j in nodes) do
-			d(i,j) :=  round(sqrt((raw_data(i,2) - raw_data(j,2))^2 + (raw_data(i,3) - raw_data(j,3))^2))
+			!if (i = j) then
+			!	d(i,j) := MAX_INT
+			!else	
+				d(i,j) :=  round(sqrt((raw_data(i,2) - raw_data(j,2))^2 + (raw_data(i,3) - raw_data(j,3))^2))
+			!end-if
 		end-do
 	end-do
 
@@ -67,13 +75,53 @@ model ""
 		!GREEDY SOLUTION
 		!#############################################################################
 
-		![TODO]
-
-
+		forall(i in nodes) do 
+			solu(i) := 0
+			fijada(i) :=0
+		end-do
+		
+		n_cub :=0
+		while(n_cub < p) do
+			best := MAX_INT
+			ndx := n
+			forall(i in nodes | fijada(i) = 0) do
+				val := 0
+				forall(j in nodes) do
+					fijada(i) := 1
+					temp_best := MAX_INT
+					forall(k in nodes | fijada(k) = 1 and d(k,j) < temp_best) do
+						temp_best := d(k,j)
+					end-do
+					fijada(i) := 0
+					val := val + temp_best
+				end-do
+				if (val < best) then
+					best := val
+					ndx := i
+				end-if
+			end-do
+			fijada(ndx) := 1
+			solu(ndx) := 1
+			n_cub := n_cub + 1
+		end-do
+		
+		writeln("\tgreedy solution: ")
+		writeln("\td_total = ", best)
+		write("\tx_abiertos = { ")
+		forall(j in nodes | solu(j) = 1) 
+			write(j," ")
+		writeln("}\n")
+		
+		
 		!LOCAL SEARCH SOLUTION
 		!#############################################################################
 
 		![TODO]
+		forall(i in nodes) do 
+			solu(i) := 0
+			fijada(i) :=0
+		end-do
+		
 		
 
 		!XPRESS SOLUTION
@@ -82,10 +130,10 @@ model ""
 		rest_p := sum(j in nodes) x(j) = p
 		minimize(z)
 
-		
+		writeln("\txpress solution: ")
 		writeln("\td_total = ", sum(i in nodes, j in nodes | y(i,j).sol = 1) d(i,j))
 		writeln("\td_promedio = ", getobjval / sum(i in nodes) h(i))
-		writeln("\td_max = ", max(i in nodes, j in nodes | y(i,j).sol = 1) d(i,j))
+		writeln("\td_max = ", max(i in nodes, j in nodes | y(i,j).sol = 1 and i <> j) d(i,j))
 		write("\tx_abiertos = { ")
 		forall(j in nodes | x(j).sol = 1)
 			write(j, " ")
