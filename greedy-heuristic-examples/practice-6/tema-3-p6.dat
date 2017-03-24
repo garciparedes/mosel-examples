@@ -1,3 +1,5 @@
+dc_min: 70
+dc_max:	120
 n:30
 m:30 
 dist:[
