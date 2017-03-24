@@ -10,7 +10,7 @@ model "Actividades-recursos"
 	 	N_max:		integer
 	end-declarations
 
-	initializations from "aint1.dat"
+	initializations from "aint5.dat"
 		n
 		m
 		k_max
@@ -42,16 +42,15 @@ model "Actividades-recursos"
 		
 		x:			array(servicios)of mpvar
 	end-declarations
-
 		
 	ganancia:=sum(j in servicios)
 		x(j)
 			
 	forall(j in servicios)
 		x(j) is_binary
-		
 	
-	initializations from "aint1.dat"
+	
+	initializations from "aint5.dat"
 		dist
 	end-initializations
 	
