@@ -1,7 +1,8 @@
 p_init:1
 p_max:6
 k_max:4
-dc:250
+N_max:100
+dc:200
 m:356
 n:22
 h:[

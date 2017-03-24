@@ -12,7 +12,7 @@ model ""
 	 	N_max:			integer
 	end-declarations
 
-	initializations from "aint1.dat"
+	initializations from "aint5.dat"
 		p_init
 		p_max
 		k_max
@@ -52,7 +52,7 @@ model ""
 	end-declarations
 
 
-	initializations from "aint1.dat"
+	initializations from "aint5.dat"
 		h
 		d
 	end-initializations
