@@ -1,0 +1,102 @@
+model ""
+	uses "mmxprs";
+	uses "mmsystem"
+	
+	setparam("XPRS_MAXTIME", 60)
+	
+	declarations
+		n:		integer
+	end-declarations
+
+	initializations from "n21_1.dat"
+		n
+	end-initializations
+	
+	declarations
+		nodes 		= 1..n
+		d:			array(nodes, nodes) of integer
+		visited:	array(nodes) of integer
+		explored:	array(nodes) of integer
+		result:		array(nodes, nodes) of integer
+	end-declarations
+
+	initializations from "n21_1.dat"
+		d
+	end-initializations
+	
+	forall(i in nodes) visited(i) := 0 
+	forall(i in nodes, j in nodes) result(i, j) := 0 
+	
+	initial := ceil(random * n)
+	current := initial
+	visited(current) :=1
+	forall(t in nodes) do
+		aux := MAX_INT
+		selected:=-1
+		forall(i in nodes | visited(i) = 0) do
+			if(aux > d(current, i)) then
+				aux := d(current, i)
+				selected := i
+			end-if
+		end-do
+		if(selected = -1) then
+			selected := initial
+		end-if
+		result(current, selected) := 1
+		current := selected
+		visited(current):= 1
+	end-do
+	current_dist := sum(i in nodes, j in nodes | result(i,j) = 1) d(i,j)
+	
+	writeln("dist: ",current_dist)
+	move := 1
+	while(move =1) do 
+		move := 0
+		forall(i in nodes, j in nodes | i <> j) do
+			forall(k in nodes| result(i, k) = 1) old1 := k
+			forall(k in nodes| result(k, j) = 1) old2 := k
+			
+			
+			result(i, old1) := 0
+			result(old2, j) := 0
+			
+			result(i, j) := 1
+			result(old2, old1) := 1
+			
+			new_dist := sum(ii in nodes, jj in nodes | result(ii,jj) = 1) d(ii,jj)
+			
+			if (new_dist < current_dist) then
+				current_dist := new_dist
+				move := 1
+			else
+				result(i,j) := 0
+				result(old2, old1) := 0
+				
+				result(i, old1) := 1
+				result(old2, j) := 1
+			end-if
+			
+		end-do
+	
+	end-do
+	
+	
+	writeln("dist 2-opt: ",current_dist)
+	t := initial
+	write("path: ")
+	forall(i in nodes) do
+		forall(j in nodes | result(t,j) = 1) do
+			write(" -> ", t)
+			t := j
+		end-do
+	end-do
+	writeln("\n")
+	
+	writeln("edges: ")
+	forall(i in nodes) do
+		forall(j in nodes | result(i,j) = 1) do
+			writeln("(", i, ", ", j, ")")
+		end-do
+	end-do
+
+end-model
