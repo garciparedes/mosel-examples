@@ -12,7 +12,7 @@ model ""
 		p_max:			integer
 	end-declarations
 
-	initializations from "coordenadas_15.dat"
+	initializations from "coordenadas_100.dat"
 		n
 		p_min
 		p_max
@@ -37,7 +37,7 @@ model ""
 		temp_fijada: 	array(nodes) of integer
 	end-declarations
 
-	initializations from "coordenadas_15.dat"
+	initializations from "coordenadas_100.dat"
 		raw_data
 	end-initializations
 
