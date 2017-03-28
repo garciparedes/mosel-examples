@@ -1,0 +1,129 @@
+p = 1
+	greedy solution:
+	d_total = 7416
+	x_abiertos = { 71 }
+
+	local search solution:
+	d_total = 7416
+	x_abiertos = { 71 }
+
+	xpress solution:
+	d_total = 7416
+	x_abiertos = { 71 }
+
+p = 2
+	greedy solution:
+	d_total = 5744
+	x_abiertos = { 71 95 }
+
+	local search solution:
+	d_total = 5211
+	x_abiertos = { 63 77 }
+
+	xpress solution:
+	d_total = 5211
+	x_abiertos = { 63 77 }
+
+p = 3
+	greedy solution:
+	d_total = 4593
+	x_abiertos = { 30 71 95 }
+
+	local search solution:
+	d_total = 4243
+	x_abiertos = { 57 77 84 }
+
+	xpress solution:
+	d_total = 4243
+	x_abiertos = { 57 77 84 }
+
+p = 4
+	greedy solution:
+	d_total = 3845
+	x_abiertos = { 28 30 71 95 }
+
+	local search solution:
+	d_total = 3478
+	x_abiertos = { 6 14 27 55 }
+
+	xpress solution:
+	d_total = 3500
+	x_abiertos = { 6 14 55 57 }
+
+p = 5
+	greedy solution:
+	d_total = 3320
+	x_abiertos = { 6 28 30 71 95 }
+
+	local search solution:
+	d_total = 3053
+	x_abiertos = { 4 6 18 55 56 }
+
+	xpress solution:
+	d_total = 3053
+	x_abiertos = { 4 6 18 55 56 }
+
+p = 6
+	greedy solution:
+	d_total = 2907
+	x_abiertos = { 6 28 30 58 71 95 }
+
+	local search solution:
+	d_total = 2777
+	x_abiertos = { 4 28 42 55 80 91 }
+
+	xpress solution:
+	d_total = 2745
+	x_abiertos = { 4 18 20 49 56 69 }
+
+p = 7
+	greedy solution:
+	d_total = 2600
+	x_abiertos = { 6 28 30 37 58 71 95 }
+
+	local search solution:
+	d_total = 2495
+	x_abiertos = { 4 6 28 42 59 60 91 }
+
+	xpress solution:
+	d_total = 2509
+	x_abiertos = { 4 6 28 42 49 60 90 }
+
+p = 8
+	greedy solution:
+	d_total = 2364
+	x_abiertos = { 6 28 30 37 58 71 89 95 }
+
+	local search solution:
+	d_total = 2274
+	x_abiertos = { 4 6 28 37 42 53 89 91 }
+
+	xpress solution:
+	d_total = 2287
+	x_abiertos = { 4 6 28 41 42 89 90 92 }
+
+p = 9
+	greedy solution:
+	d_total = 2212
+	x_abiertos = { 6 28 30 37 58 71 89 95 98 }
+
+	local search solution:
+	d_total = 2110
+	x_abiertos = { 4 15 21 28 37 42 53 89 91 }
+
+	xpress solution:
+	d_total = 2118
+	x_abiertos = { 4 6 28 41 42 66 86 89 92 }
+
+p = 10
+	greedy solution:
+	d_total = 2072
+	x_abiertos = { 6 28 30 37 58 66 71 89 95 98 }
+
+	local search solution:
+	d_total = 1952
+	x_abiertos = { 4 15 21 28 37 42 66 86 89 92 }
+
+	xpress solution:
+	d_total = 1952
+	x_abiertos = { 4 15 21 28 41 42 66 86 89 92 }

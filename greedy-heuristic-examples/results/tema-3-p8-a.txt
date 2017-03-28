@@ -1,0 +1,129 @@
+p = 1
+	greedy solution:
+	d_total = 1102
+	x_abiertos = { 13 }
+
+	local search solution:
+	d_total = 1102
+	x_abiertos = { 13 }
+
+	xpress solution:
+	d_total = 1102
+	x_abiertos = { 13 }
+
+p = 2
+	greedy solution:
+	d_total = 734
+	x_abiertos = { 5 13 }
+
+	local search solution:
+	d_total = 705
+	x_abiertos = { 1 5 }
+
+	xpress solution:
+	d_total = 705
+	x_abiertos = { 1 5 }
+
+p = 3
+	greedy solution:
+	d_total = 546
+	x_abiertos = { 5 8 13 }
+
+	local search solution:
+	d_total = 523
+	x_abiertos = { 4 12 14 }
+
+	xpress solution:
+	d_total = 528
+	x_abiertos = { 5 8 14 }
+
+p = 4
+	greedy solution:
+	d_total = 458
+	x_abiertos = { 1 5 8 13 }
+
+	local search solution:
+	d_total = 420
+	x_abiertos = { 1 4 8 14 }
+
+	xpress solution:
+	d_total = 423
+	x_abiertos = { 1 5 8 14 }
+
+p = 5
+	greedy solution:
+	d_total = 371
+	x_abiertos = { 1 5 7 8 13 }
+
+	local search solution:
+	d_total = 331
+	x_abiertos = { 1 4 8 14 15 }
+
+	xpress solution:
+	d_total = 331
+	x_abiertos = { 1 4 8 14 15 }
+
+p = 6
+	greedy solution:
+	d_total = 304
+	x_abiertos = { 1 5 6 7 8 13 }
+
+	local search solution:
+	d_total = 288
+	x_abiertos = { 1 5 6 8 14 15 }
+
+	xpress solution:
+	d_total = 283
+	x_abiertos = { 1 4 8 10 11 15 }
+
+p = 7
+	greedy solution:
+	d_total = 242
+	x_abiertos = { 1 5 6 7 8 11 13 }
+
+	local search solution:
+	d_total = 240
+	x_abiertos = { 1 5 6 7 8 10 11 }
+
+	xpress solution:
+	d_total = 231
+	x_abiertos = { 1 4 7 8 10 11 15 }
+
+p = 8
+	greedy solution:
+	d_total = 190
+	x_abiertos = { 1 5 6 7 8 11 13 15 }
+
+	local search solution:
+	d_total = 188
+	x_abiertos = { 1 5 6 7 8 10 11 15 }
+
+	xpress solution:
+	d_total = 188
+	x_abiertos = { 1 5 6 7 8 10 11 15 }
+
+p = 9
+	greedy solution:
+	d_total = 151
+	x_abiertos = { 1 3 5 6 7 8 11 13 15 }
+
+	local search solution:
+	d_total = 149
+	x_abiertos = { 1 3 5 6 7 8 10 11 15 }
+
+	xpress solution:
+	d_total = 149
+	x_abiertos = { 1 3 5 6 7 8 10 11 15 }
+
+p = 10
+	greedy solution:
+	d_total = 114
+	x_abiertos = { 1 3 4 5 6 7 8 11 13 15 }
+
+	local search solution:
+	d_total = 112
+	x_abiertos = { 1 3 4 5 6 7 8 10 11 15 }
+
+	xpress solution:
+	d_total = 112
+	x_abiertos = { 1 3 4 5 6 7 8 10 11 15 }
