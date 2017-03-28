@@ -1,5 +1,5 @@
-p, greedy distance, greedy opened, local search distance, local search opened, xpress distance, xpress opened
-1,1102,13,1102,13,1102,13
+p, Greedy, Greedy Opened, L. S., Local Search Opened, Xpress, Xpress Opened
+1,1102, 13 ,1102, 13 ,1102, 13
 2,734,5 13,705,1 5,705,1 5
 3,546,5 8 13,523,4 12 14,528,5 8 14
 4,458,1 5 8 13,420,1 4 8 14,423,1 5 8 14
