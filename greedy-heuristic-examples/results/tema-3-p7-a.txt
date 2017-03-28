@@ -1,0 +1,77 @@
+p = 1
+	greedy solution:
+	percent: 41.1322 %
+	opened: 18
+
+	greedy random solution:
+	percent: 41.1322 %
+	opened: 18
+
+	xpress solution:
+	percent: 41.1322 %
+	opened: 18
+
+p = 2
+	greedy solution:
+	percent: 53.2281 %
+	opened: 11  18
+
+	greedy random solution:
+	percent: 53.2281 %
+	opened: 11  18
+
+	xpress solution:
+	percent: 53.2281 %
+	opened: 11  18
+
+p = 3
+	greedy solution:
+	percent: 65.1815 %
+	opened: 6  11  18
+
+	greedy random solution:
+	percent: 65.1815 %
+	opened: 6  11  18
+
+	xpress solution:
+	percent: 65.1815 %
+	opened: 6  11  18
+
+p = 4
+	greedy solution:
+	percent: 75.0729 %
+	opened: 2  6  11  18
+
+	greedy random solution:
+	percent: 76.6026 %
+	opened: 1  2  19  22
+
+	xpress solution:
+	percent: 76.6026 %
+	opened: 1  2  19  22
+
+p = 5
+	greedy solution:
+	percent: 81.1139 %
+	opened: 2  6  8  11  18
+
+	greedy random solution:
+	percent: 82.6436 %
+	opened: 1  2  8  19  22
+
+	xpress solution:
+	percent: 82.6436 %
+	opened: 1  2  8  19  22
+
+p = 6
+	greedy solution:
+	percent: 84.665 %
+	opened: 2  6  8  9  11  18
+
+	greedy random solution:
+	percent: 88.3181 %
+	opened: 1  2  8  14  19  22
+
+	xpress solution:
+	percent: 88.3181 %
+	opened: 1  2  8  14  19  22

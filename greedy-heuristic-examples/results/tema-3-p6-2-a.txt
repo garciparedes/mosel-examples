@@ -1,0 +1,1962 @@
+dc = 250
+	greedy solution:
+	instalations: 11
+	opened: 1 2 5 8 9 11 13 14 15 17 18
+
+	greedy random solution:
+	instalations: 11
+	opened: 1 2 4 8 9 11 13 14 15 17 18
+
+	xpress solution:
+	instalations: 11
+	opened: 1 2 3 8 9 11 13 14 15 17 18
+
+dc = 251
+	greedy solution:
+	instalations: 11
+	opened: 1 2 5 8 9 11 13 14 15 17 18
+
+	greedy random solution:
+	instalations: 11
+	opened: 1 2 5 8 9 11 13 14 15 17 21
+
+	xpress solution:
+	instalations: 11
+	opened: 1 2 3 8 9 11 13 14 15 17 18
+
+dc = 252
+	greedy solution:
+	instalations: 11
+	opened: 1 2 5 8 9 11 14 15 16 17 18
+
+	greedy random solution:
+	instalations: 11
+	opened: 2 8 9 10 11 14 15 16 17 18 22
+
+	xpress solution:
+	instalations: 11
+	opened: 1 2 3 8 9 11 14 15 16 17 18
+
+dc = 253
+	greedy solution:
+	instalations: 11
+	opened: 1 2 5 8 9 11 14 15 16 17 18
+
+	greedy random solution:
+	instalations: 11
+	opened: 2 8 9 10 11 14 15 16 17 18 22
+
+	xpress solution:
+	instalations: 11
+	opened: 1 2 3 8 9 11 14 15 16 17 18
+
+dc = 254
+	greedy solution:
+	instalations: 11
+	opened: 1 2 5 8 9 11 14 15 16 17 18
+
+	greedy random solution:
+	instalations: 11
+	opened: 1 2 8 9 11 14 15 16 17 21 22
+
+	xpress solution:
+	instalations: 11
+	opened: 1 2 3 8 9 11 14 15 16 17 18
+
+dc = 255
+	greedy solution:
+	instalations: 11
+	opened: 1 2 5 8 9 11 14 15 16 17 18
+
+	greedy random solution:
+	instalations: 11
+	opened: 1 2 8 9 11 14 15 16 17 21 22
+
+	xpress solution:
+	instalations: 11
+	opened: 1 2 3 8 9 11 14 15 16 17 18
+
+dc = 256
+	greedy solution:
+	instalations: 11
+	opened: 1 2 5 8 9 11 14 15 16 17 18
+
+	greedy random solution:
+	instalations: 11
+	opened: 1 2 3 8 9 11 13 14 15 17 21
+
+	xpress solution:
+	instalations: 11
+	opened: 1 2 3 8 9 11 14 15 16 17 18
+
+dc = 257
+	greedy solution:
+	instalations: 11
+	opened: 1 2 8 9 11 14 15 16 17 18 22
+
+	greedy random solution:
+	instalations: 11
+	opened: 1 2 8 9 11 14 15 16 17 21 22
+
+	xpress solution:
+	instalations: 11
+	opened: 1 2 3 8 9 11 14 15 16 17 18
+
+dc = 258
+	greedy solution:
+	instalations: 11
+	opened: 1 2 8 9 11 14 15 16 17 18 22
+
+	greedy random solution:
+	instalations: 11
+	opened: 1 2 4 8 9 11 13 14 15 17 21
+
+	xpress solution:
+	instalations: 11
+	opened: 1 2 3 8 9 11 14 15 16 17 18
+
+dc = 259
+	greedy solution:
+	instalations: 11
+	opened: 1 2 8 9 11 14 15 16 17 18 22
+
+	greedy random solution:
+	instalations: 11
+	opened: 2 8 9 10 11 14 15 16 17 18 22
+
+	xpress solution:
+	instalations: 11
+	opened: 1 2 3 8 9 11 14 15 16 17 18
+
+dc = 260
+	greedy solution:
+	instalations: 10
+	opened: 1 2 8 9 11 14 16 17 18 22
+
+	greedy random solution:
+	instalations: 10
+	opened: 1 2 4 8 9 11 13 14 17 18
+
+	xpress solution:
+	instalations: 10
+	opened: 1 2 3 8 9 11 14 16 17 18
+
+dc = 261
+	greedy solution:
+	instalations: 10
+	opened: 1 2 8 9 11 14 16 17 18 22
+
+	greedy random solution:
+	instalations: 10
+	opened: 1 2 3 8 9 11 13 14 17 18
+
+	xpress solution:
+	instalations: 10
+	opened: 1 2 3 8 9 11 14 16 17 18
+
+dc = 262
+	greedy solution:
+	instalations: 10
+	opened: 1 2 8 9 11 14 16 17 18 22
+
+	greedy random solution:
+	instalations: 10
+	opened: 1 2 7 8 9 11 13 14 17 18
+
+	xpress solution:
+	instalations: 10
+	opened: 1 2 3 8 9 11 14 16 17 18
+
+dc = 263
+	greedy solution:
+	instalations: 10
+	opened: 1 2 8 9 11 14 16 17 18 22
+
+	greedy random solution:
+	instalations: 10
+	opened: 1 2 3 8 9 11 13 14 17 18
+
+	xpress solution:
+	instalations: 10
+	opened: 1 2 3 8 9 11 14 16 17 18
+
+dc = 264
+	greedy solution:
+	instalations: 10
+	opened: 1 2 8 9 11 14 16 17 18 22
+
+	greedy random solution:
+	instalations: 10
+	opened: 1 2 4 8 9 11 13 14 17 18
+
+	xpress solution:
+	instalations: 10
+	opened: 1 2 3 8 9 11 14 16 17 18
+
+dc = 265
+	greedy solution:
+	instalations: 9
+	opened: 1 2 3 8 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 9
+	opened: 1 2 4 8 9 11 14 17 18
+
+	xpress solution:
+	instalations: 9
+	opened: 1 2 3 8 9 11 14 17 18
+
+dc = 266
+	greedy solution:
+	instalations: 9
+	opened: 1 2 3 8 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 9
+	opened: 1 2 4 8 9 11 14 17 18
+
+	xpress solution:
+	instalations: 9
+	opened: 1 2 3 8 9 11 14 17 18
+
+dc = 267
+	greedy solution:
+	instalations: 9
+	opened: 1 2 3 8 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 9
+	opened: 1 2 8 9 11 14 17 18 22
+
+	xpress solution:
+	instalations: 9
+	opened: 1 2 3 8 9 11 14 17 18
+
+dc = 268
+	greedy solution:
+	instalations: 9
+	opened: 1 2 3 8 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 9
+	opened: 1 3 8 9 11 14 15 17 18
+
+	xpress solution:
+	instalations: 9
+	opened: 1 2 7 8 9 11 14 17 18
+
+dc = 269
+	greedy solution:
+	instalations: 9
+	opened: 1 2 3 8 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 9
+	opened: 1 2 8 9 11 14 17 18 22
+
+	xpress solution:
+	instalations: 9
+	opened: 1 2 7 8 9 11 14 17 18
+
+dc = 270
+	greedy solution:
+	instalations: 9
+	opened: 1 2 3 8 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 9
+	opened: 1 3 8 9 11 14 15 17 18
+
+	xpress solution:
+	instalations: 9
+	opened: 1 2 4 8 9 11 14 17 18
+
+dc = 271
+	greedy solution:
+	instalations: 9
+	opened: 1 2 3 8 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 9
+	opened: 1 8 9 11 14 15 17 18 22
+
+	xpress solution:
+	instalations: 9
+	opened: 1 2 4 8 9 11 14 17 18
+
+dc = 272
+	greedy solution:
+	instalations: 9
+	opened: 1 2 3 8 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 9
+	opened: 1 2 5 8 9 11 14 17 18
+
+	xpress solution:
+	instalations: 9
+	opened: 1 2 4 8 9 11 14 17 18
+
+dc = 273
+	greedy solution:
+	instalations: 9
+	opened: 1 2 3 9 11 14 16 17 18
+
+	greedy random solution:
+	instalations: 9
+	opened: 4 9 10 11 14 15 16 17 18
+
+	xpress solution:
+	instalations: 9
+	opened: 1 2 4 9 11 14 16 17 18
+
+dc = 274
+	greedy solution:
+	instalations: 9
+	opened: 1 2 3 9 11 14 16 17 18
+
+	greedy random solution:
+	instalations: 9
+	opened: 1 7 9 11 13 14 15 17 18
+
+	xpress solution:
+	instalations: 9
+	opened: 1 2 4 9 11 14 16 17 18
+
+dc = 275
+	greedy solution:
+	instalations: 8
+	opened: 1 2 7 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	xpress solution:
+	instalations: 8
+	opened: 1 2 5 9 11 14 17 18
+
+dc = 276
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 2 5 9 11 14 17 18
+
+	xpress solution:
+	instalations: 8
+	opened: 1 2 5 9 11 14 17 18
+
+dc = 277
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 2 9 11 14 17 18 22
+
+	xpress solution:
+	instalations: 8
+	opened: 1 2 5 9 11 14 17 18
+
+dc = 278
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 5 9 11 14 15 17 18
+
+	xpress solution:
+	instalations: 8
+	opened: 1 2 5 9 11 14 17 18
+
+dc = 279
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 9 11 12 14 17 18 22
+
+	xpress solution:
+	instalations: 8
+	opened: 1 2 5 9 11 14 17 18
+
+dc = 280
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 3 9 11 12 14 17 20
+
+	xpress solution:
+	instalations: 8
+	opened: 1 2 5 9 11 14 17 18
+
+dc = 281
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	xpress solution:
+	instalations: 8
+	opened: 1 2 5 9 11 14 17 18
+
+dc = 282
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	xpress solution:
+	instalations: 8
+	opened: 1 2 7 9 14 17 18 19
+
+dc = 283
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 4 9 12 14 17 19 21
+
+	xpress solution:
+	instalations: 8
+	opened: 1 2 7 9 14 17 18 19
+
+dc = 284
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 4 9 10 12 14 17 19 21
+
+	xpress solution:
+	instalations: 8
+	opened: 1 2 7 9 14 17 18 19
+
+dc = 285
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 3 9 11 12 14 17 21
+
+	xpress solution:
+	instalations: 8
+	opened: 1 3 9 12 14 17 18 19
+
+dc = 286
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 5 9 11 12 14 17 18
+
+	xpress solution:
+	instalations: 8
+	opened: 1 3 9 12 14 17 18 19
+
+dc = 287
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 9 12 14 17 19 21 22
+
+	xpress solution:
+	instalations: 8
+	opened: 1 9 12 14 17 18 19 20
+
+dc = 288
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 9 12 14 17 18 19 22
+
+	xpress solution:
+	instalations: 8
+	opened: 1 9 12 14 17 18 19 20
+
+dc = 289
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 9 11 12 14 17 18 20
+
+	xpress solution:
+	instalations: 8
+	opened: 1 9 12 14 17 18 19 20
+
+dc = 290
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 3 9 12 14 17 19 20
+
+	xpress solution:
+	instalations: 8
+	opened: 1 9 12 14 17 18 19 20
+
+dc = 291
+	greedy solution:
+	instalations: 8
+	opened: 2 3 9 11 14 16 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 4 9 12 14 16 17 19 21
+
+	xpress solution:
+	instalations: 8
+	opened: 9 10 12 14 17 18 19 20
+
+dc = 292
+	greedy solution:
+	instalations: 8
+	opened: 1 2 9 11 14 17 18 22
+
+	greedy random solution:
+	instalations: 8
+	opened: 2 9 11 14 16 17 18 20
+
+	xpress solution:
+	instalations: 8
+	opened: 1 9 11 12 14 17 18 20
+
+dc = 293
+	greedy solution:
+	instalations: 8
+	opened: 1 2 9 11 14 17 18 20
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 9 12 14 17 19 20 22
+
+	xpress solution:
+	instalations: 8
+	opened: 1 9 11 12 14 17 18 20
+
+dc = 294
+	greedy solution:
+	instalations: 8
+	opened: 1 2 9 11 14 17 18 20
+
+	greedy random solution:
+	instalations: 8
+	opened: 4 9 14 15 16 17 18 19
+
+	xpress solution:
+	instalations: 8
+	opened: 1 9 11 12 14 17 18 20
+
+dc = 295
+	greedy solution:
+	instalations: 8
+	opened: 1 2 9 11 14 17 18 22
+
+	greedy random solution:
+	instalations: 8
+	opened: 2 9 11 14 16 17 18 20
+
+	xpress solution:
+	instalations: 8
+	opened: 1 9 11 12 14 17 18 20
+
+dc = 296
+	greedy solution:
+	instalations: 8
+	opened: 1 2 9 11 14 17 18 22
+
+	greedy random solution:
+	instalations: 8
+	opened: 9 11 12 14 16 17 21 22
+
+	xpress solution:
+	instalations: 8
+	opened: 1 2 9 11 14 17 18 20
+
+dc = 297
+	greedy solution:
+	instalations: 8
+	opened: 1 2 9 11 14 17 18 22
+
+	greedy random solution:
+	instalations: 8
+	opened: 3 9 12 14 16 17 18 19
+
+	xpress solution:
+	instalations: 8
+	opened: 1 9 11 12 14 17 18 20
+
+dc = 298
+	greedy solution:
+	instalations: 8
+	opened: 1 2 9 11 14 17 18 22
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 9 12 14 17 19 20 22
+
+	xpress solution:
+	instalations: 8
+	opened: 9 11 12 14 16 17 18 20
+
+dc = 299
+	greedy solution:
+	instalations: 8
+	opened: 1 2 9 11 14 17 18 22
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 4 9 12 14 17 19 21
+
+	xpress solution:
+	instalations: 8
+	opened: 2 9 11 14 16 17 18 20
+
+dc = 300
+	greedy solution:
+	instalations: 8
+	opened: 1 2 7 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 1 2 9 11 14 17 18 20
+
+	xpress solution:
+	instalations: 8
+	opened: 2 7 9 11 14 16 17 18
+
+dc = 301
+	greedy solution:
+	instalations: 8
+	opened: 1 2 7 9 11 14 17 18
+
+	greedy random solution:
+	instalations: 8
+	opened: 9 14 15 16 17 18 19 21
+
+	xpress solution:
+	instalations: 8
+	opened: 2 7 9 11 14 16 17 18
+
+dc = 302
+	greedy solution:
+	instalations: 8
+	opened: 1 2 3 6 11 13 17 18
+
+	greedy random solution:
+	instalations: 7
+	opened: 1 3 9 11 12 17 20
+
+	xpress solution:
+	instalations: 7
+	opened: 2 7 9 11 16 17 18
+
+dc = 303
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 7
+	opened: 4 9 11 12 16 17 20
+
+	xpress solution:
+	instalations: 7
+	opened: 2 5 9 11 16 17 18
+
+dc = 304
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 7
+	opened: 7 9 11 12 16 17 20
+
+	xpress solution:
+	instalations: 7
+	opened: 2 9 11 13 16 17 18
+
+dc = 305
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 7
+	opened: 4 9 11 15 16 17 21
+
+	xpress solution:
+	instalations: 7
+	opened: 2 9 11 13 16 17 18
+
+dc = 306
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 7
+	opened: 1 4 11 12 13 17 18
+
+	xpress solution:
+	instalations: 7
+	opened: 2 9 11 13 16 17 18
+
+dc = 307
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 7
+	opened: 2 9 11 16 17 18 22
+
+	xpress solution:
+	instalations: 7
+	opened: 2 9 11 13 16 17 18
+
+dc = 308
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 7
+	opened: 11 12 13 16 17 21 22
+
+	xpress solution:
+	instalations: 7
+	opened: 2 9 11 13 16 17 18
+
+dc = 309
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 7
+	opened: 9 11 15 16 17 18 21
+
+	xpress solution:
+	instalations: 7
+	opened: 2 9 11 13 16 17 18
+
+dc = 310
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 7
+	opened: 1 2 9 11 17 18 20
+
+	xpress solution:
+	instalations: 7
+	opened: 9 11 12 13 16 17 18
+
+dc = 311
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 7
+	opened: 1 11 13 15 17 20 22
+
+	xpress solution:
+	instalations: 7
+	opened: 2 9 11 13 16 17 18
+
+dc = 312
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 6
+	opened: 1 2 11 13 17 18
+
+	xpress solution:
+	instalations: 6
+	opened: 2 11 13 16 17 18
+
+dc = 313
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 6
+	opened: 1 2 11 13 17 18
+
+	xpress solution:
+	instalations: 6
+	opened: 2 11 13 16 17 18
+
+dc = 314
+	greedy solution:
+	instalations: 7
+	opened: 1 2 3 9 11 17 18
+
+	greedy random solution:
+	instalations: 6
+	opened: 2 11 13 16 17 18
+
+	xpress solution:
+	instalations: 6
+	opened: 2 11 13 16 17 18
+
+dc = 315
+	greedy solution:
+	instalations: 6
+	opened: 2 6 11 13 17 18
+
+	greedy random solution:
+	instalations: 6
+	opened: 1 2 11 13 17 18
+
+	xpress solution:
+	instalations: 6
+	opened: 2 6 9 14 17 21
+
+dc = 316
+	greedy solution:
+	instalations: 6
+	opened: 2 6 11 13 17 18
+
+	greedy random solution:
+	instalations: 6
+	opened: 9 11 12 16 17 18
+
+	xpress solution:
+	instalations: 6
+	opened: 2 9 11 16 17 18
+
+dc = 317
+	greedy solution:
+	instalations: 6
+	opened: 2 6 11 13 17 18
+
+	greedy random solution:
+	instalations: 6
+	opened: 2 6 11 13 17 18
+
+	xpress solution:
+	instalations: 6
+	opened: 2 6 11 13 17 18
+
+dc = 318
+	greedy solution:
+	instalations: 6
+	opened: 2 6 11 13 17 18
+
+	greedy random solution:
+	instalations: 6
+	opened: 4 11 12 16 17 21
+
+	xpress solution:
+	instalations: 6
+	opened: 2 6 11 13 17 18
+
+dc = 319
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 6
+	opened: 2 3 11 16 17 18
+
+	xpress solution:
+	instalations: 6
+	opened: 2 9 11 16 17 18
+
+dc = 320
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 321
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 322
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 323
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 324
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 12 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 325
+	greedy solution:
+	instalations: 6
+	opened: 2 3 6 9 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 12 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 326
+	greedy solution:
+	instalations: 6
+	opened: 2 3 6 9 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 12 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 327
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 328
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 11 12 16 17 18
+
+dc = 329
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 12 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 11 12 16 17 18
+
+dc = 330
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 11 12 16 17 18
+
+dc = 331
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 332
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 333
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 334
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 335
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 336
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 337
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 338
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 2 11 16 17 18
+
+dc = 339
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 11 12 16 17 18
+
+dc = 340
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 11 15 16 17 18
+
+	xpress solution:
+	instalations: 5
+	opened: 11 12 16 17 18
+
+dc = 341
+	greedy solution:
+	instalations: 6
+	opened: 2 6 9 11 17 18
+
+	greedy random solution:
+	instalations: 5
+	opened: 2 11 16 17 20
+
+	xpress solution:
+	instalations: 5
+	opened: 11 12 16 17 18
+
+dc = 342
+	greedy solution:
+	instalations: 5
+	opened: 3 6 9 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 343
+	greedy solution:
+	instalations: 5
+	opened: 3 6 9 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 344
+	greedy solution:
+	instalations: 5
+	opened: 3 6 9 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 345
+	greedy solution:
+	instalations: 5
+	opened: 3 6 9 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 346
+	greedy solution:
+	instalations: 5
+	opened: 3 6 9 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 347
+	greedy solution:
+	instalations: 5
+	opened: 3 6 9 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 348
+	greedy solution:
+	instalations: 5
+	opened: 3 6 9 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 349
+	greedy solution:
+	instalations: 5
+	opened: 3 6 9 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 350
+	greedy solution:
+	instalations: 5
+	opened: 1 11 13 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 351
+	greedy solution:
+	instalations: 5
+	opened: 1 11 13 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 352
+	greedy solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 353
+	greedy solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 354
+	greedy solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 355
+	greedy solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+dc = 356
+	greedy solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 357
+	greedy solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 358
+	greedy solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 359
+	greedy solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 360
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 361
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 362
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 363
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 364
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 365
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 8 11 16 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 366
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 367
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 368
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 369
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 370
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 371
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 372
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 373
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 8 11 16 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 374
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 8 11 16 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 375
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 376
+	greedy solution:
+	instalations: 5
+	opened: 6 8 11 18 20
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 377
+	greedy solution:
+	instalations: 4
+	opened: 6 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 378
+	greedy solution:
+	instalations: 4
+	opened: 6 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 8 11 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 379
+	greedy solution:
+	instalations: 4
+	opened: 6 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 380
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 8 11 16 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 381
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 382
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 8 11 16 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 383
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 8 11 16 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 384
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 385
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 386
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 387
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 8 11 16 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 388
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 389
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 390
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 12 17 22
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 391
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 17 18 22
+
+	xpress solution:
+	instalations: 4
+	opened: 6 11 17 18
+
+dc = 392
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 8 15 22
+
+	xpress solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+dc = 393
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 8 11 16 18
+
+	xpress solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+dc = 394
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 8 18 22
+
+	xpress solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+dc = 395
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 11 16 17 18
+
+	xpress solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+dc = 396
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 8 11 16 18
+
+	xpress solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+dc = 397
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 8 18 22
+
+	xpress solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+dc = 398
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 8 11 16 18
+
+	xpress solution:
+	instalations: 4
+	opened: 1 11 17 18
+
+dc = 399
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 1 12 17 22
+
+	xpress solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+dc = 400
+	greedy solution:
+	instalations: 4
+	opened: 1 8 11 18
+
+	greedy random solution:
+	instalations: 4
+	opened: 6 15 17 22
+
+	xpress solution:
+	instalations: 4
+	opened: 1 8 11 18
