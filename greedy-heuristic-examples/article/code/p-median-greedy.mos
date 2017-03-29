@@ -1,0 +1,24 @@
+n_cub :=0
+while(n_cub < p) do
+    best := MAX_INT
+    ndx := n
+    forall(i in nodes | fijada(i) = 0) do
+        val := 0
+        forall(j in nodes) do
+            fijada(i) := 1
+            temp_best := MAX_INT
+            forall(k in nodes | fijada(k) = 1 and d(k,j) < temp_best) do
+                temp_best := d(k,j)
+            end-do
+            fijada(i) := 0
+            val := val + temp_best
+        end-do
+        if (val < best) then
+            best := val
+            ndx := i
+        end-if
+    end-do
+    fijada(ndx) := 1
+    solu(ndx) := 1
+    n_cub := n_cub + 1
+end-do

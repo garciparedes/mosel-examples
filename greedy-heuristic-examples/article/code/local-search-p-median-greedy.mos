@@ -1,0 +1,24 @@
+final := 0
+while(final = 0) do
+    d_total_final := sum(i in nodes) min(j in  nodes |solu(j) =1) d(i,j)
+    mejora_max := 0
+    forall(j,k in nodes | solu(j) = 1 and solu(k) = 0) do
+        solu(j) := 0
+        solu(k) := 1
+        d_total_parcial := sum(ii in nodes) min(jj in  nodes |solu(jj) =1) d(ii,jj)
+        mejora := d_total_final - d_total_parcial
+        if(mejora > mejora_max) then
+            mejora_max := mejora
+            j_max := j
+            k_max := k
+        end-if
+        solu(j) := 1
+        solu(k) := 0
+    end-do
+    if (mejora_max = 0) then
+        final := 1
+    else
+        solu(j_max) := 0
+        solu(k_max) := 1
+    end-if
+end-do

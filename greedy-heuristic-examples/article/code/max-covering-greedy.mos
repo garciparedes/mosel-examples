@@ -1,0 +1,18 @@
+n_cub := 0
+while(n_cub < p) do
+    forall(j in servicios | solu(j) = 0) do
+        partial_sums(j):= sum(i in demandas | d(i,j) <= dc and cubierta(i) = 0) h(i)
+    end-do
+    aux:=-999
+    selected:=-1
+    forall(j in servicios | solu(j) = 0) do
+        if(aux < partial_sums(j)) then
+            aux := partial_sums(j)
+            selected := j
+        end-if
+    end-do
+    solu(selected) := 1
+    forall(i in demandas | d(i,selected) <= dc)
+            cubierta(i):=1
+    n_cub := n_cub + 1
+end-do

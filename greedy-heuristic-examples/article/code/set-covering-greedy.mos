@@ -1,0 +1,30 @@
+nfilcub := 0
+while(nfilcub < m) do
+    forall(j in servicios | fijada(j) = 0) do
+        d(j) := 0
+        forall(i in demandas) do
+            if(cubierta(i) = 0 and a(i,j) = 1) then
+                d(j) := d(j) + 1
+            end-if
+        end-do
+        if(d(j) = 0) then
+            fijada(j):= 1
+            solu(j) := 0
+        end-if
+    end-do
+    aux := -99
+    forall(j in servicios | fijada(j) = 0) do
+        if(d(j) > aux) then
+            aux := d(j)
+            jmax := j
+        end-if
+    end-do
+    solu(jmax) := 1
+    fijada(jmax) := 1
+    forall(i in demandas) do
+        if(cubierta(i) = 0 and a(i, jmax) = 1) then
+            cubierta(i) := 1
+            nfilcub := nfilcub +1
+        end-if
+    end-do
+end-do

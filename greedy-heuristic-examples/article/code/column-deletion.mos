@@ -1,0 +1,20 @@
+forall(i in demandas) do
+    w(i):=0
+    forall(j in servicios) do
+        if(solu(j)=1 and a(i,j)=1)then
+            w(i):=w(i)+1
+        end-if
+    end-do
+end-do
+forall(k in servicios | solu(k)=1) do
+    elimin := 1
+    forall(i in demandas) do
+        if(w(i) <1+a(i,k))then
+            elimin :=0
+        end-if
+    end-do
+    if(elimin=1) then
+        solu(k) :=0
+        forall(i in demandas)w(i):=w(i)-a(i,k)
+    end-if
+end-do

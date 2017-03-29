@@ -1,0 +1,14 @@
+forall(j in servicios) k_marca(j):=0
+forall(k in k_iter) do
+    aux := -99
+    forall(j in servicios | (solu(j) = 0 and k_marca(j) = 0)) do
+        if(aux < partial_sums(j)) then
+            aux := partial_sums(j)
+            jmax := j
+        end-if
+    end-do
+    k_marca(jmax):=1
+    k_list(k):=jmax
+end-do
+k_win := ceil(random*k_max)
+selected := k_list(k_win)
