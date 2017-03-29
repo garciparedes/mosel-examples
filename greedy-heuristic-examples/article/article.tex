@@ -263,30 +263,37 @@
 		\label{sec:e-8a}
 
 			\paragraph{}
-			[TODO ]
+			Este ejercicio tiene como novedad respecto de los anteriores la siguiente cateracterística: En este caso los datos de entrada no se presentan a partir de la matriz de distancias, tal y como sucedia en el resto, sino que se suministran las coordenadas $x$ e $y$ de cada localización. Esto hace que el problema permita una mayor versatilidad en el sentido de calcular un mayor número de resultados, pero a la vez añade la complicación de requerir el cálculo de las distancias entre puntos.
+
+			\paragraph{}
+			Para la tarea de calcular las distancias se ha utilizado la \emph{distancia euclidea} para espacios de 2 dimensiones $(x,y)$, que se define matemáticamente como $d(p, q) = \sqrt{(p_x - q_x)^2 + (p_y - q_y)^2}$. Por lo tanto, para la modelización del problema de la p-mediana, es necesario calcular dicha medida para todas las posibles combinaciones de localizaciones, de tal manera que la matriz $d$ sea construida siguiendo la expresión $d_{ij} = d(l_i, l_j)$ donde $l_i$ y $l_j$ representan las coordenadas de las localizaciones $i$ y $j$ respectivamente.
+
+
+			\paragraph{}
+			En esta sección se resuelve el problema de la \emph{P Mediana} mediante la estrategia \emph{Greedy}, la estrategia de \emph{Búsqueda Local} y la de \emph{Solución Óptima}. El conjunto de datos está compuesto por $n = m = 15$ poblaciones, para las cuales se pide resolver el problema para $p = [1,10] \in N$. Dichos resultados se muestran graficamente en la figura \ref{fig:sol-8a} y de manera tabular en la tabla \ref{table:sol-8a}. Además, se proporciona la solución gráfica en la figura \ref{fig:sol-8a-graph}.
 
 			\begin{figure}[h]
 				\begin{center}
 					\includegraphics[width=0.8\textwidth]{tema-3-p8-a}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema \emph{P-Median} aplicado a los datos de \emph{15 poblaciones}}
+				\label{fig:sol-8a}
 			\end{figure}
 
 			\begin{figure}[h]
 				\begin{center}
 					\includegraphics[width=0.8\textwidth]{tema-3-p8-a-graph}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Representación gráfica del problema \emph{P-Median} aplicado a los datos de \emph{15 poblaciones}}
+				\label{fig:sol-8a-graph}
 			\end{figure}
 
 			\begin{table}[h]
 				\begin{center}
-					\csvautotabular{../results/csv/tema-3-p8-a.csv}
+					\caption{Resultados del problema \emph{P-Median} aplicado a los datos de \emph{15 poblaciones}}
 				\end{center}
 				\caption{[TODO ]}
-				\label{}
+				\label{table:sol-8a}
 			\end{table}
 
 
@@ -294,60 +301,62 @@
 		\label{sec:e-8b}
 
 			\paragraph{}
-			[TODO ]
+			En esta sección se resuelve el problema de la \emph{P Mediana} mediante la estrategia \emph{Greedy}, la estrategia de \emph{Búsqueda Local} y la de \emph{Solución Óptima}. El conjunto de datos está compuesto por $n = m = 30$ poblaciones, para las cuales se pide resolver el problema para $p = [1,10] \in N$. Dichos resultados se muestran graficamente en la figura \ref{fig:sol-8b} y de manera tabular en la tabla \ref{table:sol-8b}. Además, se proporciona la solución gráfica en la figura \ref{fig:sol-8b-graph}.
+
 
 			\begin{figure}[h]
 				\begin{center}
 					\includegraphics[width=0.8\textwidth]{tema-3-p8-b}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema \emph{P-Median} aplicado a los datos de \emph{30 poblaciones}}
+				\label{fig:sol-8b}
 			\end{figure}
 
 			\begin{figure}[h]
 				\begin{center}
 					\includegraphics[width=0.8\textwidth]{tema-3-p8-b-graph}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Representación gráfica del problema \emph{P-Median} aplicado a los datos de \emph{30 poblaciones}}
+				\label{fig:sol-8b-graph}
 			\end{figure}
 
 			\begin{table}[h]
 				\begin{center}
 					\csvautotabular{../results/csv/tema-3-p8-b.csv}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema \emph{P-Median} aplicado a los datos de \emph{30 poblaciones}}
+				\label{table:sol-8b}
 			\end{table}
 
 		\subsection{Ejercicio \emph{coordenadas\_100}}
 		\label{sec:e-8c}
 
 			\paragraph{}
-			[TODO ]
+			En esta sección se resuelve el problema de la \emph{P Mediana} mediante la estrategia \emph{Greedy}, la estrategia de \emph{Búsqueda Local} y la de \emph{Solución Óptima}. El conjunto de datos está compuesto por $n = m = 100$ poblaciones, para las cuales se pide resolver el problema para $p = [1,10] \in N$. Dichos resultados se muestran graficamente en la figura \ref{fig:sol-8c} y de manera tabular en la tabla \ref{table:sol-8c}. Además, se proporciona la solución gráfica en la figura \ref{fig:sol-8c-graph}.
+
 
 			\begin{figure}[h]
 				\begin{center}
 					\includegraphics[width=0.8\textwidth]{tema-3-p8-c}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema \emph{P-Median} aplicado a los datos de \emph{100 poblaciones}}
+				\label{fig:sol-8c}
 			\end{figure}
 
 			\begin{figure}[h]
 				\begin{center}
 					\includegraphics[width=0.8\textwidth]{tema-3-p8-c-graph}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Representación gráfica del problema \emph{P-Median} aplicado a los datos de \emph{100 poblaciones}}
+				\label{fig:sol-8c-graph}
 			\end{figure}
 
 			\begin{table}[h]
 				\begin{center}
 					\csvautotabular{../results/csv/tema-3-p8-c.csv}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema \emph{P-Median} aplicado a los datos de \emph{100 poblaciones}}
+				\label{table:sol-8c}
 			\end{table}
 
 %-----------------------------
