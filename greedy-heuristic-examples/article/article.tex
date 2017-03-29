@@ -38,7 +38,7 @@
 	\label{sec:e-6}
 
 		\paragraph{}
-		[TODO ]
+		El problema de \emph{Set Covering} o \emph{Cubrimiento de Conjuntos} consiste en la asignación de un conjunto de recursos $n$ recursos $x_{j}$ cuyo uso tiene un coste de $c_{j}$ para cumplir $m$ necesidades. Las necesidades que cubre cada recurso se representan a través de $a_{ij}$. La modelización matemática de este problema se muestra en la ecuación \eqref{eq:set_covering}.
 
 		\begin{eqfloat}
 			\begin{equation}
@@ -52,20 +52,22 @@
 			\label{eq:set_covering}
 		\end{eqfloat}
 
+		\paragraph{}
+		[TODO describir heurísticas]
 
 		\subsection{Ejercicio Nueva York}
 		\label{sec:e-6.1}
 
 			\paragraph{}
-			[TODO ]
+			En este caso, se ha propuesto resolver el problema de \emph{Cubrimiento de Conjuntos} sobre un conjunto de datos de entrada referidos a las distancias entre $30$ distritos de la ciudad de Nueva York. Se considera que un distrito ha sido cubierto si la distancia a un punto de servicio es menor o igual que un determinado valor $dc$ denominado distancia de cubrimiento. En este caso se ha resuelto para valores enteros comprendidos en el intervalo $[70, 120]$ mediante la estrategia \emph{Greedy} y la de \emph{Solución Óptima}. Los resultados obtenidos se muestran gráficamente en la figura \ref{fig:sol-6.1} y de manera tabular en la tabla \ref{table:sol-6.1}
 
 
 			\begin{figure}[h]
 				\begin{center}
 					\includegraphics[width=0.8\textwidth]{tema-3-p6-1}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Set Covering} aplicado a los datos de los distritos de la ciudad de Nueva York}
+				\label{fig:sol-6.1}
 			\end{figure}
 
 
@@ -73,92 +75,91 @@
 				\begin{center}
 					\csvautotabular{../results/csv/tema-3-p6-1.csv}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Set Covering} aplicado a los datos de los distritos de la ciudad de Nueva York}
+				\label{table:sol-6.1}
 			\end{table}
 
 		\subsection{Ejercicio \emph{aint1}}
 		\label{sec:e-6.2a}
 
 			\paragraph{}
-			[TODO ]
-
+			En este caso, se ha propuesto resolver el problema de \emph{Cubrimiento de Conjuntos} sobre un conjunto de datos de entrada de tamaño relativamente elevado, con $m = 356$ puntos de demanda y $n=22$ puntos de servicio . Se considera que un distrito ha sido cubierto si la distancia a un punto de servicio es menor o igual que un determinado valor $dc$ denominado distancia de cubrimiento. En este caso se ha resuelto para valores enteros comprendidos en el intervalo $[250, 400]$ mediante la estrategia \emph{Greedy}, la estrategia \emph{Greedy Aleatorizada}(con parámetros $k=5$ y $n=100$)  y la de \emph{Solución Óptima}. Los resultados obtenidos se muestran gráficamente en la figura \ref{fig:sol-6.2a} y de manera tabular en las tablas \ref{table:sol-6.2a1}, \ref{table:sol-6.2a2} y \ref{table:sol-6.2a3}.
 
 			\begin{figure}[h]
 				\begin{center}
 					\includegraphics[width=0.8\textwidth]{tema-3-p6-2-a}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Set Covering} aplicado a los datos \emph{aint1}}
+				\label{fig:sol-6.2a}
 			\end{figure}
 
 			\begin{table}[h]
 				\begin{center}
 					\csvautotabular{../results/csv/tema-3-p6-2-a-1.csv}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Set Covering} aplicado a los datos \emph{aint1}}
+				\label{table:sol-6.2a1}
 			\end{table}
 
 			\begin{table}[h]
 				\begin{center}
 					\csvautotabular{../results/csv/tema-3-p6-2-a-2.csv}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Set Covering} aplicado a los datos \emph{aint1}}
+				\label{table:sol-6.2a2}
 			\end{table}
 
 			\begin{table}[h]
 				\begin{center}
 					\csvautotabular{../results/csv/tema-3-p6-2-a-3.csv}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Set Covering} aplicado a los datos \emph{aint1}}
+				\label{table:sol-6.2a3}
 			\end{table}
 
 		\subsection{Ejercicio \emph{aint5}}
 		\label{sec:e-6.2b}
 
-			\paragraph{}
-			[TODO ]
+		\paragraph{}
+		En este caso, se ha propuesto resolver el problema de \emph{Cubrimiento de Conjuntos} sobre un conjunto de datos de entrada de tamaño relativamente elevado, con $m = 328$ puntos de demanda y $n=19$ puntos de servicio . Se considera que un distrito ha sido cubierto si la distancia a un punto de servicio es menor o igual que un determinado valor $dc$ denominado distancia de cubrimiento. En este caso se ha resuelto para valores enteros comprendidos en el intervalo $[250, 400]$ mediante la estrategia \emph{Greedy}, la estrategia \emph{Greedy Aleatorizada}(con parámetros $k=5$ y $n=100$)  y la de \emph{Solución Óptima}. Los resultados obtenidos se muestran gráficamente en la figura \ref{fig:sol-6.2b} y de manera tabular en las tablas \ref{table:sol-6.2b1}, \ref{table:sol-6.2b2} y \ref{table:sol-6.2b3}.
 
 			\begin{figure}[h]
 				\begin{center}
 					\includegraphics[width=0.8\textwidth]{tema-3-p6-2-b}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Set Covering} aplicado a los datos \emph{aint5}}
+				\label{fig:sol-6.2b}
 			\end{figure}
 
 			\begin{table}[h]
 				\begin{center}
 					\csvautotabular{../results/csv/tema-3-p6-2-b-1.csv}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Set Covering} aplicado a los datos \emph{aint5}}
+				\label{table:sol-6.2b1}
 			\end{table}
 
 			\begin{table}[h]
 				\begin{center}
 					\csvautotabular{../results/csv/tema-3-p6-2-b-2.csv}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Set Covering} aplicado a los datos \emph{aint5}}
+				\label{table:sol-6.2b2}
 			\end{table}
 
 			\begin{table}[h]
 				\begin{center}
 					\csvautotabular{../results/csv/tema-3-p6-2-b-3.csv}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Set Covering} aplicado a los datos \emph{aint5}}
+				\label{table:sol-6.2b3}
 			\end{table}
 
 	\section{Max-Covering Problem}
 	\label{sec:e-7}
 
 		\paragraph{}
-		[TODO ]
+		En esta sección se trata el \emph{problema de cubrimiento máximo} o \emph{max covering problem}. El problema consiste en lo siguiente: Sea $m$ el número de puntos de demandas y $n$ el de puntos de servicio. El objetivo se trata de maximizar el beneficio $h_i$ obtenido de cubrir el í-esimo punto de demanda. Para modelizar dicho cubrimiento se utiliza la variable binaria $z_i$. Para representar los puntos de servicio utilizados se utiliza la variable de tipo binario $x_j$. La motivación del problema consiste en encontrar el conjunto de variables $x_j$ con cardinalidad máxima denominada por $p$ y prefijada previamente, que máximize la ganancia debida al cubrimiento de los puntos de servicio $z_i$. El modelo formal se muestra en la ecuación \eqref{eq:max_covering}.
 
 		\begin{eqfloat}
 			\begin{equation}
@@ -176,49 +177,52 @@
 			\label{eq:max_covering}
 		\end{eqfloat}
 
+		\paragraph{}
+		[TODO describir heurísticas]
+
 
 		\subsection{Ejercicio \emph{aint1}}
 		\label{sec:e-7a}
 
 			\paragraph{}
-			[TODO ]
+			En este caso, se ha propuesto resolver el problema de \emph{Cubrimiento Máximo} sobre un conjunto de datos de entrada de tamaño relativamente elevado, con $m = 356$ puntos de demanda y $n=22$ puntos de servicio . Se considera que un distrito ha sido cubierto si la distancia a un punto de servicio es menor o igual que un determinado valor $dc$ denominado distancia de cubrimiento. En este caso se ha resuelto para $dc = 200$ y un número de puntos de servicios restringido a $p = [1,6]$, mediante la estrategia \emph{Greedy}, la estrategia \emph{Greedy Aleatorizada}(con parámetros $k=5$ y $n=100$) y la de \emph{Solución Óptima}. Los resultados obtenidos se muestran gráficamente en la figura \ref{fig:sol-7a} y de manera tabular en las tablas \ref{table:sol-7a}.
 
 			\begin{figure}[h]
 				\begin{center}
 					\includegraphics[width=0.8\textwidth]{tema-3-p7-a}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Max Covering} aplicado a los datos \emph{aint1}}
+				\label{fig:sol-7a}
 			\end{figure}
 
 			\begin{table}[h]
 				\begin{center}
 					\csvautotabular{../results/csv/tema-3-p7-a.csv}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Max Covering} aplicado a los datos \emph{aint1}}
+				\label{table:sol-7a}
 			\end{table}
 
 		\subsection{Ejercicio \emph{aint5}}
 		\label{sec:e-7b}
 
 			\paragraph{}
-			[TODO ]
+			En este caso, se ha propuesto resolver el problema de \emph{Cubrimiento Máximo} sobre un conjunto de datos de entrada de tamaño relativamente elevado, con $m = 328$ puntos de demanda y $n=19$ puntos de servicio . Se considera que un distrito ha sido cubierto si la distancia a un punto de servicio es menor o igual que un determinado valor $dc$ denominado distancia de cubrimiento. En este caso se ha resuelto para $dc = 200$ y un número de puntos de servicios restringido a $p = [1,6]$, mediante la estrategia \emph{Greedy}, la estrategia \emph{Greedy Aleatorizada}(con parámetros $k=5$ y $n=100$) y la de \emph{Solución Óptima}. Los resultados obtenidos se muestran gráficamente en la figura \ref{fig:sol-7b} y de manera tabular en las tablas \ref{table:sol-7b}.
 
 			\begin{figure}[h]
 				\begin{center}
 					\includegraphics[width=0.8\textwidth]{tema-3-p7-b}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Max Covering} aplicado a los datos \emph{aint5}}
+				\label{fig:sol-7b}
 			\end{figure}
 
 			\begin{table}[h]
 				\begin{center}
 					\csvautotabular{../results/csv/tema-3-p7-b.csv}
 				\end{center}
-				\caption{[TODO ]}
-				\label{}
+				\caption{Resultados del problema de \emph{Max Covering} aplicado a los datos \emph{aint5}}
+				\label{table:sol-7b}
 			\end{table}
 
 
@@ -226,8 +230,13 @@
 	\label{sec:e-8}
 
 		\paragraph{}
-		[TODO ]
+		En el caso del problema de la p-mediana, modelizado matemáticamente en la ecuación \ref{eq:p_median}, el objetivo es minimizar la distancia global de cada uno de los $p$ puntos de servicio abiertos al conjunto globla de puntos de demanda, de manera que los $j$ puntos de servicio abierto mantengan la menor distancia en promedio a los $i$ puntos de demanda.
 
+		\paragraph{}
+		En este problema, al igual que en los anteriores, se utiliza un vector de demanda denominado $h$, que en la componente $h_{i}$ almacena la demanda necesaria por el punto de demanda $i$. También existe una matriz de distancias de $d$, que en la posición $d_{ij}$ recoge la distancia del punto de demanda $i$ al punto de servicio $j$.
+
+		\paragraph{}
+		Para resolver este problema, además de las variables de decisión $x_j$ utilizadas en casos anteriores, que represntan que el punto de servicio $j$ está activo, se añaden las variables $y_ij$, que representan que el punto de demanda $i$ es servido por el punto de servicio $j$, lo que conlleva que en esta modelización cada punto de demanda sea servido únicamente por un único servicio.
 
 		\begin{eqfloat}
 			\begin{equation}
@@ -247,6 +256,8 @@
       \label{eq:p_median}
     \end{eqfloat}
 
+		\paragraph{}
+		[TODO describir heurísticas]
 
 		\subsection{Ejercicio \emph{coordenadas\_15}}
 		\label{sec:e-8a}
