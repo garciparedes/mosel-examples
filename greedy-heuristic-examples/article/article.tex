@@ -20,7 +20,7 @@
 %-----------------------------
 
 	\begin{abstract}
-		\noindent [TODO ]
+		\noindent En este documento se descibe el modelo matemático de los problema de cubrimiento de conjuntos (\emph{Set-Covering Problem}), el problema de cubrimiento máximo (\emph{Max-Covering Problem}) y el problema de la p-mediana (\emph{P-Median Problem}). Además, se describen soluciones heurísticas basadas en métodos \emph{Greedy}, \emph{Greedy Aleatorizado} y \emph{Búsqueda Local} para la resolución de los mismos, las cuales reducen drásticamente la complejidad temporal de la solución a costa de una determinada tasa de error. Además de la descripción de los problemas mediante el modelo matemático y la descripción de soluciones heurísticas se muestran los resultados a distintos problemas concretos.
 	\end{abstract}
 
 %-----------------------------
@@ -53,33 +53,36 @@
 		\end{eqfloat}
 
 		\paragraph{}
-		[TODO describir heurísticas]
+		Debido al alto nivel de complejidad de la solución exacta para el problema de cubrimiento de conjuntos, se han propuesto soluciones heurísticas que mejoran el tiempo necesario para encontrar una solución. Sin embargo, dichas estrategias conllevan una penalización en cuanto optimalidad de resultados. Estas soluciones se convierten en algo necesario cuando se pretende resolver problemas de tamaño masivo, lo que conlleva un elevado tiempo de ejecución.
 
-		\begin{figure}[H]
+		\paragraph{}
+		A pesar de no conseguir el resultado óptimo, las heurísticas Greedy presentan resultados aceptables en un gran número de ocasiones. En la figura \ref{code:greedy-set-covering} se muestra una \emph{Heurística Greedy} para el problema de cubrimiento de conjuntos. La intuición en la cual se basa consiste en seleccionar en cada iteracción del algoritmo el punto de servicio con menor coste despues marcar como cubiertas todas las demandas que cubre. Se realiza este proceso hasta que todas las demandas quedan cubiertas.
+
+		\begin{figure}[h]
 			\centering
 			\inputminted{basic}{./code/set-covering-greedy.mos}
-			\caption{[TODO]}
-			\label{}
+			\caption{Heurística Greedy para \emph{Set-Covering Problem}}
+			\label{code:greedy-set-covering}
 		\end{figure}
 
 		\paragraph{}
-		[TODO describir heurísticas]
+		Existe una optimización computacional que se puede realizar a la herurística greedy de la figura \ref{code:greedy-set-covering} basada en la eliminación de columnas no utilizadas, la cual se lleva a cabo al final de cada iteración. Dicho código se ilustra en la figura \ref{code:column-deletion}
 
-		\begin{figure}[H]
+		\begin{figure}[h]
 			\centering
 			\inputminted{basic}{./code/column-deletion.mos}
-			\caption{[TODO]}
-			\label{}
+			\caption{Eliminación de columnas no utilizadas}
+			\label{code:column-deletion}
 		\end{figure}
 
 		\paragraph{}
-		[TODO describir heurísticas]
+		Para resolver los problemas derivados del determinismo de la solución Greedy, existen técnicas basadas en el apoyo de la componente aleatoria en la selección del punto de servicio a utilizar. Esta técnica consiste en elegir aleatoriamente la solución entre las $k$ mejores con un valor de $k$ fijado a priori. Por último, se realiza dicho proceso durante un número $N$ determinado de veces también fijado a priori, para después seleccionar la mejor solución de entre todas ellas. Nótese que esto no presenta mejoras en cuanto al tiempo de ejecucción, sino que lo que trata de mejorar es la precisión del resultado. En la figura \ref{code:random-greedy} se muestra el código para implementar dicha solución.
 
-		\begin{figure}[H]
+		\begin{figure}[h]
 			\centering
 			\inputminted{basic}{./code/random-greedy.mos}
-			\caption{[TODO]}
-			\label{}
+			\caption{Selección del punto de servicio de manera aleatoria}
+			\label{code:random-greedy}
 		\end{figure}
 
 
@@ -208,7 +211,7 @@
 		\paragraph{}
 		[TODO describir heurísticas]
 
-		\begin{figure}[H]
+		\begin{figure}[h]
 			\centering
 			\inputminted{basic}{./code/set-covering-greedy.mos}
 			\caption{[TODO]}
@@ -218,7 +221,7 @@
 		\paragraph{}
 		[TODO describir heurísticas]
 
-		\begin{figure}[H]
+		\begin{figure}[h]
 			\centering
 			\inputminted{basic}{./code/random-greedy.mos}
 			\caption{[TODO]}
@@ -303,7 +306,7 @@
 		\paragraph{}
 		[TODO describir heurísticas]
 
-		\begin{figure}[H]
+		\begin{figure}[h]
 			\centering
 			\inputminted{basic}{./code/p-median-greedy.mos}
 			\caption{[TODO]}
@@ -313,7 +316,7 @@
 		\paragraph{}
 		[TODO describir heurísticas]
 
-		\begin{figure}[H]
+		\begin{figure}[h]
 			\centering
 			\inputminted{basic}{./code/local-search-p-median-greedy.mos}
 			\caption{[TODO]}
@@ -351,9 +354,9 @@
 
 			\begin{table}[h]
 				\begin{center}
-					\caption{Resultados del problema \emph{P-Median} aplicado a los datos de \emph{15 poblaciones}}
+					\csvautotabular{../results/csv/tema-3-p8-a.csv}
 				\end{center}
-				\caption{[TODO ]}
+				\caption{Resultados del problema \emph{P-Median} aplicado a los datos de \emph{15 poblaciones}}
 				\label{table:sol-8a}
 			\end{table}
 
