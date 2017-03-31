@@ -27,11 +27,6 @@
 %	TEXT
 %-----------------------------
 
-	\section{Introducción}
-
-		\paragraph{}
-		[TODO ]
-
 	\setcounter{section}{5}
 
 	\section{Set-Covering Problem}
@@ -186,6 +181,7 @@
 				\label{table:sol-6.2b3}
 			\end{table}
 
+	\clearpage
 	\section{Max-Covering Problem}
 	\label{sec:e-7}
 
@@ -209,24 +205,17 @@
 		\end{eqfloat}
 
 		\paragraph{}
-		[TODO describir heurísticas]
+		Al igual que en el caso del \emph{problema de cubrimiento de conjuntos}, también existen distintas heurísticas para el \emph{problema de cubrimiento máximo}. La intuición en que se basa la \emph{Heurística Greedy} en este caso, es muy similar a la anterior. La novedad es la restricción del número de iteracciones para completar las tareas de cubrimiento, fijadas a priori por el valor $p$ del problema. El código para la realización de esta tarea se muestra en la figura \ref{code:greedy-max-covering}.
 
 		\begin{figure}[h]
 			\centering
-			\inputminted{basic}{./code/set-covering-greedy.mos}
-			\caption{[TODO]}
-			\label{}
+			\inputminted{basic}{./code/max-covering-greedy.mos}
+			\caption{Heurística Greedy para \emph{Max-Covering Problem}}
+			\label{code:greedy-max-covering}
 		\end{figure}
 
 		\paragraph{}
-		[TODO describir heurísticas]
-
-		\begin{figure}[h]
-			\centering
-			\inputminted{basic}{./code/random-greedy.mos}
-			\caption{[TODO]}
-			\label{}
-		\end{figure}
+		Al igual que en el caso del problema de cubrimiento de conjuntos, en este caso también se pueden eliminar las columnas ya completadas tal y como se muestra en el código de la figura \ref{code:column-deletion}. El caso de la selección aleatoria del punto de servicio también es equivalente para este caso, por lo que se puede reutilizar el código de la figura \ref{code:random-greedy}.
 
 		\subsection{Ejercicio \emph{aint1}}
 		\label{sec:e-7a}
@@ -272,7 +261,7 @@
 				\label{table:sol-7b}
 			\end{table}
 
-
+	\clearpage
 	\section{P-Median Problem}
 	\label{sec:e-8}
 
@@ -304,23 +293,23 @@
     \end{eqfloat}
 
 		\paragraph{}
-		[TODO describir heurísticas]
+		La Heurística Greedy utilizada para el \emph{problema de la p-mediana} se basa en la búsqueda en cada iteracción del punto de servicio que más minimice la distancia global de un punto de demanda al punto de servicio más cercano que se encuentre abierto. En la figura \ref{code:p-median-greedy}.
 
 		\begin{figure}[h]
 			\centering
 			\inputminted{basic}{./code/p-median-greedy.mos}
-			\caption{[TODO]}
-			\label{}
+			\caption{Heurística Greedy para \emph{P-Median Problem}}
+			\label{code:p-median-greedy}
 		\end{figure}
 
 		\paragraph{}
-		[TODO describir heurísticas]
+		En el caso del \emph{problema de la p-mediana}, se ha implementado una mejora sobre la solución generada a partir de la heurística greedy basada en la búsqueda de soluciones locales próximas a una solución predefinida. Dicha técnica se ha implementado de manera básica seleccionando una nueva solución solo si esta mejora con respecto de la anterior. Por tanto, es posible caer en mínimos locales que no permitan llegar al óptimo global, a pesar de ello, consigue buenos resultados en un gran número de ocasiones, tal y como se verá en los problemas resueltos en las siguientes subsecciónes. El código utilizado para la implementación de la \emph{Búsqueda Local} se muestra en la figura \ref{code:local-search}.
 
 		\begin{figure}[h]
 			\centering
 			\inputminted{basic}{./code/local-search-p-median-greedy.mos}
-			\caption{[TODO]}
-			\label{}
+			\caption{Búsqueda Local para \emph{P-Median Problem}}
+			\label{code:local-search}
 		\end{figure}
 
 		\subsection{Ejercicio \emph{coordenadas\_15}}
