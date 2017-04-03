@@ -18,6 +18,7 @@ model ""
 		visited:	array(nodes) of integer
 		explored:	array(nodes) of integer
 		result:		array(nodes, nodes) of integer
+		result_copy:array(nodes, nodes) of integer
 	end-declarations
 
 	initializations from "n21_1.dat"
@@ -27,7 +28,7 @@ model ""
 	forall(i in nodes) visited(i) := 0 
 	forall(i in nodes, j in nodes) result(i, j) := 0 
 	
-	initial := ceil(random * n)
+	initial := ceil(n*random)
 	current := initial
 	visited(current) :=1
 	forall(t in nodes) do
@@ -50,34 +51,73 @@ model ""
 	
 	writeln("dist: ",current_dist)
 	move := 1
-	while(move =1) do 
+	while(move = 1) do 
 		move := 0
-		forall(i in nodes, j in nodes | i <> j) do
-			forall(k in nodes| result(i, k) = 1) old1 := k
-			forall(k in nodes| result(k, j) = 1) old2 := k
-			
-			
-			result(i, old1) := 0
-			result(old2, j) := 0
-			
-			result(i, j) := 1
-			result(old2, old1) := 1
-			
-			new_dist := sum(ii in nodes, jj in nodes | result(ii,jj) = 1) d(ii,jj)
-			
-			if (new_dist < current_dist) then
-				current_dist := new_dist
-				move := 1
-			else
-				result(i,j) := 0
-				result(old2, old1) := 0
+		forall(i in nodes) do
+			change := 0
+			saved_dist := current_dist
+			forall(j in nodes | i <> j) do
+				forall(ii in nodes, jj in nodes) result_copy(ii,jj) := result(ii,jj)
 				
-				result(i, old1) := 1
-				result(old2, j) := 1
-			end-if
+				forall(k in nodes| result(i, k) = 1 and j <> k) i2 := k
+				forall(k in nodes| result(j, k) = 1 and  i <> k) j2 := k
 			
+				result_copy(i, i2) := 0
+				result_copy(j, j2) := 0
+				
+				result_copy(i, j) := 1
+				result_copy(i2, j2) := 1
+				
+				stop_reverse:= 0
+				index_reverse := i2
+				old := index_reverse
+				while(stop_reverse = 0) do
+					aux := -1
+					forall(k in nodes| k <> old and result_copy(index_reverse, k) = 1) aux := k
+					result_copy(index_reverse, aux):=0 
+					result_copy(aux,index_reverse):=1
+					old := index_reverse
+					index_reverse := aux
+					if(index_reverse = j) then
+						stop_reverse := 1
+					end-if
+				end-do
+				
+				new_dist := sum(ii in nodes, jj in nodes | result_copy(ii,jj) = 1) d(ii,jj)
+				if (new_dist < saved_dist) then
+					saved_dist := new_dist
+					s_i := i
+					s_j := j
+					s_i2 := i2
+					s_j2 := j2
+					change := 1
+				end-if
+			end-do
 		end-do
-	
+		if (change = 1) then
+			result(s_i, s_i2) := 0
+			result(s_j, s_j2) := 0
+			
+			result(s_i, s_j) := 1
+			result(s_i2, s_j2) := 1
+			
+			stop_reverse:= 0
+			index_reverse := s_i2
+			old := index_reverse
+			while(stop_reverse = 0) do
+				aux := -1
+				forall(k in nodes| k <> old and result(index_reverse, k) = 1) aux := k
+				result(index_reverse, aux):=0 
+				result(aux,index_reverse):=1
+				old := index_reverse
+				index_reverse := aux
+				if(index_reverse = s_j) then
+					stop_reverse := 1
+				end-if
+			end-do
+			current_dist := sum(ii in nodes, jj in nodes | result(ii,jj) = 1) d(ii,jj)
+			move:=1
+		end-if
 	end-do
 	
 	
@@ -90,7 +130,7 @@ model ""
 			t := j
 		end-do
 	end-do
-	writeln("\n")
+	writeln("")
 	
 	writeln("edges: ")
 	forall(i in nodes) do
