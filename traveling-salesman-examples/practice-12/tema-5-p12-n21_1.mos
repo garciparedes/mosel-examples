@@ -1,0 +1,103 @@
+model ""
+	uses "mmxprs";
+	uses "mmsystem"
+	
+	setparam("XPRS_MAXTIME", 60)
+	
+	declarations
+		n:		integer
+		k_max:	integer
+		N_max:	integer
+	end-declarations
+
+	initializations from "n21_1.dat"
+		n
+		k_max
+		N_max
+	end-initializations
+	
+	declarations
+		nodes 			= 1..n
+		d:				array(nodes, nodes) of integer
+		visited:		array(nodes) of integer
+		result:			array(nodes, nodes) of integer
+		
+		
+		k_iter			= 1..k_max
+		k_list:			array(k_iter) of integer
+		k_marca:		array(nodes) of integer
+		
+		N_iter			= 1..N_max
+		result_copy:	array(nodes, nodes) of integer
+	end-declarations
+
+	initializations from "n21_1.dat"
+		d
+	end-initializations
+	
+	forall(n_i in N_iter) do
+
+		forall(i in nodes) visited(i) := 0 
+		forall(i in nodes, j in nodes) result(i, j) := 0 
+		
+		initial := ceil(random * n)
+		current := initial
+		visited(current) :=1
+		forall(t in nodes) do
+			forall(k in k_iter) do
+			
+				forall(i in nodes) k_marca(i):=0
+				aux := MAX_INT
+				i_max := -1
+				forall(i in nodes | visited(i) = 0 and k_marca(i) = 0 ) do
+					if(aux > d(current, i)) then
+						aux := d(current, i)
+						i_max := i
+						k_marca(i_max):=1
+					end-if
+				end-do
+				k_list(k):=i_max
+			end-do
+			
+			k_win := ceil(random*k_max)
+			selected := k_list(k_win)
+			if(selected = -1) then
+				selected := initial
+			end-if
+			result(current, selected) := 1
+			current := selected
+			visited(current):= 1
+		end-do
+		dist := sum(ii in nodes, jj in nodes | result(ii,jj) = 1) d(ii,jj)
+		dist_copy := sum(ii in nodes, jj in nodes | result_copy(ii,jj) = 1) d(ii,jj)
+		if (dist < dist_copy or dist_copy = 0) then
+			forall(i in nodes, j in nodes) do
+				result_copy(i,j) := result(i,j)
+			end-do
+		end-if
+	end-do
+	
+	forall(i in nodes, j in nodes) do
+		result(i,j) := result_copy(i,j)
+	end-do
+	dist:= dist_copy
+	
+	t := initial
+	write("path: ")
+	forall(i in nodes) do
+		forall(j in nodes | result(t,j) = 1) do
+			write(" -> ", t)
+			t := j
+		end-do
+	end-do
+	writeln("")
+	
+	writeln("dist: ",dist)
+	writeln("edges: ")
+	forall(i in nodes) do
+		forall(j in nodes | result(i,j) = 1) do
+			writeln("(", i, ", ", j, ")")
+		end-do
+	end-do
+
+end-model
