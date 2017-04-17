@@ -1,7 +1,6 @@
 model ""
 	uses "mmxprs";
-	setparam("XPRS_MAXTIME", 60)
-	
+
 	declarations
 		n:		integer
 	end-declarations
@@ -9,13 +8,13 @@ model ""
 	initializations from "n40w20.001.dat"
 		n
 	end-initializations
-	
+
 	declarations
 		nodes 	= 1..n
 		d:		array(nodes, nodes) of real
 		tm:		array(nodes, 1..2) of real
-		
-		
+
+
 		x:		array(nodes, nodes) of mpvar
 		beta:	array(nodes) of mpvar
 	end-declarations
@@ -24,42 +23,45 @@ model ""
 		d
 		tm
 	end-initializations
-	
+
+
 	forall(i in nodes)
-		res_j(i) := sum(j in nodes) x(i,j) = 1
-	
+		d(i,i) := MAX_INT
+
+	forall(i in nodes)
+		res_j(i) := sum(j in nodes | i <> j) x(i,j) = 1
+
 
 	forall(j in nodes)
-		res_i(j) := sum(i in nodes) x(i,j) = 1
-		
-	
+		res_i(j) := sum(i in nodes | i <> j) x(i,j) = 1
+
+
 	forall(i in nodes)
 		forall(j in nodes)
 			x(i,j) is_binary
-	
-	forall(i in nodes, j in nodes)
-		res_i_j(i) := beta(j) >= beta(i) + d(i,j) - MAX_INT * ( 1 - x(i,j) )
-	
+
+	forall(i in nodes, j in nodes | j<>1)
+		res_i_j(i,j) := beta(j) >= beta(i) + d(i,j) - MAX_INT * ( 1 - x(i,j) )
+
 
 	forall(i in nodes) do
-		res_beta_min(i) := tm(i, 1) >= beta(i)
+		res_beta_min(i) := tm(i, 1) <= beta(i)
 		res_beta_max(i) := beta(i) <= tm(i,2)
 	end-do
 
-			
-	
+
+
 	obj := sum(i in nodes)
 			sum(j in nodes)
 				d(i,j) * x(i,j)
 	minimize(obj)
-	
-	
-	t := 1
-	writeln("path: ")
-	forall(i in nodes) do
-		forall(j in nodes | x(i,j).sol = 1) do
-			writeln("(", i, ", ", j, ")")
-		end-do
-	end-do
 
+
+	distance := 0.0
+	writeln("coordinates: ")
+	forall(i in nodes,j in nodes | x(i,j).sol = 1) do
+		writeln("(", i, ", ", j, ")")
+		distance := distance +d(i,j)
+	end-do
+	writeln("distance: ", distance)
 end-model
