@@ -1,0 +1,127 @@
+model ""
+	uses "mmxprs";
+	uses "mmsystem"
+	
+	setparam("XPRS_MAXTIME", 60)
+	
+	declarations
+		n:		integer
+		stop_mejoras: integer
+	end-declarations
+
+	initializations from "n21_1.dat"
+		n
+		stop_mejoras
+	end-initializations
+	
+	declarations
+		nodes 	= 1..n
+		d:		array(nodes, nodes) of integer
+		visited:array(nodes) of integer
+		result:	array(nodes, nodes) of integer
+	end-declarations
+
+	initializations from "n21_1.dat"
+		d
+	end-initializations
+	
+	forall(i in nodes) visited(i) := 0 
+	forall(i in nodes, j in nodes) result(i, j) := 0 
+	
+	initial := ceil(random * n)
+	current := initial
+	visited(current) :=1
+	forall(t in nodes) do
+		aux := MAX_INT
+		selected:=-1
+		forall(i in nodes | visited(i) = 0) do
+			if(aux > d(current, i)) then
+				aux := d(current, i)
+				selected := i
+			end-if
+		end-do
+		if(selected = -1) then
+			selected := initial
+		end-if
+		result(current, selected) := 1
+		current := selected
+		visited(current):= 1
+	end-do
+	
+	
+	
+	
+	
+	forall(i in nodes, j in nodes) do
+		result_star(i,j) := result(i,j)
+	end-do
+	dist_star := sum(i in nodes, j in nodes | result_star(i,j) = 1) d(i,j)
+	
+	no_mejoras := 0
+	while(no_mejoras < stop_mejoras) do
+		changed :=0
+		
+		dist_old := sum(i in nodes, j in nodes | result_old(i,j) = 1) d(i,j)
+		
+		
+		!generar solución random
+		!
+		!
+		result_current
+		
+		
+		
+		dist_current := sum(i in nodes, j in nodes | result_current(i,j) = 1) d(i,j)
+		
+		if(dist_current < dist_old) then
+			forall(i in nodes, j in nodes) do
+				result_old(i,j) := result_current(i,j)
+			end-do
+		end-if
+		
+		if(dist_current < dist_star) then
+			forall(i in nodes, j in nodes) do
+				result_star(i,j) := result_current(i,j)
+			end-do
+			dist_star := dist_current
+			changed :=1
+		else
+			p_current := random
+			if (p_current <= temp) then
+				forall(i in nodes, j in nodes) do
+					result_old(i,j) := result_current(i,j)
+				end-do
+			end-if
+		end-if
+		
+		!disminuye temperatura
+		!
+		!
+		
+		if(changed = 1)then
+			no_mejoras:=0
+		else
+			no_mejoras := mejoras +1
+		end-if
+	end-do
+	
+	
+	
+	t := initial
+	write("path: ")
+	forall(i in nodes) do
+		forall(j in nodes | result(t,j) = 1) do
+			write(" -> ", t)
+			t := j
+		end-do
+	end-do
+	writeln("\n")
+	
+	writeln("edges: ")
+	forall(i in nodes) do
+		forall(j in nodes | result(i,j) = 1) do
+			writeln("(", i, ", ", j, ")")
+		end-do
+	end-do
+
+end-model
