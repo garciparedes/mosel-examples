@@ -5,7 +5,7 @@ model ""
 		n:		integer
 	end-declarations
 
-	initializations from "n40w20.001.dat"
+	initializations from "n60w20.005.dat"
 		n
 	end-initializations
 
@@ -20,7 +20,7 @@ model ""
 		beta:	array(nodes) of mpvar
 	end-declarations
 
-	initializations from "n40w20.001.dat"
+	initializations from "n60w20.005.dat"
 		d
 		tm
 	end-initializations
