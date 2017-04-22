@@ -59,8 +59,8 @@ model ""
 			forall(j in nodes | i <> j) do
 				forall(ii in nodes, jj in nodes) result_copy(ii,jj) := result(ii,jj)
 				
-				forall(k in nodes| result(i, k) = 1 and j <> k) i2 := k
-				forall(k in nodes| result(j, k) = 1 and  i <> k) j2 := k
+				forall(k in nodes| result(i, k) = 1) i2 := k
+				forall(k in nodes| result(j, k) = 1) j2 := k
 			
 				result_copy(i, i2) := 0
 				result_copy(j, j2) := 0
