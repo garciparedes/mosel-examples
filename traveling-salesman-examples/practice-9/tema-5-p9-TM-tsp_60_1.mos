@@ -6,10 +6,11 @@ model ""
 	setparam("XPRS_MAXTIME", 60)
 	
 	declarations
-		n:		integer
+		file_name 	= "tsp_60_1.dat"
+		n:			integer
 	end-declarations
 
-	initializations from "burma14.dat"
+	initializations from file_name
 		n
 	end-initializations
 	
@@ -21,13 +22,12 @@ model ""
 		u:		array(nodes) of mpvar
 	end-declarations
 
-	initializations from "burma14.dat"
+	initializations from file_name
 		coords
 	end-initializations
 	
-	forall(i in nodes)
-		forall(j in nodes)
-			d(i,j) :=  round(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
+	forall(i, j in nodes)
+		d(i,j) :=  round(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
 	
 	forall(i in nodes)
 		res_j(i) := sum(j in nodes) x(i,j) = 1
@@ -36,17 +36,11 @@ model ""
 	forall(j in nodes)
 		res_i(j) := sum(i in nodes) x(i,j) = 1
 		
-	obj := sum(i in nodes)
-			sum(j in nodes)
-				d(i,j) * x(i,j)
+	obj := sum(i, j in nodes)
+		d(i,j) * x(i,j)
 	
-	forall(i in nodes)
-		forall(j in nodes)
-			x(i,j) is_binary
-			
-			
-	
-	
+	forall(i,j in nodes)
+		x(i,j) is_binary
 	
 	forall(i in nodes | i <> 1) do
 		res_u_down(i) := 2 <= u(i) 
@@ -55,22 +49,27 @@ model ""
 	res_u := u(1) = 1
 	
 	
-	
-	forall(i in nodes)
-		forall(j in nodes | i <> 1 and j <> 1)
-			res_MTZ(i, j) := (u(i) - u(j) +1) <= ((n-1)*(1 - x(i,j)))
+	forall(i, j in nodes | i <> 1 and j <> 1)
+		res_MTZ(i, j) := (u(i) - u(j) +1) <= ((n-1)*(1 - x(i,j)))
 	
 	minimize(obj)
 	
 	
 	t := 1
+	counts := 0
+	distance := 0.0
 	write("path: ")
-	forall(i in nodes) do
+	while(counts < n) do
 		forall(j in nodes | x(t,j).sol = 1) do
-			write(" -> ",t)
-			t := j
+			if(counts < n) then
+				write(t, " ")
+				distance := distance +d(t,j)
+				t := j	
+				counts := counts + 1
+			end-if
 		end-do
 	end-do
+	writeln("\ndistance: ", distance)
 	
 	id1 := IVEaddplot("points", IVE_RED)
 	id2 := IVEaddplot("lines", IVE_BLUE)
