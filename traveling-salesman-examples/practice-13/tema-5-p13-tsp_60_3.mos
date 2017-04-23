@@ -1,0 +1,175 @@
+model ""
+
+	uses "mmive"
+
+	declarations
+		file_name 		= "tsp_60_3.dat"
+		n:				integer
+		stop_mejoras: 	integer
+	end-declarations
+
+	initializations from file_name
+		n
+		stop_mejoras
+	end-initializations
+
+	declarations
+		nodes 			= 1..n
+		d:				array(nodes, nodes) of integer
+		visited:		array(nodes) of integer
+		result:			array(nodes, nodes) of integer
+		coords: 		array(nodes, 1..3) of real
+	end-declarations
+
+	initializations from file_name
+		coords
+	end-initializations
+
+	forall(i, j in nodes)
+		d(i,j) :=  round(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
+
+	forall(i in nodes) visited(i) := 0
+	forall(i in nodes, j in nodes) result(i, j) := 0
+
+	initial := ceil(random * n)
+	current := initial
+	visited(current) :=1
+	forall(t in nodes) do
+		aux := MAX_INT
+		selected:=-1
+		forall(i in nodes | visited(i) = 0) do
+			if(aux > d(current, i)) then
+				aux := d(current, i)
+				selected := i
+			end-if
+		end-do
+		if(selected = -1) then
+			selected := initial
+		end-if
+		result(current, selected) := 1
+		current := selected
+		visited(current):= 1
+	end-do
+
+
+	forall(i in nodes, j in nodes) do
+		result_star(i,j) := result(i,j)
+		result_old(i,j) := result(i,j)
+	end-do
+	dist_star := sum(i in nodes, j in nodes | result_star(i,j) = 1) d(i,j)
+	temp := 0.5
+	no_mejoras := 0
+	while(no_mejoras < stop_mejoras) do
+		changed :=0
+
+		dist_old := sum(i in nodes, j in nodes | result_old(i,j) = 1) d(i,j)
+
+
+		!generar soluci�n random
+		!
+		!
+		forall(ii in nodes, jj in nodes) result_current(ii,jj) := result_old(ii,jj)
+
+
+		i_1 := ceil(n*random)
+		j_1 := i_1
+		while(i_1 = j_1) do
+			j_1 := ceil(n*random)
+		end-do
+
+		forall(k in nodes| result_old(i_1, k) = 1) i_2 := k
+		forall(k in nodes| result_old(j_1, k) = 1) j_2 := k
+		!writeln(i_1," ", i_2, "\t", j_1, " ", j_2)
+		result_current(i_1, i_2) := 0
+		result_current(j_1, j_2) := 0
+
+		result_current(i_1, j_1) := 1
+		result_current(i_2, j_2) := 1
+
+		stop_reverse:= 0
+		index_reverse := i_2
+		old := index_reverse
+		while(stop_reverse = 0) do
+		    aux := -1
+		    !write("-")
+		    forall(k in nodes| k <> old and result_current(index_reverse, k) = 1) aux := k
+		    result_current(index_reverse, aux):=0
+		    result_current(aux,index_reverse):=1
+		    old := index_reverse
+		    index_reverse := aux
+		    if(index_reverse = j_1) then
+		        stop_reverse := 1
+		    end-if
+		end-do
+
+
+		dist_current := sum(i in nodes, j in nodes | result_current(i,j) = 1) d(i,j)
+		!writeln(dist_current,"\t",dist_old)
+		if(dist_current < dist_old) then
+			forall(i in nodes, j in nodes) do
+				result_old(i,j) := result_current(i,j)
+			end-do
+		end-if
+
+		if(dist_current < dist_star) then
+			forall(i in nodes, j in nodes) do
+				result_star(i,j) := result_current(i,j)
+			end-do
+			dist_star := dist_current
+			changed := 1
+		else
+			p_current := random
+			!writeln(p_current, "\t", temp)
+			if (p_current < temp) then
+				forall(i in nodes, j in nodes) do
+					result_old(i,j) := result_current(i,j)
+				end-do
+			end-if
+		end-if
+
+		!disminuye temperatura
+		!
+		!
+		if(temp > 0) then
+			temp := temp - 0.1
+		end-if
+		if(changed = 1)then
+			no_mejoras:=0
+		else
+			no_mejoras := no_mejoras +1
+		end-if
+	end-do
+
+	forall(i, j in nodes) do
+		result(i,j) := result_star(i,j)
+	end-do
+
+
+	t := 1
+	counts := 0
+	distance := 0.0
+	write("path: ")
+	while(counts < n) do
+		forall(j in nodes | result(t,j) = 1) do
+			if(counts < n) then
+				write(t, " ")
+				distance := distance +d(t,j)
+				t := j
+				counts := counts + 1
+			end-if
+		end-do
+	end-do
+	writeln("\ndistance: ", distance)
+
+	id1 := IVEaddplot("points", IVE_RED)
+	id2 := IVEaddplot("lines", IVE_BLUE)
+
+	forall(i in nodes) do
+		IVEdrawpoint(id1, coords(i,2), coords(i,3))
+	end-do
+
+	forall(i, j in nodes | result(i,j) = 1) do
+		IVEdrawline(id2, coords(i,2), coords(i,3), coords(j,2), coords(j,3))
+	end-do
+
+end-model
