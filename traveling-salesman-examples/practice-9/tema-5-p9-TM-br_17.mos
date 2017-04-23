@@ -1,5 +1,5 @@
 model ""
-	uses "mmxprs";
+	uses "mmxprs"
 	setparam("XPRS_MAXTIME", 60)
 
 	declarations

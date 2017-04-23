@@ -1,62 +1,59 @@
 model ""
-	uses "mmxprs";
+	uses "mmxprs"
 	uses "mmive"
-	uses "mmsystem"
-
 	setparam("XPRS_MAXTIME", 60)
-
+	
 	declarations
-		file_name 	= "burma14.dat"
-		n:			integer
+		n:		integer
 	end-declarations
 
-	initializations from file_name
+	initializations from "burma14.dat"
 		n
 	end-initializations
-
+	
 	declarations
-		nodes 		= 1..n
-		coords: 	array(nodes, 1..3) of real
-		d:			array(nodes, nodes) of integer
-		x:			array(nodes, nodes) of mpvar
-		y:			array(nodes, nodes) of mpvar
+		nodes 	= 1..n
+		coords: array(nodes, 1..3) of real
+		d:		array(nodes, nodes) of integer
+		x:		array(nodes, nodes) of mpvar
+		y:		array(nodes, nodes) of mpvar
 	end-declarations
 
-	initializations from file_name
+	initializations from "burma14.dat"
 		coords
 	end-initializations
-
+	
 	forall(i, j in nodes)
 			d(i,j) :=  round(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
-
+	
 	forall(i in nodes)
 		res_j(i) := sum(j in nodes) x(i,j) = 1
-
+	
 
 	forall(j in nodes)
 		res_i(j) := sum(i in nodes) x(i,j) = 1
-
+		
 	obj := sum(i, j in nodes | i <> j)
 				d(i,j) * x(i,j)
-
+	
 	forall(i,j in nodes)
 			x(i,j) is_binary
-
+	
 	forall(i, j in nodes) do
-		res_y_up(i, j) := y(i,j) <= (n-1) * x(i,j)
+		res_y_up(i, j) := y(i,j) <= (n-1) * x(i,j)	
 	end-do
-
+	
 	forall(i in nodes | i > 1) do
 		res_sum(i) := (sum(j in nodes) y(i,j)) - (sum(j in nodes) y(j,i)) = -1
 	end-do
-	res_sum(1) := (sum(j in nodes) y(1,j)) - (sum(j in nodes) y(j,1)) = n-1
-
-
-
+	res_sum(1) := (sum(j in nodes) y(1,j)) - (sum(j in nodes) y(j,1)) = n-1	
+			
+	
+			
 
 	minimize(obj)
-
-
+	
+	
 	t := 1
 	counts := 0
 	distance := 0.0
@@ -66,20 +63,20 @@ model ""
 			if(counts < n) then
 				write(t, " ")
 				distance := distance +d(t,j)
-				t := j
+				t := j	
 				counts := counts + 1
 			end-if
 		end-do
 	end-do
 	writeln("\ndistance: ", distance)
-
+	
 	id1 := IVEaddplot("points", IVE_RED)
 	id2 := IVEaddplot("lines", IVE_BLUE)
-
+	
 	forall(i in nodes) do
 			IVEdrawpoint(id1, coords(i,2), coords(i,3))
 	end-do
-
+	
 	forall(i in nodes) do
 		forall(j in nodes | x(i,j).sol = 1) do
 			IVEdrawline(id2, coords(i,2), coords(i,3), coords(j,2), coords(j,3))

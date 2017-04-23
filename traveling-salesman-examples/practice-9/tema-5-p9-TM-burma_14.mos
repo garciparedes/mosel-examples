@@ -1,8 +1,6 @@
 model ""
-	uses "mmxprs";
+	uses "mmxprs"
 	uses "mmive"
-	uses "mmsystem"
-
 	setparam("XPRS_MAXTIME", 60)
 
 	declarations
