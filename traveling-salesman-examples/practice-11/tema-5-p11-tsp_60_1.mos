@@ -1,7 +1,7 @@
 model ""
 	
 	declarations
-		file_name 	= "n21_1.dat"
+		file_name 	= "tsp_60_1.dat"
 		n:			integer
 	end-declarations
 
@@ -16,11 +16,15 @@ model ""
 		explored:	array(nodes) of integer
 		result:		array(nodes, nodes) of integer
 		result_copy:array(nodes, nodes) of integer
+		coords: 	array(nodes, 1..3) of real
 	end-declarations
 
 	initializations from file_name
-		d
+		coords
 	end-initializations
+
+	forall(i, j in nodes)
+		d(i,j) :=  round(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
 	
 	forall(i in nodes) visited(i) := 0 
 	forall(i in nodes, j in nodes) result(i, j) := 0 
