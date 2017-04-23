@@ -1,0 +1,62 @@
+model ""
+
+	declarations
+		file_name 	= "n21_2.dat"
+		n:			integer
+	end-declarations
+
+	initializations from file_name
+		n
+	end-initializations
+
+	declarations
+		nodes 		= 1..n
+		d:			array(nodes, nodes) of integer
+		visited:	array(nodes) of integer
+		result:		array(nodes, nodes) of integer
+	end-declarations
+
+	initializations from file_name
+		d
+	end-initializations
+
+	forall(i in nodes) visited(i) := 0
+	forall(i in nodes, j in nodes) result(i, j) := 0
+
+	initial := ceil(random * n)
+	current := initial
+	visited(current) :=1
+	forall(t in nodes) do
+		aux := MAX_INT
+		selected:=-1
+		forall(i in nodes | visited(i) = 0) do
+			if(aux > d(current, i)) then
+				aux := d(current, i)
+				selected := i
+			end-if
+		end-do
+		if(selected = -1) then
+			selected := initial
+		end-if
+		result(current, selected) := 1
+		current := selected
+		visited(current):= 1
+	end-do
+
+	t := 1
+	counts := 0
+	distance := 0.0
+	write("path: ")
+	while(counts < n) do
+		forall(j in nodes | result(t,j) = 1) do
+			if(counts < n) then
+				write(t, " ")
+				distance := distance +d(t,j)
+				t := j
+				counts := counts + 1
+			end-if
+		end-do
+	end-do
+	writeln("\ndistance: ", distance)
+
+end-model
