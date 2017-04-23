@@ -1,4 +1,6 @@
 n: 60
+k_max: 5
+N_max: 60
 stop_mejoras: 500
 coords:[
     1	45	53
