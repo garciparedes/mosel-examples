@@ -1,54 +1,55 @@
 model ""
 	uses "mmxprs";
 	setparam("XPRS_MAXTIME", 60)
-	
+
 	declarations
-		n:		integer
+		file_name 	= "br17.dat"
+		n:			integer
 	end-declarations
 
-	initializations from "br17.dat"
+	initializations from file_name
 		n
 	end-initializations
-	
+
 	declarations
-		nodes 	= 1..n
-		d:		array(nodes, nodes) of integer
-		x:		array(nodes, nodes) of mpvar
-		y:		array(nodes, nodes) of mpvar
+		nodes 		= 1..n
+		d:			array(nodes, nodes) of integer
+		x:			array(nodes, nodes) of mpvar
+		y:			array(nodes, nodes) of mpvar
 	end-declarations
 
-	initializations from "br17.dat"
+	initializations from file_name
 		d
 	end-initializations
-	
+
 	forall(i in nodes)
 		res_j(i) := sum(j in nodes) x(i,j) = 1
-	
+
 
 	forall(j in nodes)
 		res_i(j) := sum(i in nodes) x(i,j) = 1
-		
-	
+
+
 	forall(i, j in nodes)
-			x(i,j) is_binary
-		
+		x(i,j) is_binary
+
 
 	forall(i,j in nodes) do
 		res_y_up(i, j) := y(i,j) <= (n-1) * x(i,j)
 	end-do
-	
-	
+
+
 	forall(i in nodes | i > 1) do
 		res_sum(i) := (sum(j in nodes) y(i,j)) - (sum(j in nodes) y(j,i)) = -1
 	end-do
-	res_sum(1) := (sum(j in nodes) y(1,j)) - (sum(j in nodes) y(j,1)) = n-1	
-			
-	
+	res_sum(1) := (sum(j in nodes) y(1,j)) - (sum(j in nodes) y(j,1)) = n-1
+
+
 	obj := sum(i, j in nodes)
-				d(i,j) * x(i,j)
+		d(i,j) * x(i,j)
 	minimize(obj)
-	
-	
+
+
 	t := 1
 	counts := 0
 	distance := 0.0
@@ -58,12 +59,10 @@ model ""
 			if(counts < n) then
 				write(t, " ")
 				distance := distance +d(t,j)
-				t := j	
+				t := j
 				counts := counts + 1
 			end-if
 		end-do
 	end-do
 	writeln("\ndistance: ", distance)
-	
-
 end-model
