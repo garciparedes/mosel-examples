@@ -144,7 +144,7 @@ model ""
 	distance := 0.0
 	write("path: ")
 	while(counts < n) do
-		forall(j in nodes | result(t,j).sol = 1) do
+		forall(j in nodes | result(t,j) = 1) do
 			if(counts < n) then
 				write(t, " ")
 				distance := distance +d(t,j)

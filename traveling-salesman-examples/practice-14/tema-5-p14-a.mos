@@ -2,25 +2,26 @@ model ""
 	uses "mmxprs";
 
 	declarations
-		n:		integer
+		file_name	= "n40w20.001.dat"
+		n:			integer
 	end-declarations
 
-	initializations from "n40w20.001.dat"
+	initializations from file_name
 		n
 	end-initializations
 
 	declarations
-		nodes 	= 1..n
-		d:		array(nodes, nodes) of real
-		tm:		array(nodes, 1..2) of real
+		nodes 		= 1..n
+		d:			array(nodes, nodes) of real
+		tm:			array(nodes, 1..2) of real
 
 
-		x:		array(nodes, nodes) of mpvar
-		u:		array(nodes) of mpvar
-		beta:	array(nodes) of mpvar
+		x:			array(nodes, nodes) of mpvar
+		u:			array(nodes) of mpvar
+		beta:		array(nodes) of mpvar
 	end-declarations
 
-	initializations from "n40w20.001.dat"
+	initializations from file_name
 		d
 		tm
 	end-initializations
@@ -69,13 +70,21 @@ model ""
 	minimize(obj)
 
 
+	t := 1
+	counts := 0
 	distance := 0.0
-	writeln("coordinates: ")
-	forall(i in nodes,j in nodes | x(i,j).sol = 1) do
-		writeln("(", i, ", ", j, ")")
-		distance := distance +d(i,j)
+	write("path: ")
+	while(counts < n) do
+		forall(j in nodes | x(t,j).sol = 1) do
+			if(counts < n) then
+				write(t, " ")
+				distance := distance +d(t,j)
+				t := j
+				counts := counts + 1
+			end-if
+		end-do
 	end-do
-	writeln("distance: ", distance)
+	writeln("\ndistance: ", distance)
 
 
 end-model

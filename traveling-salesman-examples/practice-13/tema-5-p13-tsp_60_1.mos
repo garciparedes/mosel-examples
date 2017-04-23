@@ -1,5 +1,7 @@
-model ""
+model ""	
 	
+	uses "mmive"
+
 	declarations
 		file_name 		= "tsp_60_1.dat"
 		n:				integer
@@ -148,7 +150,7 @@ model ""
 	distance := 0.0
 	write("path: ")
 	while(counts < n) do
-		forall(j in nodes | result(t,j).sol = 1) do
+		forall(j in nodes | result(t,j) = 1) do
 			if(counts < n) then
 				write(t, " ")
 				distance := distance +d(t,j)
@@ -159,4 +161,15 @@ model ""
 	end-do
 	writeln("\ndistance: ", distance)
 
+	id1 := IVEaddplot("points", IVE_RED)
+	id2 := IVEaddplot("lines", IVE_BLUE)
+
+	forall(i in nodes) do
+		IVEdrawpoint(id1, coords(i,2), coords(i,3))
+	end-do
+
+	forall(i, j in nodes | result(i,j) = 1) do
+		IVEdrawline(id2, coords(i,2), coords(i,3), coords(j,2), coords(j,3))
+	end-do
+	
 end-model
