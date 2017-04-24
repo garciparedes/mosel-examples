@@ -1,3 +1,5 @@
+% !TEX root = ./article.tex
+
 \ProvidesPackage{mystyle}
 
 \usepackage[utf8]{inputenc}
@@ -5,7 +7,7 @@
 
 \usepackage[T1]{fontenc}
 
-\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry}
+\usepackage[margin={22mm, 24mm}]{geometry}
 \usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}
 \usepackage{subcaption}
 \usepackage{float}
@@ -15,7 +17,7 @@
 \usepackage{amsmath,amssymb}
 
 \usepackage{graphicx}
-\graphicspath{ {images/} }
+\graphicspath{ {images/}{../results/images/} }
 
 \usepackage[hidelinks]{hyperref}
 
@@ -23,6 +25,9 @@
 \usepackage{float}
 \RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
 
+\usepackage{csvsimple}
+\usepackage{tabu}
+\tabulinesep=1.4mm
 
 \usepackage{abstract}
 \renewcommand{\abstractnamefont}{\normalfont\bfseries}
