@@ -22,7 +22,7 @@
 %-----------------------------
 
 	\begin{abstract}
-		\noindent [TODO ]
+		\noindent En este documento se realiza una descripción acerca del \emph{problema del viajante} (TSP), que consiste en la búsqueda del camino más corto que permita visitar un conjunto de nodos. Además se proporcionan distintas formulaciones para dicho problema así como un conjunto de heurísticas aproximadas que permiten su resolución de manera mucho menos costosa. También se presenta la descripción de la variante del \emph{problema del viajante con ventana de tiempo} (TSPTW), que se caracteriza por exigir que la visita de un determinado nodo se realice dentro de un intervalo temporal prefijado. Por último, se presentan las soluciones de distintos conjuntos de datos resultas mediantes las estrategias descritas en el documento.
 	\end{abstract}
 
 %-----------------------------
@@ -35,7 +35,7 @@
 		\paragraph{}
 		[TODO ]
 
-	\section{Problema del Viajero (TSP)}
+	\section{Problema del Viajante (TSP)}
 
 		\paragraph{}
 		[TODO ]
@@ -66,7 +66,7 @@
 			\paragraph{}
 			[TODO ]
 
-	\section{Problema del Viajero con Ventana de Tiempo (TSPTW)}
+	\section{Problema del Viajante con Ventana de Tiempo (TSPTW)}
 
 		\paragraph{}
 		[TODO ]
@@ -74,12 +74,15 @@
 
 	\section{Resolución de Problemas}
 
+		\paragraph{}
+		En esta sección se presentan los resultados obtenidos tras resolver el problema del viajante (TSP) con distintos conjuntos de datos de entrada. Dichos resultados se han agrupado por problema en lugar de por estrategia de resolución, lo cual permite comparar de manera más simple cada una de ellas. En algunos casos estos conjuntos de datos se corresponden con coordenadas cartesianas, para lo cual es necesario calcular la distancias entre cada par de puntos, lo que permite realizar una representación gráfica de la solución. Sin embargo, en otros casos tan solo se suministran las distancias, por lo que la representación gráfica no es posible. Por último, se resuelven dos problemas con ventana de tiempo (TSPTW) de manera exacta, para el cual se suministran además los puntos de inicio y fin permitidos para visitar cada nodo.
+
 		\subsection{burma14}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por las coordenadas de $14$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se resuelve de manera exacta mediante la formulación de \emph{Tucker-Miller} y la de \emph{Redes}. En la tabla \ref{table:sol-burma14} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-burma14} se muestra la representación gráfica. Tal y como se puede apreciar ambas soluciones son óptimas, sin embargo proporcionan caminos distintos
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -105,16 +108,16 @@
 					\caption{Solución \emph{Greedy (Redes)} para \emph{burma14}}
 				\end{subfigure}
 				\caption{Representación gráfica de las distintas soluciones para el conjunto de datos \emph{burma14}}
-				\label{fig:sol-tsp_60_1}
+				\label{fig:sol-burma14}
 			\end{figure}
 
 
 		\subsection{br17}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por la matriz de distancias de $17$ nodos. En este caso se resuelve de manera exacta mediante la formulación de \emph{Tucker-Miller} y la de \emph{Redes}. Al igual que en el caso anterior, ambas soluciones son óptimas, sin embargo proporcionan caminos distintos. Los resultados se muestran en la tabla \ref{table:sol-br17}.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -130,9 +133,9 @@
 		\subsection{n21\_1}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_1}.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -148,9 +151,9 @@
 		\subsection{n21\_2}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_2}.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -160,15 +163,15 @@
 					\\\hline
 		    \end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{n21\_2}}
-				\label{table:sol-n21_1}
+				\label{table:sol-n21_2}
 			\end{table}
 
 		\subsection{n21\_3}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_3}.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -178,14 +181,15 @@
 					\\\hline
 		    \end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{n21\_3}}
-				\label{table:sol-n21_1}
+				\label{table:sol-n21_3}
 			\end{table}
 
 		\subsection{n21\_4}
 
 			\paragraph{}
-			[TODO ]
-			\begin{table}
+			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_4}.
+
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -195,15 +199,15 @@
 					\\\hline
 		    \end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{n21\_4}}
-				\label{table:sol-n21_1}
+				\label{table:sol-n21_4}
 			\end{table}
 
 		\subsection{n21\_5}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_5}.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -213,15 +217,15 @@
 					\\\hline
 		    \end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{n21\_5}}
-				\label{table:sol-n21_1}
+				\label{table:sol-n21_5}
 			\end{table}
 
 		\subsection{tsp\_60\_1}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por las coordenadas de $60$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_60_1} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_60_1} se muestra la representación gráfica.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -231,7 +235,7 @@
 					\\\hline
 		    \end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{tsp\_60\_1}}
-				\label{table:sol-n21_1}
+				\label{table:sol-tsp_60_1}
 			\end{table}
 
 
@@ -270,9 +274,9 @@
 		\subsection{tsp\_60\_2}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por las coordenadas de $60$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_60_2} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_60_2} se muestra la representación gráfica.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -282,7 +286,7 @@
 					\\\hline
 		    \end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{tsp\_60\_2}}
-				\label{table:sol-n21_1}
+				\label{table:sol-tsp_60_2}
 			\end{table}
 
 			\begin{figure}[h]
@@ -319,9 +323,9 @@
 		\subsection{tsp\_60\_3}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por las coordenadas de $60$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_60_3} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_60_3} se muestra la representación gráfica.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -331,7 +335,7 @@
 					\\\hline
 		    \end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{tsp\_60\_3}}
-				\label{table:sol-n21_1}
+				\label{table:sol-tsp_60_3}
 			\end{table}
 
 			\begin{figure}[h]
@@ -368,9 +372,9 @@
 		\subsection{tsp\_100\_1}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por las coordenadas de $100$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_100_1} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_100_1} se muestra la representación gráfica.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -380,7 +384,7 @@
 					\\\hline
 		    \end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{tsp\_100\_1}}
-				\label{table:sol-n21_1}
+				\label{table:sol-tsp_100_1}
 			\end{table}
 
 			\begin{figure}[h]
@@ -417,9 +421,9 @@
 		\subsection{tsp\_100\_2}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por las coordenadas de $100$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_100_2} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_100_2} se muestra la representación gráfica.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -429,7 +433,7 @@
 					\\\hline
 				\end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{tsp\_100\_2}}
-				\label{table:sol-n21_1}
+				\label{table:sol-tsp_100_2}
 			\end{table}
 
 			\begin{figure}[h]
@@ -466,9 +470,9 @@
 		\subsection{n40w20.001}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por la matriz de distancias de $41$ nodos junto con sus correspondientes ventanas de tiempo. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} añadiendo las correspondientes restricciones \emph{beta}($\beta$) referidas a las ventanas de tiempo. Los resultados se muestran en la tabla \ref{table:sol-n40w20.001}.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -478,15 +482,15 @@
 					\\\hline
 		    \end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{n40w20.001}}
-				\label{table:sol-n21_1}
+				\label{table:sol-n40w20.001}
 			\end{table}
 
-		\subsection{n40w60.004}
+		\subsection{n40w20.004}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por la matriz de distancias de $41$ nodos junto con sus correspondientes ventanas de tiempo. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} añadiendo las correspondientes restricciones \emph{beta}($\beta$) referidas a las ventanas de tiempo. Los resultados se muestran en la tabla \ref{table:sol-n40w20.004}.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -496,15 +500,15 @@
 					\\\hline
 		    \end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{n40w20.004}}
-				\label{table:sol-n21_1}
+				\label{table:sol-n40w20.004}
 			\end{table}
 
 		\subsection{n60w20.005}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por la matriz de distancias de $61$ nodos junto con sus correspondientes ventanas de tiempo. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} añadiendo las correspondientes restricciones \emph{beta}($\beta$) referidas a las ventanas de tiempo. Los resultados se muestran en la tabla \ref{table:sol-n60w20.005}.
 
-			\begin{table}
+			\begin{table}[H]
 				\centering
 				\begin{tabu}{ | c | c | p{.65\linewidth} |}
 					\hline
@@ -514,7 +518,7 @@
 					\\\hline
 		    \end{tabu}
 				\caption{Soluciones para el conjunto de datos \emph{n60w20.005}}
-				\label{table:sol-n21_1}
+				\label{table:sol-n60w20.005}
 			\end{table}
 
 
