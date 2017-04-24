@@ -79,10 +79,53 @@
 			\paragraph{}
 			[TODO ]
 
+			\begin{table}
+				\centering
+				\begin{tabu}{ | c | c | p{.65\linewidth} |}
+					\hline
+					\bfseries Método & \bfseries Distancia & \bfseries Camino
+					\csvreader[head to column names]{../results/csv/results-burma14.csv}{}
+					{\\\hline\method&\distance&\path}
+					\\\hline
+				\end{tabu}
+				\caption{Soluciones para el conjunto de datos \emph{burma14}}
+				\label{table:sol-burma14}
+			\end{table}
+
+			\begin{figure}[h]
+				\centering
+				\begin{subfigure}{.4\textwidth}
+					\centering
+					\includegraphics[width=\linewidth]{results-burma14-tm}
+					\caption{Solución \emph{Exacta (TM)} para \emph{burma14}}
+				\end{subfigure} \
+				\begin{subfigure}{.4\textwidth}
+					\centering
+					\includegraphics[width=\linewidth]{results-burma14-redes}
+					\caption{Solución \emph{Greedy (Redes)} para \emph{burma14}}
+				\end{subfigure}
+				\caption{Representación gráfica de las distintas soluciones para el conjunto de datos \emph{burma14}}
+				\label{fig:sol-tsp_60_1}
+			\end{figure}
+
+
 		\subsection{br17}
 
 			\paragraph{}
 			[TODO ]
+
+			\begin{table}
+				\centering
+				\begin{tabu}{ | c | c | p{.65\linewidth} |}
+					\hline
+					\bfseries Método & \bfseries Distancia & \bfseries Camino
+					\csvreader[head to column names]{../results/csv/results-br17.csv}{}
+					{\\\hline\method&\distance&\path}
+					\\\hline
+				\end{tabu}
+				\caption{Soluciones para el conjunto de datos \emph{br17}}
+				\label{table:sol-br17}
+			\end{table}
 
 		\subsection{n21\_1}
 
