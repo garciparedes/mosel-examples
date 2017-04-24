@@ -60,9 +60,8 @@ model ""
 
 
 
-	forall(i in nodes)
-		forall(j in nodes | i <> 1 and j <> 1)
-			res_MTZ(i, j) := (u(i) - u(j) +1) <= ((n-1)*(1 - x(i,j)))
+	forall(i, j in nodes | i <> 1 and j <> 1)
+		res_MTZ(i, j) := (u(i) - u(j) +1) <= ((n-1)*(1 - x(i,j)))
 
 	obj := sum(i in nodes)
 			sum(j in nodes)

@@ -40,10 +40,69 @@
 		\paragraph{}
 		[TODO ]
 
+		\begin{eqfloat}
+			\begin{equation}
+				\begin{array}{ll@{}ll}
+					\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}\sum\limits_{j}^{n} & d_{ij}x_{ij} &\\
+					\text{sujeto a}		& \displaystyle\sum\limits_{i = 1}^{n}	&	x_{ij} 	= 1,  & \forall j \in \{1,...,n\}\\
+														& \displaystyle\sum\limits_{j = 1}^{n}	&	x_{ij} 	= 1,  & \forall i \in \{1,...,n\}\\
+														& \displaystyle\sum\limits_{i \in S, j \not\in S}	&	x_{ij} 	\geq 1,  & \forall S \subset N / S \neq \emptyset, S \neq N \\
+														&                               &	x_{ij} \in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
+				\end{array}
+			\end{equation}
+			\caption{Formulación estándar para el \emph{problema del viajante (TSP)}.}
+			\label{eq:tsp_basic}
+		\end{eqfloat}
+
 		\subsection{Estrategia Exacta}
 
 			\paragraph{}
 			[TODO ]
+
+			\subsection{Formulación de Tucker-Miller}
+
+				\paragraph{}
+				[TODO ]
+
+				\begin{eqfloat}
+					\begin{equation}
+						\begin{array}{ll@{}ll}
+							\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}\sum\limits_{j}^{n} & d_{ij}x_{ij} &\\
+							\text{sujeto a}		& \displaystyle\sum\limits_{i = 1}^{n}	&	x_{ij} 	= 1,  & \forall j \in \{1,...,n\} \\
+																& \displaystyle\sum\limits_{j = 1}^{n}	&	x_{ij} 	= 1,  & \forall i \in \{1,...,n\} \\
+																& 				&	u_i - u_j + n x_{ij}	\leq n-1,  & \forall i, j \in \{2,...,n\}, i \neq j \\
+																&                               &	u_{i} \in \{2,...,n\}, 		& \forall i \in \{2,...,n\} \\
+																&                               &	u_{1}  = 1, 	& \\
+																&                               &	x_{ij} \in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
+						\end{array}
+					\end{equation}
+					\caption{Formulación de Tucker-Miller para el \emph{problema del viajante (TSP)}.}
+					\label{eq:tsp_tm}
+				\end{eqfloat}
+
+			\subsection{Formulación de Redes}
+
+				\paragraph{}
+				[TODO ]
+
+				\begin{eqfloat}
+					\begin{equation}
+						\begin{array}{ll@{}ll}
+							\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}\sum\limits_{j}^{n} & d_{ij}x_{ij} &\\
+							\text{sujeto a}		& \displaystyle\sum\limits_{i = 1}^{n}	&	x_{ij} 	= 1,  & \forall j \in \{1,...,n\}\\
+																& \displaystyle\sum\limits_{j = 1}^{n}	&	x_{ij} 	= 1,  & \forall i \in \{1,...,n\}\\
+																& \displaystyle\sum\limits_{j = 1}^n	y_{ij} - &\displaystyle\sum\limits_{j = 1}^n	y_{ji} = b_{i},  & \forall i \in \{1,...,n\} \\
+																&                               &	y_{ij}  \leq (n-1)x_{ij}, 	&  \forall i,j \in \{1,...,n\}\\
+																&                               &	b_{1}  = n - 1, 	& \\
+																&                               &	b_{i} = -1, 		& \forall i \in \{2,...,n\} \\
+																&                               &	y_{ij} \geq 0, 		& \forall i,j \in \{1,...,n\} \\
+																&                               &	x_{ij} \in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
+						\end{array}
+					\end{equation}
+					\caption{Formulación de Redes para els \emph{problema del viajante (TSP)}.}
+					\label{eq:tsp_redes}
+				\end{eqfloat}
+
 
 		\subsection{Estrategia Greedy}
 
@@ -71,6 +130,24 @@
 		\paragraph{}
 		[TODO ]
 
+		\begin{eqfloat}
+			\begin{equation}
+				\begin{array}{ll@{}ll}
+					\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}\sum\limits_{j}^{n} & d_{ij}x_{ij} &\\
+					\text{sujeto a}		& \displaystyle\sum\limits_{i = 1}^{n}	&	x_{ij} 	= 1,  & \forall j \in \{1,...,n\} \\
+														& \displaystyle\sum\limits_{j = 1}^{n}	&	x_{ij} 	= 1,  & \forall i \in \{1,...,n\} \\
+														& 				&	\beta_{i} + d_{ij} - M(1-x_{ij}) \leq \beta_{j},  & \forall i, j \in \{1,...,n\}, j \neq 1 \\
+														& 				&	u_i - u_j + n x_{ij}	\leq n-1,  & \forall i, j \in \{2,...,n\}, i \neq j \\
+														&                               &	u_{i} \in \{2,...,n\}, 		& \forall i \in \{2,...,n\} \\
+														&                               &	u_{1}  = 1, 	& \\
+														&                               &	a_{i} \leq \beta_{i}, 		& \forall i \in \{1,...,n\} \\
+														&                               &	\beta_{i} \leq b_{i}, 		& \forall i \in \{1,...,n\} \\
+														&                               &	x_{ij} \in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
+				\end{array}
+			\end{equation}
+			\caption{Formulación de Tucker-Miller para el \emph{problema del viajante con ventana de tiempo (TSPTW)}.}
+			\label{eq:tsp_tm}
+		\end{eqfloat}
 
 	\section{Resolución de Problemas}
 
