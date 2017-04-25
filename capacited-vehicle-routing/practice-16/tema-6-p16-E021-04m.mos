@@ -1,0 +1,33 @@
+model ModelName
+
+	uses "mmive"
+	
+	declarations
+		file_name 	= "E021-04m.dat"
+		n:			integer
+		min_v:		integer
+		capacity:	integer
+	end-declarations
+
+	initializations from file_name
+		n
+		min_v
+		capacity
+	end-initializations
+	
+	declarations
+		nodes 		= 1..n
+		d:			array(nodes, nodes) of integer
+		coords: 	array(nodes, 1..3) of real
+		dem:		array(nodes, 1..2) of real
+	end-declarations
+
+	initializations from file_name
+		coords
+	end-initializations
+	
+	forall(i, j in nodes)
+		d(i,j) :=  round(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
+	
+
+end-model
