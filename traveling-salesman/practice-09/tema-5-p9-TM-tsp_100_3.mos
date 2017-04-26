@@ -1,9 +1,10 @@
 model ""
 	uses "mmxprs"
-	setparam("XPRS_MAXTIME", 100)
+	uses "mmive"
+	setparam("XPRS_MAXTIME", 60)
 
 	declarations
-		file_name	= "n40w20.001.dat"
+		file_name 	= "tsp_100_3.dat"
 		n:			integer
 	end-declarations
 
@@ -13,45 +14,31 @@ model ""
 
 	declarations
 		nodes 		= 1..n
-		d:			array(nodes, nodes) of real
-		tm:			array(nodes, 1..2) of real
-
-
+		coords: 	array(nodes, 1..3) of real
+		d:			array(nodes, nodes) of integer
 		x:			array(nodes, nodes) of mpvar
 		u:			array(nodes) of mpvar
-		beta:		array(nodes) of mpvar
 	end-declarations
 
 	initializations from file_name
-		d
-		tm
+		coords
 	end-initializations
 
+	forall(i, j in nodes)
+		d(i,j) :=  round(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
 
 	forall(i in nodes)
-		d(i,i) := MAX_INT
-
-	forall(i in nodes)
-		res_j(i) := sum(j in nodes | i <> j) x(i,j) = 1
+		res_j(i) := sum(j in nodes) x(i,j) = 1
 
 
 	forall(j in nodes)
-		res_i(j) := sum(i in nodes | i <> j) x(i,j) = 1
+		res_i(j) := sum(i in nodes) x(i,j) = 1
 
+	obj := sum(i, j in nodes)
+		d(i,j) * x(i,j)
 
-	forall(i in nodes, j in nodes)
-			x(i,j) is_binary
-
-	forall(i in nodes, j in nodes | j <> 1)
-		res_i_j(i,j) := beta(i) + d(i,j) - MAX_INT * ( 1 - x(i,j) ) <= beta(j)
-
-
-	forall(i in nodes) do
-		res_beta_min(i) := tm(i, 1) <= beta(i)
-		res_beta_max(i) := beta(i) <= tm(i, 2)
-	end-do
-
-
+	forall(i,j in nodes)
+		x(i,j) is_binary
 
 	forall(i in nodes | i <> 1) do
 		res_u_down(i) := 2 <= u(i)
@@ -60,13 +47,9 @@ model ""
 	res_u := u(1) = 1
 
 
-
 	forall(i, j in nodes | i <> 1 and j <> 1)
 		res_MTZ(i, j) := (u(i) - u(j) +1) <= ((n-1)*(1 - x(i,j)))
 
-	obj := sum(i in nodes)
-			sum(j in nodes)
-				d(i,j) * x(i,j)
 	minimize(obj)
 
 
@@ -86,5 +69,15 @@ model ""
 	end-do
 	writeln("\ndistance: ", distance)
 
+	id1 := IVEaddplot("points", IVE_RED)
+	id2 := IVEaddplot("lines", IVE_BLUE)
+
+	forall(i in nodes) do
+		IVEdrawpoint(id1, coords(i,2), coords(i,3))
+	end-do
+
+	forall(i, j in nodes | x(i,j).sol = 1) do
+		IVEdrawline(id2, coords(i,2), coords(i,3), coords(j,2), coords(j,3))
+	end-do
 
 end-model
