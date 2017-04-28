@@ -32,76 +32,79 @@
 	\section{Problema del Viajante (TSP)}
 
 		\paragraph{}
-		[TODO ]
+		El \emph{Problema del Viajante} (o \emph{Travelling Salesman Problem (TSP)} en inglés) consiste en la búsqueda del camino más corto necesario para visitar un conjunto de $n$ nodos separados entre si por unas determinadas distancias $d_ij$. Esto es equivalente a la generación del ciclo hamiltoniano en un grafo cuyas aristas tienen determinados pesos (las distancias).
 
-		\begin{eqfloat}
-			\begin{equation}
-				\begin{array}{ll@{}ll}
-					\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}\sum\limits_{j}^{n} & d_{ij}x_{ij} &\\
-					\text{sujeto a}		& \displaystyle\sum\limits_{i = 1}^{n}	&	x_{ij} 	= 1,  & \forall j \in \{1,...,n\}\\
-														& \displaystyle\sum\limits_{j = 1}^{n}	&	x_{ij} 	= 1,  & \forall i \in \{1,...,n\}\\
-														& \displaystyle\sum\limits_{i \in S, j \not\in S}	&	x_{ij} 	\geq 1,  & \forall S \subset N / S \neq \emptyset, S \neq N \\
-														&                               &	x_{ij} \in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
-				\end{array}
-			\end{equation}
-			\caption{Formulación estándar para el \emph{problema del viajante (TSP)}.}
-			\label{eq:tsp_basic}
-		\end{eqfloat}
+		\paragraph{}
+		Para resolver este problema existen distintas formulaciones para su resolución de manera exacta, entre las que se encuentran la formulación estandar de la ecuación \eqref{eq:tsp_basic}, la formulación de \emph{Tucker-Miller} descrita en la ecuación \eqref{eq:tsp_tm} o la resolución mediante el apoyo en un modelo de redes complementario tal y como se muestra en la ecuación \eqref{eq:tsp_redes}.
 
-		\subsection{Estrategia Exacta}
+		\subsection{Formulaciones Exactas}
 
 			\paragraph{}
-			[TODO ]
+			La formulación estándar o básica para el problema del viajante se muestra en la ecuación \eqref{eq:tsp_basic}, sin embargo esta tan solo es de interés a nivel teoríco debido al elevado número de restricciones que se generan en su modelización. Por tanto en la práctica se utilizan otras formulaciones que se describen a continuación.
 
-			\subsection{Formulación de Tucker-Miller}
+			\begin{eqfloat}
+				\begin{equation}
+					\begin{array}{ll@{}ll}
+						\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}\sum\limits_{j}^{n} & d_{ij}x_{ij} &\\
+						\text{sujeto a}		& \displaystyle\sum\limits_{i = 1}^{n}	&	x_{ij} 	= 1,  & \forall j \in \{1,...,n\}\\
+															& \displaystyle\sum\limits_{j = 1}^{n}	&	x_{ij} 	= 1,  & \forall i \in \{1,...,n\}\\
+															& \displaystyle\sum\limits_{i \in S, j \not\in S}	&	x_{ij} 	\geq 1,  & \forall S \subset N / S \neq \emptyset, S \neq N \\
+															&                               &	x_{ij} \in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
+					\end{array}
+				\end{equation}
+				\caption{Formulación estándar para el \emph{problema del viajante (TSP)}.}
+				\label{eq:tsp_basic}
+			\end{eqfloat}
 
-				\paragraph{}
-				[TODO ]
 
-				\begin{eqfloat}
-					\begin{equation}
-						\begin{array}{ll@{}ll}
-							\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}\sum\limits_{j}^{n} & d_{ij}x_{ij} &\\
-							\text{sujeto a}		& \displaystyle\sum\limits_{i = 1}^{n}	&	x_{ij} 	= 1,  & \forall j \in \{1,...,n\} \\
-																& \displaystyle\sum\limits_{j = 1}^{n}	&	x_{ij} 	= 1,  & \forall i \in \{1,...,n\} \\
-																& 				&	u_i - u_j + n x_{ij}	\leq n-1,  & \forall i, j \in \{2,...,n\}, i \neq j \\
-																&                               &	u_{i} \in \{2,...,n\}, 		& \forall i \in \{2,...,n\} \\
-																&                               &	u_{1}  = 1, 	& \\
-																&                               &	x_{ij} \in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
-						\end{array}
-					\end{equation}
-					\caption{Formulación de Tucker-Miller para el \emph{problema del viajante (TSP)}.}
-					\label{eq:tsp_tm}
-				\end{eqfloat}
+			\paragraph{}
+			La formulación de redes consiste en la modificación de las restricciones derivadas del conjunto $S$ por un modelo de redes complementario a partir de las variables de decisión $y_{ij}$ de carácter real positivo así como las constantes $b_i$, que en conjunto generan un encadenamiento del camino, lo cual elimina la posibilidad de que se generen subtours. Esta modelización se puede visualizar en la ecuación \eqref{eq:tsp_redes}.
 
-			\subsection{Formulación de Redes}
+			\begin{eqfloat}
+				\begin{equation}
+					\begin{array}{ll@{}ll}
+						\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}\sum\limits_{j}^{n} & d_{ij}x_{ij} &\\
+						\text{sujeto a}		& \displaystyle\sum\limits_{i = 1}^{n}	&	x_{ij} 	= 1,  & \forall j \in \{1,...,n\}\\
+															& \displaystyle\sum\limits_{j = 1}^{n}	&	x_{ij} 	= 1,  & \forall i \in \{1,...,n\}\\
+															& \displaystyle\sum\limits_{j = 1}^n	y_{ij} - &\displaystyle\sum\limits_{j = 1}^n	y_{ji} = b_{i},  & \forall i \in \{1,...,n\} \\
+															&                               &	y_{ij}  \leq (n-1)x_{ij}, 	&  \forall i,j \in \{1,...,n\}\\
+															&                               &	b_{1}  = n - 1, 	& \\
+															&                               &	b_{i} = -1, 		& \forall i \in \{2,...,n\} \\
+															&                               &	y_{ij} \geq 0, 		& \forall i,j \in \{1,...,n\} \\
+															&                               &	x_{ij} \in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
+					\end{array}
+				\end{equation}
+				\caption{Formulación de Redes para els \emph{problema del viajante (TSP)}.}
+				\label{eq:tsp_redes}
+			\end{eqfloat}
 
-				\paragraph{}
-				[TODO ]
+			\paragraph{}
+			La formulación propuesta por \emph{Tucker-Miller} se apoya en la existencia de las variables de decisión $u_i$ de carácter entero y positivo, que desempeñan la misma tarea que el modelo de redes complementario de la formulación anterior, es decir, la restricción que elimine la posibilidad de que se formen subtours. La formulación de \emph{Tucker-Miller} se muestra en la ecuación \eqref{eq:tsp_tm}.
 
-				\begin{eqfloat}
-					\begin{equation}
-						\begin{array}{ll@{}ll}
-							\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}\sum\limits_{j}^{n} & d_{ij}x_{ij} &\\
-							\text{sujeto a}		& \displaystyle\sum\limits_{i = 1}^{n}	&	x_{ij} 	= 1,  & \forall j \in \{1,...,n\}\\
-																& \displaystyle\sum\limits_{j = 1}^{n}	&	x_{ij} 	= 1,  & \forall i \in \{1,...,n\}\\
-																& \displaystyle\sum\limits_{j = 1}^n	y_{ij} - &\displaystyle\sum\limits_{j = 1}^n	y_{ji} = b_{i},  & \forall i \in \{1,...,n\} \\
-																&                               &	y_{ij}  \leq (n-1)x_{ij}, 	&  \forall i,j \in \{1,...,n\}\\
-																&                               &	b_{1}  = n - 1, 	& \\
-																&                               &	b_{i} = -1, 		& \forall i \in \{2,...,n\} \\
-																&                               &	y_{ij} \geq 0, 		& \forall i,j \in \{1,...,n\} \\
-																&                               &	x_{ij} \in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
-						\end{array}
-					\end{equation}
-					\caption{Formulación de Redes para els \emph{problema del viajante (TSP)}.}
-					\label{eq:tsp_redes}
-				\end{eqfloat}
+			\begin{eqfloat}
+				\begin{equation}
+					\begin{array}{ll@{}ll}
+						\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}\sum\limits_{j}^{n} & d_{ij}x_{ij} &\\
+						\text{sujeto a}		& \displaystyle\sum\limits_{i = 1}^{n}	&	x_{ij} 	= 1,  & \forall j \in \{1,...,n\} \\
+															& \displaystyle\sum\limits_{j = 1}^{n}	&	x_{ij} 	= 1,  & \forall i \in \{1,...,n\} \\
+															& 				&	u_i - u_j + n x_{ij}	\leq n-1,  & \forall i, j \in \{2,...,n\}, i \neq j \\
+															&                               &	u_{i} \in \{2,...,n\}, 		& \forall i \in \{2,...,n\} \\
+															&                               &	u_{1}  = 1, 	& \\
+															&                               &	x_{ij} \in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
+					\end{array}
+				\end{equation}
+				\caption{Formulación de Tucker-Miller para el \emph{problema del viajante (TSP)}.}
+				\label{eq:tsp_tm}
+			\end{eqfloat}
 
+
+			\paragraph{}
+			La resolución del problema del viajante mediante la optimización exacta de los modelos descritos anteriormente conlleva un gran coste computacional derivado de la dificultad por la explosión combinatoria que se produce cuando el número de nodos del conjunto de datos crece. Por lo tanto, existen alternativas que ofrecen resultados aproximados mediante distintas heurísticas que reducen de manera drástica el tiempo de cómputo. Entre ellas se encuentran la heurística del \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}, que se describen a continuación.
 
 		\subsection{Estrategia Entorno más Cercano}
 
 			\paragraph{}
-			[TODO ]
+			La heurística del entorno más cercano se muestra en la figura \ref{code:tsp-greedy}. Consiste en una estrategia iterativa que trata de minimizar el error relativo durante cada iteracción (seleccionando el nodo más cercano al actual) hasta formar un camino que visite todos los nodos del conjunto de datos.
 
 			\begin{figure}
 	      \centering
@@ -113,7 +116,7 @@
 		\subsection{Estrategia 2-OPT}
 
 			\paragraph{}
-			[TODO ]
+			La herística 2-opt se muestra en la figura \ref{code:tsp-2-opt}. Esta estrategia consiste en una mejora sobre la del entorno más cercano, que se apoya en una solución inicial de la misma para después tratar de mejorarla buscando la minimización de la distancia total mediante el intercambio de índices entre los nodos del camino. Se realiza dicha acción hasta que el camino no se puede minimizar más mediante dicha estrategia (por entrar en un mínimo local).
 
 			\begin{figure}
 	      \centering
@@ -167,7 +170,7 @@
 				\end{array}
 			\end{equation}
 			\caption{Formulación de Tucker-Miller para el \emph{problema del viajante con ventana de tiempo (TSPTW)}.}
-			\label{eq:tsp_tm}
+			\label{eq:tsptw_tm}
 		\end{eqfloat}
 
 	\section{Resolución de Problemas}
