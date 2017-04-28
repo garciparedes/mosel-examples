@@ -35,7 +35,7 @@
 		El \emph{Problema del Viajante} (o \emph{Travelling Salesman Problem (TSP)} en inglés) consiste en la búsqueda del camino más corto necesario para visitar un conjunto de $n$ nodos separados entre si por unas determinadas distancias $d_ij$. Esto es equivalente a la generación del ciclo hamiltoniano en un grafo cuyas aristas tienen determinados pesos (las distancias).
 
 		\paragraph{}
-		Para resolver este problema existen distintas formulaciones para su resolución de manera exacta, entre las que se encuentran la formulación estandar de la ecuación \eqref{eq:tsp_basic}, la formulación de \emph{Tucker-Miller} descrita en la ecuación \eqref{eq:tsp_tm} o la resolución mediante el apoyo en un modelo de redes complementario tal y como se muestra en la ecuación \eqref{eq:tsp_redes}.
+		Para resolver este problema existen distintas formulaciones de manera exacta, entre las que se encuentran la formulación estandar de la ecuación \eqref{eq:tsp_basic}, la formulación de \emph{Tucker-Miller} descrita en la ecuación \eqref{eq:tsp_tm} o la resolución mediante el apoyo en un modelo de redes complementario tal y como se muestra en la ecuación \eqref{eq:tsp_redes}.
 
 		\subsection{Formulaciones Exactas}
 
@@ -128,7 +128,7 @@
 		\subsection{Estrategia GRASP}
 
 			\paragraph{}
-			[TODO ]
+			La heurística GRASP se muestra en la figura \ref{code:tsp-grasp}. Esta se apoya en las estrategias anteriores pero añade aleatoriedad en el punto de selección del nodo más próximo, selecionando uno al azar de entre los $k$ más próximos. Para mejorar la precisión en los resultados realiza esta acción durante $N$ iteracciónes y selecciona el camino que minimiza la distancia de entre totas las soluciones obtenidas.
 
 			\begin{figure}
 				\centering
@@ -140,7 +140,7 @@
 		\subsection{Estrategia Simulated Anneling}
 
 			\paragraph{}
-			[TODO ]
+			La heurística Simulated Anneling se muestra en la figura \ref{code:tsp-simulated-anneling}. Dicha estrategia es similar a la $2-opt$ descrita anteriormente. Sin embargo, esta se apoya en ideas extraídas del sector de la metalurgia, en el cual se realiza un enfriamiento de manera suavizada de los metales para tratar de mejorar su resistencia. En este caso se seleccionan dos nodos al azar y se intercambian los nodos subsiguientes a estos. Este cambio se fija si se reduce la distancia global del camino o de manera aleatoria en el caso de que no sea así. La probabilidad de que se cambie aleatoriamente se va decrementando mediante un determinado factor llamado temperatura.
 
 			\begin{figure}
 	      \centering
@@ -152,7 +152,7 @@
 	\section{Problema del Viajante con Ventana de Tiempo (TSPTW)}
 
 		\paragraph{}
-		[TODO ]
+		El problema del viajante con ventana de tiempo consiste en una variación respecto del problema básico que añade la restricción de visitar a los nodos en un determinado intervalo de tiempo prefijado mediante los valores $[a_i, b_i]$ para cada nodo. En la ecuación \eqref{eq:tsptw_tm} se muestra una modelización para dicho problema. Nótese que en este caso se ha utilizado como problema base la formulación descrita por Tucker-Miller para el problema del viajante, al cual se le han añadido las pertinentes restricciones para que se cumplan las ventanas de tiempo. Esto se ha llevado a cabo añadiento las variables de decisión $\beta_i$ de carácter real positivo, que se corresponden con el momento en que el nodo $i$ será visitado.
 
 		\begin{eqfloat}
 			\begin{equation}
