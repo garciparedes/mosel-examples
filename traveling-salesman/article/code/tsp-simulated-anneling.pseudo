@@ -1,0 +1,16 @@
+camino <- 'solucion inicial mediante entorno mas cercano'
+DO
+    nuevo_camino <- 'buscar solucion aleatoria
+                    intercambiando 2 índices del camino'
+    IF nuevo_camino != camino THEN
+        camino_siguiente <- nuevo_camino
+    END
+    IF nuevo_camino < camino THEN
+        camino <- nuevo_camino
+    ELSE
+        IF THEN
+            camino_siguiente  <- nuevo_camino
+        ELSE
+    END
+    temp <- 'reducir temperatura'
+WHILE NOT 'condición de parada'

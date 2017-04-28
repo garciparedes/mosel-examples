@@ -1,0 +1,11 @@
+camino <- 'solucion inicial mediante entorno mas cercano'
+DO
+    nuevo_camino <- 'buscar solucion que más reduce la distancia
+                    intercambiando 2 índices del camino'
+    IF nuevo_camino != camino THEN
+        camino <- nuevo_camino
+        mejora <- true
+    ELSE
+        mejora <- false
+    END
+WHILE mejora = true

@@ -1,0 +1,9 @@
+FORALL n DO
+    nuevo_camino <- 'solución inicial mediante 2-opt modificando
+                    la fase de selección del nodo más cercano
+                    seleccionándolo aleatoriamente de entre los
+                    k más cercanos sin visitar'
+    IF nuevo_camino != camino THEN
+        camino <- nuevo_camino
+    ELSE
+END

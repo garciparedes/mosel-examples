@@ -1,0 +1,7 @@
+actual <- 'nodo de forma aleatoria'
+FORALL nodes DO
+    visitado <- visitado U actual
+    selected <- 'nodo más cercano a "actual" y no visitado'
+    camino <- camino U (current, selected)
+    actual <- selected
+END
