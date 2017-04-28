@@ -104,26 +104,53 @@
 				\end{eqfloat}
 
 
-		\subsection{Estrategia Greedy}
+		\subsection{Estrategia Entorno más Cercano}
 
 			\paragraph{}
 			[TODO ]
 
+			\begin{figure}
+	      \centering
+	      \BVerbatimInput{code/tsp-greedy.pseudo}
+	      \caption{Heurística del \emph{Entorno más Cercano}}
+	      \label{code:tsp-greedy}
+	    \end{figure}
 
 		\subsection{Estrategia 2-OPT}
 
 			\paragraph{}
 			[TODO ]
 
+			\begin{figure}
+	      \centering
+	      \BVerbatimInput{code/tsp-2-opt.pseudo}
+	      \caption{Heurística \emph{2-opt}}
+	      \label{code:tsp-2-opt}
+	    \end{figure}
+
 		\subsection{Estrategia GRASP}
 
 			\paragraph{}
 			[TODO ]
 
+			\begin{figure}
+				\centering
+				\BVerbatimInput{code/tsp-grasp.pseudo}
+				\caption{Heurística \emph{GRASP}}
+				\label{code:tsp-grasp}
+			\end{figure}
+
 		\subsection{Estrategia Simulated Anneling}
 
 			\paragraph{}
 			[TODO ]
+
+			\begin{figure}
+	      \centering
+	      \BVerbatimInput{code/tsp-simulated-anneling.pseudo}
+				\caption{Heurística \emph{Simulated Anneling}}
+	      \label{code:tsp-simulated-anneling}
+	    \end{figure}
 
 	\section{Problema del Viajante con Ventana de Tiempo (TSPTW)}
 
@@ -182,7 +209,7 @@
 				\begin{subfigure}{.4\textwidth}
 					\centering
 					\includegraphics[width=\linewidth]{results-burma14-redes}
-					\caption{Solución \emph{Greedy (Redes)}}
+					\caption{Solución \emph{Entorno más Cercano (Redes)}}
 				\end{subfigure}
 				\caption{Representación gráfica de las distintas soluciones para el conjunto de datos \emph{burma14}}
 				\label{fig:sol-burma14}
@@ -210,7 +237,7 @@
 		\subsection{n21\_1}
 
 			\paragraph{}
-			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_1}.
+			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_1}.
 
 			\begin{table}[H]
 				\centering
@@ -228,7 +255,7 @@
 		\subsection{n21\_2}
 
 			\paragraph{}
-			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_2}.
+			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_2}.
 
 			\begin{table}[H]
 				\centering
@@ -246,7 +273,7 @@
 		\subsection{n21\_3}
 
 			\paragraph{}
-			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_3}.
+			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_3}.
 
 			\begin{table}[H]
 				\centering
@@ -264,7 +291,7 @@
 		\subsection{n21\_4}
 
 			\paragraph{}
-			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_4}.
+			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_4}.
 
 			\begin{table}[H]
 				\centering
@@ -282,7 +309,7 @@
 		\subsection{n21\_5}
 
 			\paragraph{}
-			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_5}.
+			El conjunto de datos está formado por la matriz de distancias de $21$ nodos. En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. Los resultados se muestran en la tabla \ref{table:sol-n21_5}.
 
 			\begin{table}[H]
 				\centering
@@ -300,7 +327,7 @@
 		\subsection{tsp\_60\_1}
 
 			\paragraph{}
-			El conjunto de datos está formado por las coordenadas de $60$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_60_1} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_60_1} se muestra la representación gráfica.
+			El conjunto de datos está formado por las coordenadas de $60$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_60_1} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_60_1} se muestra la representación gráfica.
 
 			\begin{table}[H]
 				\centering
@@ -320,13 +347,13 @@
 				\centering
 				\begin{subfigure}{.4\textwidth}
 					\centering
-					%\includegraphics[width=\linewidth]{results-tsp_60_1-exact}
+					\includegraphics[width=\linewidth]{results-tsp_60_1-exact}
 					\caption{Solución \emph{Exacta}}
 				\end{subfigure} \
 				\begin{subfigure}{.4\textwidth}
 					\centering
 					\includegraphics[width=\linewidth]{results-tsp_60_1-greedy}
-					\caption{Solución \emph{Greedy}}
+					\caption{Solución \emph{Entorno más Cercano}}
 				\end{subfigure} \\
 				\begin{subfigure}{.4\textwidth}
 					\centering
@@ -351,7 +378,7 @@
 		\subsection{tsp\_60\_2}
 
 			\paragraph{}
-			El conjunto de datos está formado por las coordenadas de $60$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_60_2} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_60_2} se muestra la representación gráfica.
+			El conjunto de datos está formado por las coordenadas de $60$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_60_2} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_60_2} se muestra la representación gráfica.
 
 			\begin{table}[H]
 				\centering
@@ -370,13 +397,13 @@
 				\centering
 				\begin{subfigure}{.4\textwidth}
 					\centering
-					%\includegraphics[width=\linewidth]{results-tsp_60_2-exact}
+					\includegraphics[width=\linewidth]{results-tsp_60_2-exact}
 					\caption{Solución \emph{Exacta}}
 				\end{subfigure} \
 				\begin{subfigure}{.4\textwidth}
 					\centering
 					\includegraphics[width=\linewidth]{results-tsp_60_2-greedy}
-					\caption{Solución \emph{Greedy}}
+					\caption{Solución \emph{Entorno más Cercano}}
 				\end{subfigure} \\
 				\begin{subfigure}{.4\textwidth}
 					\centering
@@ -400,7 +427,7 @@
 		\subsection{tsp\_60\_3}
 
 			\paragraph{}
-			El conjunto de datos está formado por las coordenadas de $60$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_60_3} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_60_3} se muestra la representación gráfica.
+			El conjunto de datos está formado por las coordenadas de $60$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_60_3} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_60_3} se muestra la representación gráfica.
 
 			\begin{table}[H]
 				\centering
@@ -419,13 +446,13 @@
 				\centering
 				\begin{subfigure}{.4\textwidth}
 					\centering
-					%\includegraphics[width=\linewidth]{results-tsp_60_3-exact}
+					\includegraphics[width=\linewidth]{results-tsp_60_3-exact}
 					\caption{Solución \emph{Exacta}}
 				\end{subfigure} \
 				\begin{subfigure}{.4\textwidth}
 					\centering
 					\includegraphics[width=\linewidth]{results-tsp_60_3-greedy}
-					\caption{Solución \emph{Greedy}}
+					\caption{Solución \emph{Entorno más Cercano}}
 				\end{subfigure} \\
 				\begin{subfigure}{.4\textwidth}
 					\centering
@@ -449,7 +476,7 @@
 		\subsection{tsp\_100\_1}
 
 			\paragraph{}
-			El conjunto de datos está formado por las coordenadas de $100$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_100_1} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_100_1} se muestra la representación gráfica.
+			El conjunto de datos está formado por las coordenadas de $100$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_100_1} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_100_1} se muestra la representación gráfica.
 
 			\begin{table}[H]
 				\centering
@@ -468,13 +495,13 @@
 				\centering
 				\begin{subfigure}{.4\textwidth}
 					\centering
-					%\includegraphics[width=\linewidth]{results-tsp_100_1-exact}
+					\includegraphics[width=\linewidth]{results-tsp_100_1-exact}
 					\caption{Solución \emph{Exacta}}
 				\end{subfigure} \
 				\begin{subfigure}{.4\textwidth}
 					\centering
 					\includegraphics[width=\linewidth]{results-tsp_100_1-greedy}
-					\caption{Solución \emph{Greedy}}
+					\caption{Solución \emph{Entorno más Cercano}}
 				\end{subfigure} \\
 				\begin{subfigure}{.4\textwidth}
 					\centering
@@ -498,7 +525,7 @@
 		\subsection{tsp\_100\_2}
 
 			\paragraph{}
-			El conjunto de datos está formado por las coordenadas de $100$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_100_2} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_100_2} se muestra la representación gráfica.
+			El conjunto de datos está formado por las coordenadas de $100$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_100_2} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_100_2} se muestra la representación gráfica.
 
 			\begin{table}[H]
 				\centering
@@ -517,13 +544,13 @@
 				\centering
 				\begin{subfigure}{.4\textwidth}
 					\centering
-					%\includegraphics[width=\linewidth]{results-tsp_100_2-exact}
+					\includegraphics[width=\linewidth]{results-tsp_100_2-exact}
 					\caption{Solución \emph{Exacta}}
 				\end{subfigure} \
 				\begin{subfigure}{.4\textwidth}
 					\centering
 					\includegraphics[width=\linewidth]{results-tsp_100_2-greedy}
-					\caption{Solución \emph{Greedy}}
+					\caption{Solución \emph{Entorno más Cercano}}
 				\end{subfigure} \\
 				\begin{subfigure}{.4\textwidth}
 					\centering
@@ -547,7 +574,7 @@
 		\subsection{tsp\_100\_3}
 
 			\paragraph{}
-			El conjunto de datos está formado por las coordenadas de $100$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Greedy}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_100_3} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_100_3} se muestra la representación gráfica.
+			El conjunto de datos está formado por las coordenadas de $100$ nodos (por lo que es necesario calcular las distancias previamente). En este caso se ha resulto de manera exacta mediante la formulación de \emph{Tucker-Miller} y de manera aproximada mediante heurísticas \emph{Entorno más Cercano}, \emph{2-opt}, \emph{GRASP} y \emph{Simulated Anneling}. En la tabla \ref{table:sol-tsp_100_3} se muestran los resultados de forma numérica mientras que en la figura \ref{fig:sol-tsp_100_3} se muestra la representación gráfica.
 
 			\begin{table}[H]
 				\centering
@@ -566,13 +593,13 @@
 				\centering
 				\begin{subfigure}{.4\textwidth}
 					\centering
-					%\includegraphics[width=\linewidth]{results-tsp_100_3-exact}
+					\includegraphics[width=\linewidth]{results-tsp_100_3-exact}
 					\caption{Solución \emph{Exacta}}
 				\end{subfigure} \
 				\begin{subfigure}{.4\textwidth}
 					\centering
 					\includegraphics[width=\linewidth]{results-tsp_100_3-greedy}
-					\caption{Solución \emph{Greedy}}
+					\caption{Solución \emph{Entorno más Cercano}}
 				\end{subfigure} \\
 				\begin{subfigure}{.4\textwidth}
 					\centering
