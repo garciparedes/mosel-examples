@@ -3,7 +3,7 @@ model ModelName
 	uses "mmive"
 	
 	declarations
-		file_name 	= "E021-04m.dat"
+		file_name 	= "gasoleos.dat"
 		n:			integer
 		min_v:		integer
 		capacity:	integer
@@ -28,11 +28,11 @@ model ModelName
 	end-declarations
 
 	initializations from file_name
-		coords
+		d
 	end-initializations
 	
 	forall(i, j in nodes) do
-		d(i,j) :=  round(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
+		!d(i,j) :=  round(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
 		s(i, j) := d(1, i) + d(1, j) - d(i, j)
 	end-do
 	
@@ -48,19 +48,15 @@ model ModelName
 	k := 1
 	forall(ii, jj in nodes | ii <> jj) do
 		aux_2 := - MAX_INT
-		forall(i, j in nodes | i <> j and sum(iii in nodes) x(i, iii) = 1 and  sum(iii in nodes) x(iii,j) = 1) do
-			if(s(i,j) > aux_2 and s(i,j) < aux_1) then
+		forall(i, j in nodes | i <> j  ) do
+			if(s(i,j) > aux_2 and i > 1 and j >1 and s(i,j) < aux_1 and x(i, 1) = 1 and  x(1,j) = 1) then
 				aux_2 := s(i,j)
 				s_i := i
 				s_j := j
 			end-if
 		end-do
 		aux_1 := s(s_i,s_j)
-		s_sort(k, 1) := s_i
-		s_sort(k, 2) := s_j
-		k := k + 1
-		!s(s_i, s_j)
-		!writeln(s_i," ", s_j, " --> ", aux_1)
+		writeln(s_i," ", s_j, " --> ", aux_1)
 		x(s_i,1) := 0
 		x(1,s_j) := 0
 		x(s_i,s_j) := 1
