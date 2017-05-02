@@ -3,7 +3,7 @@ model ModelName
 	uses "mmive"
 	
 	declarations
-		file_name 	= "E021-04m.dat"
+		file_name 	= "E026-08m.dat"
 		n:			integer
 		min_v:		integer
 		capacity:	integer
