@@ -1,0 +1,52 @@
+model ""
+	uses "mmxprs";
+	setparam("XPRS_MAXTIME", 60)
+
+	declarations
+		file_name 	= "example.dat"
+		t:			integer
+	end-declarations
+
+	initializations from file_name
+		t
+	end-initializations
+
+	declarations
+		tasks 		= 1..t
+		p:			array(tasks) of real
+		d:			array(tasks) of real
+		w:			array(tasks) of real
+		
+		x:			array(tasks) of mpvar
+		y:			array(tasks, tasks) of mpvar
+		s:			array(tasks) of mpvar
+		r:			array(tasks) of mpvar
+	end-declarations
+
+	initializations from file_name
+		p
+		d
+		w
+	end-initializations
+	
+	forall(i,j in tasks) y(i,j) is_binary
+
+	
+	forall(j in tasks)
+		res_1(j) := x(j) + p(j) +s(j) - r(j)
+	
+	
+	forall(i,j in tasks | i < j) do
+		res_2(i,j) := x(i) + p(i) - x(j) <= MAX_INT * (1 - y(i,j))
+		res_3(i,j) := x(j) + p(j) - x(i) <= MAX_INT * y(i,j)
+	end-do
+
+	obj := sum(j in tasks)
+		w(j) * r(j)
+	minimize(obj)
+	
+	writeln(getobjval)
+	forall(j in tasks) do
+		writeln("x(",j,") = ",x(j).sol)
+	end-do
+end-model
