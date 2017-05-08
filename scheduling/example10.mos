@@ -35,12 +35,13 @@ model ""
 	
 	forall(j in tasks) do
 		res_0(j) := x(j) >= r(j)
-		res_1(j) := x(j) + p(j) +s(j) - t(j)
+		res_1(j) := x(j) + p(j) + s(j) - t(j) = d(j)
 	end-do
 	
+	
 	forall(i,j in tasks | i < j) do
-		res_2(i,j) := x(i) + p(i) - x(j) <= MAX_INT * (1 - y(i,j))
-		res_3(i,j) := x(j) + p(j) - x(i) <= MAX_INT * y(i,j)
+		res_2(i,j) := x(i) + p(i) - x(j) <= 9999 * (1 - y(i,j))
+		res_3(i,j) := x(j) + p(j) - x(i) <= 9999 * y(i,j)
 	end-do
 
 	obj := sum(j in tasks)
