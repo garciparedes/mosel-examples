@@ -104,7 +104,7 @@ model ModelName
 	writeln("edges: ")
 	forall(i in nodes) do
 		forall(j in nodes | x(i,j) = 1) do
-			writeln("(", i, ", ", j, ") ->", r(j))
+			writeln("(", i, ", ", j, ")")
 		end-do
 	end-do
 	vehicles := sum(i in nodes) x(1,i)
