@@ -33,6 +33,8 @@ model ModelName
 	forall(i, j in nodes)
 		d(i,j) :=  round(sqrt((coords(i,2) - coords(j,2))^2 + (coords(i,3) - coords(j,3))^2))
 
+	forall(i in nodes)
+	 	d(i,i) := MAX_INT
 
 	forall(i in nodes | i > 1)
 		res_j(i) := sum(j in nodes) x(i,j) = 1
