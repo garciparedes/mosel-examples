@@ -37,14 +37,39 @@
 
 		\subsection{Modelización Exacta}
 		\label{sec:exact_formulation}
+
 			\paragraph{}
 			[TODO ]
+
+			\begin{eqfloat}
+				\begin{equation}
+					\begin{array}{ll@{}ll}
+						\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}	\sum\limits_{j}^{n} & d_{ij}x_{ij} & \\
+						\text{sujeto a}		& \displaystyle\sum\limits_{i = 0}^{n}	&	x_{ij} 	= 1, 	& \forall j \in \{1,...,n\}\\
+															& \displaystyle\sum\limits_{j = 0}^{n}	&	x_{ij} 	= 1,	& \forall i \in \{1,...,n\}\\
+															& \displaystyle\sum\limits_{j = 0}^{n}	&	y_{ij} - \displaystyle\sum\limits_{j = 0}^{n}	y_{ji} = -dem(i),  & \forall i \in \{1,...,n\}\\
+															& \displaystyle\sum\limits_{j = 0}^{n}	&	y_{1j} - \displaystyle\sum\limits_{j = 0}^{n}	y_{j1} = -dem(i)	= \displaystyle\sum\limits_{j = 0}^{n} dem(j),  &\\
+															&																				&	y_{ij} 	\leq capacity * x_{ij},  & \forall i,j \in \{0,...,n\}\\
+															&                               				&	y_{ij} 	\geq 0, 	& \forall i,j \in \{1,...,n\} \\
+															&                               				&	x_{ij} 	\in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
+					\end{array}
+				\end{equation}
+				\caption{Formulación estándar para el \emph{problema del viajante (TSP)}.}
+				\label{eq:tsp_basic}
+			\end{eqfloat}
 
 		\subsection{Heurística de Clarke y Wright}
 		\label{sec:clarke_wright}
+
 			\paragraph{}
 			[TODO ]
 
+			\begin{figure}
+	      \centering
+	      \BVerbatimInput{code/clarke-wright.pseudo}
+	      \caption{Heurística de \emph{Heurística de Clarke y Wright}}
+	      \label{code:clarke_wright}
+	    \end{figure}
 
 	\section{Resolución de Problemas}
 
@@ -70,7 +95,7 @@
 					{\\\hline\method&\vehicles&\distance&\path}
 					\\\hline
 				\end{tabu}
-				\caption{[TODO ]}
+				\caption{Resultados para el \emph{problema de rutado de vehículos capacitado (CVRP)} sobre el conjunto de datos \emph{Residuos}}
 				\label{table:sol-residuos}
 			\end{table}
 
@@ -89,7 +114,7 @@
 					{\\\hline\method&\vehicles&\distance&\path}
 					\\\hline
 				\end{tabu}
-				\caption{[TODO ]}
+				\caption{Resultados para el \emph{problema de rutado de vehículos capacitado (CVRP)} sobre el conjunto de datos \emph{Gasóleos}}
 				\label{table:sol-gasoleos}
 			\end{table}
 
@@ -112,7 +137,7 @@
 					\includegraphics[width=\linewidth]{E021-04m-clarke-wright}
 					\caption{Solución \emph{Clarke y Wright}}
 				\end{subfigure}
-				\caption{[TODO ]}
+				\caption{Resultados para el \emph{problema de rutado de vehículos capacitado (CVRP)} sobre el conjunto de datos \emph{E021-04m}}
 				\label{fig:sol-e021-04m}
 			\end{figure}
 
@@ -125,7 +150,7 @@
 					{\\\hline\method&\vehicles&\distance&\path}
 					\\\hline
 				\end{tabu}
-				\caption{[TODO ]}
+				\caption{Resultados para el \emph{problema de rutado de vehículos capacitado (CVRP)} sobre el conjunto de datos \emph{E021-04m}}
 				\label{table:sol-e021-04m}
 			\end{table}
 
@@ -147,7 +172,7 @@
 					\includegraphics[width=\linewidth]{E026-08m-clarke-wright}
 					\caption{Solución \emph{Clarke y Wright}}
 				\end{subfigure}
-				\caption{[TODO ]}
+				\caption{Resultados para el \emph{problema de rutado de vehículos capacitado (CVRP)} sobre el conjunto de datos \emph{E026-08m}}
 				\label{fig:sol-e026-08m}
 			\end{figure}
 
@@ -160,7 +185,7 @@
 					{\\\hline\method&\vehicles&\distance&\path}
 					\\\hline
 				\end{tabu}
-				\caption{[TODO ]}
+				\caption{Resultados para el \emph{problema de rutado de vehículos capacitado (CVRP)} sobre el conjunto de datos \emph{E026-08m}}
 				\label{table:sol-e026-08m}
 			\end{table}
 
@@ -182,7 +207,7 @@
 					\includegraphics[width=\linewidth]{e051-05e-clarke-wright}
 					\caption{Solución \emph{Clarke y Wright}}
 				\end{subfigure}
-				\caption{[TODO ]}
+				\caption{Resultados para el \emph{problema de rutado de vehículos capacitado (CVRP)} sobre el conjunto de datos \emph{E051-05e}}
 				\label{fig:sol-e051-05e}
 			\end{figure}
 
@@ -195,7 +220,7 @@
 					{\\\hline\method&\vehicles&\distance&\path}
 					\\\hline
 				\end{tabu}
-				\caption{[TODO ]}
+				\caption{Resultados para el \emph{problema de rutado de vehículos capacitado (CVRP)} sobre el conjunto de datos \emph{E051-05e}}
 				\label{table:sol-e051-05e}
 			\end{table}
 
@@ -217,7 +242,7 @@
 					\includegraphics[width=\linewidth]{E076-10e-clarke-wright}
 					\caption{Solución \emph{Clarke y Wright}}
 				\end{subfigure}
-				\caption{[TODO ]}
+				\caption{Resultados para el \emph{problema de rutado de vehículos capacitado (CVRP)} sobre el conjunto de datos \emph{E076-10e}}
 				\label{fig:sol-e076-10e}
 			\end{figure}
 
@@ -230,7 +255,7 @@
 					{\\\hline\method&\vehicles&\distance&\path}
 					\\\hline
 				\end{tabu}
-				\caption{[TODO ]}
+				\caption{Resultados para el \emph{problema de rutado de vehículos capacitado (CVRP)} sobre el conjunto de datos \emph{E076-10e}}
 				\label{table:sol-e076-10e}
 			\end{table}
 

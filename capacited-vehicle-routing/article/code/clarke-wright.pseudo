@@ -1,0 +1,22 @@
+FORALL i,j DO
+    s(i,j) <- C(i,0) + C(0,j) - C(i,j)
+END
+FORALL i DO
+    R <- R U {(0,i) , (i,0)}
+END
+WHILE (old_dist <= new_dist DO
+    old_dist <- distance(R)
+    FORALL i,j DO
+        aux <- INFINITE
+        IF  i, j NOT IN same route  AND
+            distance(i,j) < aux THEN
+
+            aux <- distance(i,j)
+            saved_i <- i
+            saved_j <- j
+        END
+    END
+    R <- R - {(i,0), (0,j)}
+    R <- R U {(i,j)}
+    new_dist <- distance(R)
+end-do
