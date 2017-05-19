@@ -36,24 +36,32 @@
 		[TODO ]
 
 		\subsection{Modelización Exacta}
-
+		\label{sec:exact_formulation}
 			\paragraph{}
 			[TODO ]
 
 		\subsection{Heurística de Clarke y Wright}
-
+		\label{sec:clarke_wright}
 			\paragraph{}
 			[TODO ]
 
 
 	\section{Resolución de Problemas}
 
+		\paragraph{}
+		En esta sección se presentan los resultados obtenidos tras resolver el \emph{problema de enrutamiento de vehículos capacitado} (CVPR) sobre distintos conjuntos de datos de entrada. Dichos resultados se han agrupado por problema en lugar de por estrategia de resolución, lo cual permite comparar de manera más simple cada una de ellas. En algunos casos estos conjuntos de datos se corresponden con coordenadas cartesianas, para lo cual es necesario calcular la distancias entre cada par de puntos. La ventaja de la representación mediante coordenadas es la posibilidad de representación gráfica de la solución. Sin embargo, en otros casos tan solo se suministran las distancias, por lo que la representación gráfica no es posible.
+
+		\paragraph{}
+		Estos problemas han sido resueltos a partir de las dos estrategias descritas en la sección anterior, es decir, mediante su modelo exacto (utilizando la herramienta de resolución de problemas de programación lineal \emph{Xpress-Mosel}\cite{tool:xpress-mosel} restringiendo la ejecución a 100 segundos) y mediante la heurística de \emph{Clarke-Right} implementada de forma manual en dicho lenguaje.
+
+
 		\subsection{Residuos}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por la matriz de distancias entre $13$ nodos, refiriendose el primero de ellos al nodo fuente u origen. Además se proporciona la demanda del resto de nodos junto con la capacidad máxima para cada vehículo ($6000$ unidades). En este caso se ha resulto de manera exacta mediante la formulación descrita en la sección \ref{sec:exact_formulation} y de manera aproximada a partir de la heurística de \emph{Clarke-Wright} mediante la implementación que se muestra en la sección \ref{sec:clarke_wright}. Los resultados se muestran en la tabla \ref{table:sol-residuos}.
 
-			\begin{table}[H]
+
+			\begin{table}[h]
 				\centering
 				\begin{tabu}{ | c | c | c | p{.58\linewidth} |}
 					\hline
@@ -69,9 +77,10 @@
 		\subsection{Gasóleos}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por la matriz de distancias entre $7$ nodos, refiriendose el primero de ellos al nodo fuente u origen. Además se proporciona la demanda del resto de nodos junto con la capacidad máxima para cada vehículo ($39000$ unidades). En este caso se ha resulto de manera exacta mediante la formulación descrita en la sección \ref{sec:exact_formulation} y de manera aproximada a partir de la heurística de \emph{Clarke-Wright} mediante la implementación que se muestra en la sección \ref{sec:clarke_wright}. Los resultados se muestran en la tabla \ref{table:sol-gasoleos}.
 
-			\begin{table}[H]
+
+			\begin{table}[h]
 				\centering
 				\begin{tabu}{ | c | c | c | p{.58\linewidth} |}
 					\hline
@@ -88,7 +97,8 @@
 		\subsection{E021-04m}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por las coordenadas referidas a $21$ nodos, refiriendose el primero de ellos al nodo fuente u origen. Además se proporciona la demanda del resto de nodos junto con la capacidad máxima para cada vehículo ($85$ unidades) así como el número mínimo de ellos ($4$ vehículos) para resolver el problema. En este caso se ha resulto de manera exacta mediante la formulación descrita en la sección \ref{sec:exact_formulation} y de manera aproximada a partir de la heurística de \emph{Clarke-Wright} mediante la implementación que se muestra en la sección \ref{sec:clarke_wright}. Los resultados se muestran en la tabla \ref{table:sol-e021-04m}. Puesto que en este caso los datos se refieren a un problema euclídeo (con coordenadas) la representación gráfica de las soluciones se muestran en la figura \ref{fig:sol-e021-04m}.
+
 
 			\begin{figure}[h]
 				\centering
@@ -106,7 +116,7 @@
 				\label{fig:sol-e021-04m}
 			\end{figure}
 
-			\begin{table}[H]
+			\begin{table}[h]
 				\centering
 				\begin{tabu}{ | c | c | c | p{.58\linewidth} |}
 					\hline
@@ -123,7 +133,7 @@
 		\subsection{E026-08m}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por las coordenadas referidas a $26$ nodos, refiriendose el primero de ellos al nodo fuente u origen. Además se proporciona la demanda del resto de nodos junto con la capacidad máxima para cada vehículo ($48$ unidades) así como el número mínimo de ellos ($8$ vehículos) para resolver el problema. En este caso se ha resulto de manera exacta mediante la formulación descrita en la sección \ref{sec:exact_formulation} y de manera aproximada a partir de la heurística de \emph{Clarke-Wright} mediante la implementación que se muestra en la sección \ref{sec:clarke_wright}. Los resultados se muestran en la tabla \ref{table:sol-e026-08m}. Puesto que en este caso los datos se refieren a un problema euclídeo (con coordenadas) la representación gráfica de las soluciones se muestran en la figura \ref{fig:sol-e026-08m}.
 
 			\begin{figure}[h]
 				\centering
@@ -141,7 +151,7 @@
 				\label{fig:sol-e026-08m}
 			\end{figure}
 
-			\begin{table}[H]
+			\begin{table}[h]
 				\centering
 				\begin{tabu}{ | c | c | c | p{.58\linewidth} |}
 					\hline
@@ -157,7 +167,8 @@
 		\subsection{E051-05e}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por las coordenadas referidas a $51$ nodos, refiriendose el primero de ellos al nodo fuente u origen. Además se proporciona la demanda del resto de nodos junto con la capacidad máxima para cada vehículo ($160$ unidades) así como el número mínimo de ellos ($5$ vehículos) para resolver el problema. En este caso se ha resulto de manera exacta mediante la formulación descrita en la sección \ref{sec:exact_formulation} y de manera aproximada a partir de la heurística de \emph{Clarke-Wright} mediante la implementación que se muestra en la sección \ref{sec:clarke_wright}. Los resultados se muestran en la tabla \ref{table:sol-e051-05e}. Puesto que en este caso los datos se refieren a un problema euclídeo (con coordenadas) la representación gráfica de las soluciones se muestran en la figura \ref{fig:sol-e051-05e}.
+
 
 			\begin{figure}[h]
 				\centering
@@ -175,7 +186,7 @@
 				\label{fig:sol-e051-05e}
 			\end{figure}
 
-			\begin{table}[H]
+			\begin{table}[h]
 				\centering
 				\begin{tabu}{ | c | c | c | p{.58\linewidth} |}
 					\hline
@@ -191,7 +202,8 @@
 		\subsection{E076-10e}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por las coordenadas referidas a $76$ nodos, refiriendose el primero de ellos al nodo fuente u origen. Además se proporciona la demanda del resto de nodos junto con la capacidad máxima para cada vehículo ($140$ unidades) así como el número mínimo de ellos ($10$ vehículos) para resolver el problema. En este caso se ha resulto de manera exacta mediante la formulación descrita en la sección \ref{sec:exact_formulation} y de manera aproximada a partir de la heurística de \emph{Clarke-Wright} mediante la implementación que se muestra en la sección \ref{sec:clarke_wright}. Los resultados se muestran en la tabla \ref{table:sol-e076-10e}. Puesto que en este caso los datos se refieren a un problema euclídeo (con coordenadas) la representación gráfica de las soluciones se muestran en la figura \ref{fig:sol-e076-10e}.
+
 
 			\begin{figure}[h]
 				\centering
@@ -209,7 +221,7 @@
 				\label{fig:sol-e076-10e}
 			\end{figure}
 
-			\begin{table}[H]
+			\begin{table}[h]
 				\centering
 				\begin{tabu}{ | c | c | c | p{.58\linewidth} |}
 					\hline
@@ -227,7 +239,7 @@
 %-----------------------------
 	\nocite{subject:mio}
 	\nocite{garciparedes:mosel-examples}
-	\bibliographystyle{acm}
+	\bibliographystyle{alpha}
   \bibliography{bib/misc}
 
 \end{document}
