@@ -1,17 +1,19 @@
 FORALL i,j DO
-    s(i,j) <- C(i,0) + C(0,j) - C(i,j)
+    s(i,j) <- d(i,0) + d(0,j) - d(i,j)
 END
 FORALL i DO
     R <- R U {(0,i) , (i,0)}
 END
-WHILE (old_dist <= new_dist DO
+WHILE (old_dist <= new_dist AND
+    min_vehicles <= card(R) DO
     old_dist <- distance(R)
     FORALL i,j DO
         aux <- INFINITE
         IF  i, j NOT IN same route  AND
-            distance(i,j) < aux THEN
+            distance(R(i)) + distance(R(j)) <= capacity AND
+            s(i,j) < aux THEN
 
-            aux <- distance(i,j)
+            aux <- s(i,j)
             saved_i <- i
             saved_j <- j
         END

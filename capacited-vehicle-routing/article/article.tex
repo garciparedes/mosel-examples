@@ -22,7 +22,7 @@
 %-----------------------------
 
 	\begin{abstract}
-		\noindent [TODO ]
+		\noindent En este documento se describe el \emph{probleme de rutado de vehículos capacitado (CVRP)} a través de su modelización matemática mediante su formulación exacta para después describir la heurística diseñada por \emph{Clarke y Wright}. Dichas estrategias han sido implementadas en el lenguaje \emph{Xpress-Mosel} \cite{tool:xpress-mosel} para después resolver un conjunto de problemas a través de los cuales se puede apreciar las diferencias a nivel de resultados entre la solución exacta y el algoritmo de ahorros de \emph{Clarke y Wright}, cuyo coste computacional es mucho menor.
 	\end{abstract}
 
 %-----------------------------
@@ -33,20 +33,21 @@
 	\label{sec:intro}
 
 		\paragraph{}
-		[TODO ]
+		El problema de rutado de vehículos se define como un problema de optimización combinatoria en el cual se pretende encontrar la planificación óptima para dirigir las rutas de una flota de vehículos encargados de tranportar mercancías desde un punto de origen o punto de suministro hacia distintos puntos de servicio. En este problema se le pueden añadir una gran cantidad de variaciones como la necesidad de utilizar un número mínimo de vehículos o la limitación de la capacidad máxima que pueden transportar los mismos.
+
+		\paragraph{}
+		En este documento se describe el problema de rutado de vehículos capacitado, es decir, aquel en el cual se presupone que dichos vehículos presentan una capacidad máxima para la realización de una ruta. En la sección \ref{sec:exact_formulation} se describe la formulación exacta para este problema mientras que en la sección \ref{sec:clarke_wright} se presenta la heurística de \emph{Clarke y Wright}, que presenta resultados cercanos al óptimo en un gran número de ocasiones.
 
 		\subsection{Modelización Exacta}
 		\label{sec:exact_formulation}
-
-			\paragraph{}
-			[TODO ]
 
 			\begin{eqfloat}
 				\begin{equation}
 					\begin{array}{ll@{}ll}
 						\text{Minimizar}	& \displaystyle\sum\limits_{i = 1}^{n}	\sum\limits_{j}^{n} & d_{ij}x_{ij} & \\
-						\text{sujeto a}		& \displaystyle\sum\limits_{i = 0}^{n}	&	x_{ij} 	= 1, 	& \forall j \in \{1,...,n\}\\
-															& \displaystyle\sum\limits_{j = 0}^{n}	&	x_{ij} 	= 1,	& \forall i \in \{1,...,n\}\\
+						\text{sujeto a}		& \displaystyle\sum\limits_{i = 0}^{n}	&	x_{ij} 	= 1, 		& \forall j \in \{1,...,n\}\\
+															& \displaystyle\sum\limits_{j = 0}^{n}	&	x_{ij} 	= 1,		& \forall i \in \{1,...,n\}\\
+															& \displaystyle\sum\limits_{j = 1}^{n}	&	x_{0j} 	\geq min_vehicles,	&\\
 															& \displaystyle\sum\limits_{j = 0}^{n}	&	y_{ij} - \displaystyle\sum\limits_{j = 0}^{n}	y_{ji} = -dem(i),  & \forall i \in \{1,...,n\}\\
 															& \displaystyle\sum\limits_{j = 0}^{n}	&	y_{1j} - \displaystyle\sum\limits_{j = 0}^{n}	y_{j1} = -dem(i)	= \displaystyle\sum\limits_{j = 0}^{n} dem(j),  &\\
 															&																				&	y_{ij} 	\leq capacity * x_{ij},  & \forall i,j \in \{0,...,n\}\\
@@ -54,19 +55,28 @@
 															&                               				&	x_{ij} 	\in \{0,1\}, 	& \forall i,j \in \{1,...,n\}
 					\end{array}
 				\end{equation}
-				\caption{Formulación estándar para el \emph{problema del viajante (TSP)}.}
+				\caption{Formulación estándar para el \emph{problema de rutado de vehículos capacitado (CVRP)}.}
 				\label{eq:tsp_basic}
 			\end{eqfloat}
+
+			\paragraph{}
+			Para la modelización exacta se dice que existen n nodos que representan puntos de servicio a los cuales denotaremos a través del conjunto de índices ${1,2,...,n}$. Para representar el nodo referido al punto de suministro se utilizará el índice $0$. La distancia entre cada uno de los nodos se representa mediante la matriz de adjacencia $D$, cuyo tamaño es $n+1*n+1$ y se construye de tal manera que la posición $d_{ij}$ indica la distancia del nodo $i$ al nodo $j$. Para representa la demanda de los distintos puntos de servicio se utiliza el vector $DEM$, de dimensión $n$ que representa la demanda del punto de servicio $i$ en la posición $dem_i$. Por último, el número de vehículos mínimo se representa mediante el escalar $min_vehicles$ y la capacidad máxima de cada uno de ellos mediante el escalar $capacity$.
+
+			\paragraph{}
+			Para resolver este problema se propone la utilización de $2 * (n+1)^2$ variables denominando a estas tal y como se describe a continuación. Se utilizan $(n+1)^2$ de tipo binario distribuidas en forma de matriz cuadrada y denominadas $x_{ij}$ de tal manera que se representa si existe un camino desde el nodo $i$ al nodo $j$. El resto de variables ( $(n+1)^2$) se refieren a variables continuas estrictamente positivas, distribuidas de la misma forma y denotadas como $y_{ij}$. Estas variables se utilizan para representar la capacidad restante dentro del vehículo tras haber haber realizado la ruta del vehículo $i$ y añadir el arco $(i,j)$ a la misma.
+
+			\paragraph{}
+			En la ecuación \eqref{eq:tsp_basic} se describe la formulación de programación lineal que modeliza el \emph{problema de rutado de vehículos capacitado (CVRP)}. Las restricciones indican la necesidad de que las rutas sean de carácter lineal y no se ramifiquen, así como las limitaciones de capacidad de cada ruta, el número mínimo de vehículos o la necesidad de cubrir todos los nodos.
 
 		\subsection{Heurística de Clarke y Wright}
 		\label{sec:clarke_wright}
 
 			\paragraph{}
-			[TODO ]
+			En esta sección se describe la heurística de \emph{Clarke y Wright} en el artículo \emph{Scheduling of Vehicles from a Central Depot to a Number of Delivery Points} \cite{clarke1964scheduling}. Dicha heurística se describe en la figura \ref{code:clarke_wright}. Se basa en la utilización de la matriz de ahorro $S$, que indica la redución de distancia tras la combinación de los nodos $i$ y $j$. Dicha matriz de ahorro se construye como ${s_{ij}=d_{i0}+d_{0j}-d_{ij}}$ para todo ${i,j=1,…,n}$. La idea es la de construir inicialmente una ruta para cada uno de los nodos de servicio desde el nodo de suministro para después combinar aquellos que produzcan una reducción de distancia del camino total.
 
 			\begin{figure}
 	      \centering
-	      \BVerbatimInput{code/clarke-wright.pseudo}
+	      \BVerbatimInput[fontsize=\footnotesize]{code/clarke-wright.pseudo}
 	      \caption{Heurística de \emph{Heurística de Clarke y Wright}}
 	      \label{code:clarke_wright}
 	    \end{figure}
