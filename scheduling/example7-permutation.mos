@@ -5,13 +5,16 @@ model ""
 	declarations
 		file_name 	= "example7.dat"
 		task:		integer
+		n: 			integer
 	end-declarations
 
 	initializations from file_name
 		task
+		n
 	end-initializations
 
 	declarations
+		n_iter		= 1..n
 		tasks 		= 1..task
 		p:			array(tasks) of integer
 		d:			array(tasks) of real
@@ -20,6 +23,9 @@ model ""
 		
 		x:			array(tasks) of integer
 		t:			array(tasks) of integer
+		
+		x_old:		array(tasks) of integer
+		
 	end-declarations
 
 	initializations from file_name
@@ -28,29 +34,47 @@ model ""
 		w
 	end-initializations
 	
-	forall(j in tasks) do
-		a := 0
-		aux := 0
-		while( a = 0 or aux = 1) do
+	delay_old := -1.0
+	forall(nn in n_iter) do
+		forall(j in tasks) x(j) := 0
+		forall(j in tasks) do
+			a := 0
 			aux := 0
-			a := ceil(random * task)
-			forall(jj in tasks | x(jj) = a) aux := 1 
+			while( a = 0 or aux = 1) do
+				aux := 0
+				a := ceil(random * task)
+				forall(jj in tasks | x(jj) = a) aux := 1 
+			end-do
+			x(j) := a
 		end-do
-		x(j) := a
+		
+		t(1) := p(x(1))
+		forall(j in tasks | j > 1) do
+			t(j) := t(j -1) + p(x(j))
+		end-do
+		
+		delay := 0.0
+		forall(j in tasks) do
+			if (t(j) > d(x(j))) then
+				delay := delay + (t(j) - d(x(j))) * w(x(j))
+			end-if
+		end-do
+		
+		if (delay_old = -1.0 or delay < delay_old) then
+			delay_old := delay
+			forall(j in tasks) x_old(j) := x(j)
+		end-if 
 	end-do
+	
+	delay := delay_old
+	forall(j in tasks) x(j) := x_old(j)
 	
 	t(1) := p(x(1))
 	forall(j in tasks | j > 1) do
 		t(j) := t(j -1) + p(x(j))
 	end-do
-	
-	delay := 0.0
-	forall(j in tasks) do
-		if (t(j) > d(x(j))) then
-			delay := delay + (t(j) - d(x(j))) * w(x(j))
-		end-if
-	end-do
-	
+		
+		
 	writeln(delay)
 	forall(j in tasks) do
 		writeln("x(",j,") = ",x(j),"\tt(",j,") = ",t(j))
