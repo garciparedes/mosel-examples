@@ -3,7 +3,7 @@ model ""
 	setparam("XPRS_MAXTIME", 60)
 
 	declarations
-		file_name 	= "example7.dat"
+		file_name 	= "sched_10_1.dat"
 		task:		integer
 		n: 			integer
 	end-declarations
@@ -16,6 +16,7 @@ model ""
 	declarations
 		n_iter		= 1..n
 		tasks 		= 1..task
+		raw:		array(tasks, 1..3) of integer
 		p:			array(tasks) of integer
 		d:			array(tasks) of real
 		w:			array(tasks) of real
@@ -30,10 +31,14 @@ model ""
 	end-declarations
 
 	initializations from file_name
-		p
-		d
-		w
+		raw
 	end-initializations
+
+	forall(j in tasks) do
+		p(j) := raw(j,1)
+		w(j) := raw(j,2)
+		d(j) := raw(j,3)
+	end-do
 
 	delay_old := -1.0
 	forall(nn in n_iter) do
