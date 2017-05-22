@@ -1,0 +1,59 @@
+model ""
+	uses "mmxprs";
+	setparam("XPRS_MAXTIME", 60)
+
+	declarations
+		file_name 	= "example7.dat"
+		task:		integer
+	end-declarations
+
+	initializations from file_name
+		task
+	end-initializations
+
+	declarations
+		tasks 		= 1..task
+		p:			array(tasks) of integer
+		d:			array(tasks) of real
+		w:			array(tasks) of real
+		r:			array(tasks) of real
+		
+		x:			array(tasks) of integer
+		t:			array(tasks) of integer
+	end-declarations
+
+	initializations from file_name
+		p
+		d
+		w
+	end-initializations
+	
+	forall(j in tasks) do
+		a := 0
+		aux := 0
+		while( a = 0 or aux = 1) do
+			aux := 0
+			a := ceil(random * task)
+			forall(jj in tasks | x(jj) = a) aux := 1 
+		end-do
+		x(j) := a
+	end-do
+	
+	t(1) := p(x(1))
+	forall(j in tasks | j > 1) do
+		t(j) := t(j -1) + p(x(j))
+	end-do
+	
+	delay := 0.0
+	forall(j in tasks) do
+		if (t(j) > d(x(j))) then
+			delay := delay + (t(j) - d(x(j))) * w(x(j))
+		end-if
+	end-do
+	
+	writeln(delay)
+	forall(j in tasks) do
+		writeln("x(",j,") = ",x(j),"\tt(",j,") = ",t(j))
+	end-do
+	
+end-model
