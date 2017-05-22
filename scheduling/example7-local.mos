@@ -1,0 +1,115 @@
+model ""
+	uses "mmxprs";
+	setparam("XPRS_MAXTIME", 60)
+
+	declarations
+		file_name 	= "example7.dat"
+		task:		integer
+		n: 			integer
+	end-declarations
+
+	initializations from file_name
+		task
+		n
+	end-initializations
+
+	declarations
+		n_iter		= 1..n
+		tasks 		= 1..task
+		p:			array(tasks) of integer
+		d:			array(tasks) of real
+		w:			array(tasks) of real
+		r:			array(tasks) of real
+		
+		x:			array(tasks) of integer
+		t:			array(tasks) of integer
+		
+		x_old:		array(tasks) of integer
+		x_copy:		array(tasks) of integer
+		t_copy:		array(tasks) of integer
+	end-declarations
+
+	initializations from file_name
+		p
+		d
+		w
+	end-initializations
+	
+	delay_old := -1.0
+	forall(nn in n_iter) do
+		forall(j in tasks) x(j) := 0
+		forall(j in tasks) do
+			a := 0
+			aux := 0
+			while( a = 0 or aux = 1) do
+				aux := 0
+				a := ceil(random * task)
+				forall(jj in tasks | x(jj) = a) aux := 1 
+			end-do
+			x(j) := a
+		end-do
+		
+		t(1) := p(x(1))
+		forall(j in tasks | j > 1) do
+			t(j) := t(j -1) + p(x(j))
+		end-do
+		
+		delay := 0.0
+		forall(j in tasks | t(j) > d(x(j))) do
+			delay := delay + (t(j) - d(x(j))) * w(x(j))
+		end-do
+		
+		flag := 1
+		while(flag = 1) do
+			flag :=0
+			forall(i,j in tasks | i <> j) do
+				forall(k in tasks) x_copy(k) := x(k)
+				
+				temp := x_copy(i)
+				x_copy(i) := x_copy(j)
+				x_copy(j) := temp
+				
+				t_copy(1) := p(x_copy(1))
+				forall(k in tasks | k > 1) do
+					t_copy(k) := t_copy(k -1) + p(x_copy(k))
+				end-do
+				
+				delay_copy := 0.0
+				forall(k in tasks | t_copy(k) > d(x_copy(k))) do
+					delay_copy := delay_copy + (t_copy(k) - d(x_copy(k))) * w(x_copy(k))
+				end-do
+				
+				if (delay_copy < delay) then
+					delay := delay_copy
+					s_i := i
+					s_j := j
+					flag := 1
+				end-if
+			end-do
+			temp := x(s_i)
+			x(s_i) := x(s_j)
+			x(s_j) := temp
+		end-do
+		
+		
+		if (delay_old = -1.0 or delay < delay_old) then
+			delay_old := delay
+			forall(j in tasks) x_old(j) := x(j)
+		end-if 
+	end-do
+	
+	delay := delay_old
+	forall(j in tasks) x(j) := x_old(j)
+	
+	t(1) := p(x(1))
+	forall(j in tasks | j > 1) do
+		t(j) := t(j -1) + p(x(j))
+	end-do
+		
+		
+	writeln(delay)
+	forall(j in tasks) do
+		writeln("x(",j,") = ",x(j),"\tt(",j,") = ",t(j))
+	end-do
+	
+end-model
