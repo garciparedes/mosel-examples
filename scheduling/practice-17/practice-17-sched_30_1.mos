@@ -3,7 +3,7 @@ model ""
 	setparam("XPRS_MAXTIME", 100)
 
 	declarations
-		file_name 	= "sched_10_1.dat"
+		file_name 	= "sched_30_1.dat"
 		t:			integer
 	end-declarations
 
