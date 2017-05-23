@@ -50,7 +50,7 @@ model ""
 		w(j) * r(j)
 	minimize(obj)
 
-	write('"Modelo Ddisyuntivo",', getobjval, ",")
+	write('"Disyuntivo",', getobjval, ",")
 	forall(j in tasks | x(j).sol > 0.95) do
 		write(j," ")
 	end-do
