@@ -79,9 +79,9 @@ model ""
 	end-do
 
 
-	writeln(delay)
+	write('"Seleccion aleatoria (', n,' iters)",', delay, ",")
 	forall(j in tasks) do
-		writeln("x(",j,") = ",x(j),"\tt(",j,") = ",t(j))
+	  	write(x(j)," ")
 	end-do
 
 end-model
