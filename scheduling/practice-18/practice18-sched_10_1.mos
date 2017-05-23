@@ -53,9 +53,9 @@ model ""
 	obj := sum(j in tasks, t in T_iter  | t <= T_max - p(j) + 1)
 		x(j, t) * w(j)*maxlist(0, t-1+p(j)-d(j))
 	minimize(obj)
-
-	writeln(getobjval)
-	forall(j in tasks, t in T_iter | x(j,t).sol = 1) do
-		writeln("x(",j,") = ",t-1)
+	
+	write('"Modelo Indices de Tiempo",', getobjval, ",")
+	forall(t in T_iter, j in tasks | x(j,t).sol > 0.95) do
+		write(j," ")
 	end-do
 end-model
