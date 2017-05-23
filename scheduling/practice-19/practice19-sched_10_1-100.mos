@@ -1,6 +1,4 @@
 model ""
-	uses "mmxprs";
-	setparam("XPRS_MAXTIME", 60)
 
 	declarations
 		file_name 	= "sched_10_1-100.dat"

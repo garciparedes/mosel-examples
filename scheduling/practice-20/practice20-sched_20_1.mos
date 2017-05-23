@@ -1,7 +1,7 @@
 model ""
 
 	declarations
-		file_name 	= "sched_10_1.dat"
+		file_name 	= "sched_20_1.dat"
 		task:		integer
 		n: 			integer
 	end-declarations
