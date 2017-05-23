@@ -50,8 +50,8 @@ model ""
 		w(j) * r(j)
 	minimize(obj)
 
-	writeln(getobjval)
-	forall(j in tasks) do
-		writeln("x(",j,") = ",x(j).sol)
+	write('"Modelo Ddisyuntivo",', getobjval, ",")
+	forall(j in tasks | x(j).sol > 0.95) do
+		write(j," ")
 	end-do
 end-model
