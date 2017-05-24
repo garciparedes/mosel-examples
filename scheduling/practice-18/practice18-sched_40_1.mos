@@ -37,7 +37,7 @@ model ""
 	end-declarations
 
 
-	forall(i,j in tasks) x(i,j) is_binary
+	forall(j in tasks, t in T_iter) x(j, t) is_binary
 
 
 	forall(j in tasks) do

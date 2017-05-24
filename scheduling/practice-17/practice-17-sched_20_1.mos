@@ -1,5 +1,6 @@
 model ""
 	uses "mmxprs";
+	uses "mmsystem";
 	setparam("XPRS_MAXTIME", 100)
 
 	declarations
@@ -50,8 +51,11 @@ model ""
 		w(j) * r(j)
 	minimize(obj)
 
+	forall(j in tasks) aux(j) := x(j).sol
+	qsort(true, aux)
+
 	write('"Disyuntivo",', getobjval, ",")
-	forall(j in tasks | x(j).sol > 0.95) do
+	forall(i, j in tasks | aux(i) = x(j).sol) do
 		write(j," ")
 	end-do
 end-model
