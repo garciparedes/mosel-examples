@@ -6,15 +6,15 @@ model ""
 
 	declarations
 		file_name 	= "sched_10_1.dat"
-		t:			integer
+		task:			integer
 	end-declarations
 
 	initializations from file_name
-		t
+		task
 	end-initializations
 
 	declarations
-		tasks 		= 1..t
+		tasks 		= 1..task
 		raw:		array(tasks, 1..3) of real
 		p:			array(tasks) of real
 		d:			array(tasks) of real
