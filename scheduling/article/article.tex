@@ -35,13 +35,42 @@
 		\paragraph{}
 		[TODO ]
 
+		\subsection{Modelo Disyuntivo}
+		\label{sec:disyuntive}
+
+			\paragraph{}
+			[TODO ]
+
+		\subsection{Modelo de Índices de Tiempo}
+		\label{sec:time-index}
+
+			\paragraph{}
+			[TODO ]
+
+
+		\subsection{Heurística de Selección Aleatoria}
+		\label{sec:random-heuristic}
+
+			\paragraph{}
+			[TODO ]
+
+		\subsection{Heurística de Búsqueda Local}
+		\label{sec:local-search-heuristic}
+
+			\paragraph{}
+			[TODO ]
+
+
 	\section{Resolución de Problemas}
 	\label{sec:problems}
+
+		\paragraph{}
+		En esta sección se presentan los resultados obtenidos tras resolver el \emph{problema de planificación de tareas} (Scheduling) con el objetivo de minimizar la tardanza ponderada sobre distintos conjuntos de datos de entrada. Dichos resultados se han agrupado por problema en lugar de por estrategia de resolución, lo cual permite comparar de manera más simple cada una de ellas.
 
 		\subsection{\texttt{sched\_10\_1}}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por los tiempos de procesado $p_j$, los costes de retraso $w_j$ por unidad de tiempoy el momento máximo de terminación $d_j$ a partir de los cuales se debn planificar \textbf{10 tareas} de tal manera que se minimice la tardanza ponderada total, es decir, la suma de todos los costes de retraso. El problema ha sido resuelteo a partir de las estrategias descritas anteriormente (\emph{Modelo Disyuntivo} en la sección \ref{sec:disyuntive},\emph{Modelo de Índices de Tiempo} en la sección \ref{sec:time-index}, \emph{Heurística de Selección Aleatoria} con $100$ y $1000$ iteraciones en la sección \ref{sec:random-heuristic} y \emph{Heurística de Búsqueda Local} con $1$ y $4$ iteracciones en la sección \ref{sec:local-search-heuristic} )
 
 			\begin{table}[h]
 				\centering
@@ -52,12 +81,12 @@
 					{\\\hline\model&\delay&\schedule}
 					\\\hline
 				\end{tabu}
-				\caption{[TODO ]}
+				\caption{Resultados Obtenidos para el problema \texttt{sched\_10\_1}}
 				\label{table:sol-sched_10_1}
 			\end{table}
 
 			\paragraph{}
-			[TODO ]
+			Los resultados se muestran en la tabla \ref{table:sol-sched_10_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_10_1}.
 
 			\begin{figure}[h]
 				\begin{center}
@@ -75,14 +104,15 @@
 						\end{axis}
 					\end{tikzpicture}
 				\end{center}
-				\caption{[TODO ]}
+				\caption{Resultados Obtenidos para el problema \texttt{sched\_10\_1}}
 				\label{plot:sol-sched_10_1}
 			\end{figure}
 
 		\subsection{\texttt{sched\_20\_1}}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por los tiempos de procesado $p_j$, los costes de retraso $w_j$ por unidad de tiempoy el momento máximo de terminación $d_j$ a partir de los cuales se debn planificar \textbf{20 tareas} de tal manera que se minimice la tardanza ponderada total, es decir, la suma de todos los costes de retraso. El problema ha sido resuelteo a partir de las estrategias descritas anteriormente (\emph{Modelo Disyuntivo} en la sección \ref{sec:disyuntive},\emph{Modelo de Índices de Tiempo} en la sección \ref{sec:time-index}, \emph{Heurística de Selección Aleatoria} con $100$ y $1000$ iteraciones en la sección \ref{sec:random-heuristic} y \emph{Heurística de Búsqueda Local} con $1$ y $4$ iteracciones en la sección \ref{sec:local-search-heuristic} )
+
 
 			\begin{table}[h]
 				\centering
@@ -93,12 +123,12 @@
 					{\\\hline\model&\delay&\schedule}
 					\\\hline
 				\end{tabu}
-				\caption{[TODO ]}
+				\caption{Resultados Obtenidos para el problema \texttt{sched\_20\_1}}
 				\label{table:sol-sched_20_1}
 			\end{table}
 
 			\paragraph{}
-			[TODO ]
+			Los resultados se muestran en la tabla \ref{table:sol-sched_20_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_20_1}.
 
 			\begin{figure}[h]
 				\begin{center}
@@ -116,14 +146,15 @@
 						\end{axis}
 					\end{tikzpicture}
 				\end{center}
-				\caption{[TODO ]}
+				\caption{Resultados Obtenidos para el problema \texttt{sched\_20\_1}}
 				\label{plot:sol-sched_20_1}
 			\end{figure}
 
 		\subsection{\texttt{sched\_30\_1}}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por los tiempos de procesado $p_j$, los costes de retraso $w_j$ por unidad de tiempoy el momento máximo de terminación $d_j$ a partir de los cuales se debn planificar \textbf{30 tareas} de tal manera que se minimice la tardanza ponderada total, es decir, la suma de todos los costes de retraso. El problema ha sido resuelteo a partir de las estrategias descritas anteriormente (\emph{Modelo Disyuntivo} en la sección \ref{sec:disyuntive},\emph{Modelo de Índices de Tiempo} en la sección \ref{sec:time-index}, \emph{Heurística de Selección Aleatoria} con $100$ y $1000$ iteraciones en la sección \ref{sec:random-heuristic} y \emph{Heurística de Búsqueda Local} con $1$ y $4$ iteracciones en la sección \ref{sec:local-search-heuristic} )
+
 
 			\begin{table}[h]
 				\centering
@@ -134,12 +165,13 @@
 					{\\\hline\model&\delay&\schedule}
 					\\\hline
 				\end{tabu}
-				\caption{[TODO ]}
+				\caption{Resultados Obtenidos para el problema \texttt{sched\_30\_1}}
 				\label{table:sol-sched_30_1}
 			\end{table}
 
 			\paragraph{}
-			[TODO ]
+			Los resultados se muestran en la tabla \ref{table:sol-sched_30_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_30_1}.
+
 
 			\begin{figure}[h]
 				\begin{center}
@@ -157,14 +189,14 @@
 						\end{axis}
 					\end{tikzpicture}
 				\end{center}
-				\caption{[TODO ]}
+				\caption{Resultados Obtenidos para el problema \texttt{sched\_30\_1}}
 				\label{plot:sol-sched_30_1}
 			\end{figure}
 
 		\subsection{\texttt{sched\_40\_1}}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por los tiempos de procesado $p_j$, los costes de retraso $w_j$ por unidad de tiempoy el momento máximo de terminación $d_j$ a partir de los cuales se debn planificar \textbf{40 tareas} de tal manera que se minimice la tardanza ponderada total, es decir, la suma de todos los costes de retraso. El problema ha sido resuelteo a partir de las estrategias descritas anteriormente (\emph{Modelo Disyuntivo} en la sección \ref{sec:disyuntive},\emph{Modelo de Índices de Tiempo} en la sección \ref{sec:time-index}, \emph{Heurística de Selección Aleatoria} con $100$ y $1000$ iteraciones en la sección \ref{sec:random-heuristic} y \emph{Heurística de Búsqueda Local} con $1$ y $4$ iteracciones en la sección \ref{sec:local-search-heuristic} )
 
 			\begin{table}[h]
 				\centering
@@ -175,12 +207,13 @@
 					{\\\hline\model&\delay&\schedule}
 					\\\hline
 				\end{tabu}
-				\caption{[TODO ]}
+				\caption{Resultados Obtenidos para el problema \texttt{sched\_40\_1}}
 				\label{table:sol-sched_40_1}
 			\end{table}
 
 			\paragraph{}
-			[TODO ]
+			Los resultados se muestran en la tabla \ref{table:sol-sched_40_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_40_1}.
+
 
 			\begin{figure}[h]
 				\begin{center}
@@ -198,14 +231,15 @@
 						\end{axis}
 					\end{tikzpicture}
 				\end{center}
-				\caption{[TODO ]}
+				\caption{Resultados Obtenidos para el problema \texttt{sched\_40\_1}}
 				\label{plot:sol-sched_40_1}
 			\end{figure}
 
 		\subsection{\texttt{sched\_100\_1}}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por los tiempos de procesado $p_j$, los costes de retraso $w_j$ por unidad de tiempoy el momento máximo de terminación $d_j$ a partir de los cuales se debn planificar \textbf{100 tareas} de tal manera que se minimice la tardanza ponderada total, es decir, la suma de todos los costes de retraso. El problema ha sido resuelteo a partir de las estrategias descritas anteriormente (\emph{Modelo Disyuntivo} en la sección \ref{sec:disyuntive},\emph{Modelo de Índices de Tiempo} en la sección \ref{sec:time-index}, \emph{Heurística de Selección Aleatoria} con $100$ y $1000$ iteraciones en la sección \ref{sec:random-heuristic} y \emph{Heurística de Búsqueda Local} con $1$ y $4$ iteracciones en la sección \ref{sec:local-search-heuristic} )
+
 
 			\begin{table}[h]
 				\centering
@@ -216,12 +250,13 @@
 					{\\\hline\model&\delay&\schedule}
 					\\\hline
 				\end{tabu}
-				\caption{[TODO ]}
+				\caption{Resultados Obtenidos para el problema \texttt{sched\_100\_1}}
 				\label{table:sol-sched_100_1}
 			\end{table}
 
 			\paragraph{}
-			[TODO ]
+			Los resultados se muestran en la tabla \ref{table:sol-sched_100_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_100_1}.
+
 
 			\begin{figure}[h]
 				\begin{center}
@@ -239,25 +274,26 @@
 						\end{axis}
 					\end{tikzpicture}
 				\end{center}
-				\caption{[TODO ]}
+				\caption{Resultados Obtenidos para el problema \texttt{sched\_100\_1}}
 				\label{plot:sol-sched_100_1}
 			\end{figure}
 
 		\subsection{\texttt{sched\_200\_1}}
 
 			\paragraph{}
-			[TODO ]
+			El conjunto de datos está formado por los tiempos de procesado $p_j$, los costes de retraso $w_j$ por unidad de tiempoy el momento máximo de terminación $d_j$ a partir de los cuales se debn planificar \textbf{200 tareas} de tal manera que se minimice la tardanza ponderada total, es decir, la suma de todos los costes de retraso. El problema ha sido resuelteo a partir de las estrategias descritas anteriormente (\emph{Modelo Disyuntivo} en la sección \ref{sec:disyuntive},\emph{Modelo de Índices de Tiempo} en la sección \ref{sec:time-index}, \emph{Heurística de Selección Aleatoria} con $100$ y $1000$ iteraciones en la sección \ref{sec:random-heuristic} y \emph{Heurística de Búsqueda Local} con $1$ y $4$ iteracciones en la sección \ref{sec:local-search-heuristic} )
+
 
 			\csvreader[
 			  longtable= | c | c | p{.58\linewidth} |,
 			  table head=\hline \bfseries Modelo & \bfseries Retraso & \bfseries Programación \\ \hline \endhead,
-  			table foot= \caption{[TODO ]}\label{table:sol-sched_200_1}\\,
+  			table foot= \caption{Resultados Obtenidos para el problema \texttt{sched\_200\_1}}\label{table:sol-sched_200_1}\\,
 				late after line=\\\hline,
   			before reading={\catcode`\#=12},after reading={\catcode`\#=6}
 			]{../results/csv/sched_200_1.csv}{1=\model,2=\delay,3=\schedule}{\model&\delay&\schedule}
 
 			\paragraph{}
-			[TODO ]
+			Los resultados se muestran en la tabla \ref{table:sol-sched_200_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_200_1}.
 
 			\begin{figure}[h]
 				\begin{center}
@@ -275,9 +311,14 @@
 						\end{axis}
 					\end{tikzpicture}
 				\end{center}
-				\caption{[TODO ]}
+				\caption{Resultados Obtenidos para el problema \texttt{sched\_200\_1}}
 				\label{plot:sol-sched_200_1}
 			\end{figure}
+
+	\section{Conclusiones}
+
+		\paragraph{}
+		[TODO ]
 
 %-----------------------------
 %	BIBLIOGRAPHY
