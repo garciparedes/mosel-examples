@@ -55,24 +55,51 @@
 			\paragraph{}
 			[TODO ]
 
+			\begin{eqfloat}
+				\begin{equation}
+					\begin{array}{ll@{}ll}
+						\text{Minimizar}	& & \displaystyle\sum\limits_{j = 1}^{n} w_{j}r_{j} & \\
+						\text{sujeto a}		& x_{j} + p_{j} + s_{j} - r_{j} 	&= d_{j}, 		& \forall j \in \{1,...,n\}\\
+															&	x_{i} + p_{i} - x_{j} 					&\leq M(1-y_{ij}), 	& \forall i,j \in \{1,...,n\},  i < j\\
+															&	x_{j} + p_{j} - x_{i} 					&\leq My_{ij}, 	& \forall i,j \in \{1,...,n\},  i < j\\
+															&                               	&	x_{j}, s_{j}, r_{j} 	\geq 0, 	& \forall j \in \{1,...,n\} \\
+															&                               				&	y_{ij} 	\in \{0,1\}, 	& \forall i,j \in \{1,...,n\},  i < j
+					\end{array}
+				\end{equation}
+				\caption{Formulación Disyuntiva para el \emph{problema de programación de tareas (Scheduling)}.}
+				\label{eq:disjunctive-formulation}
+			\end{eqfloat}
+
 		\subsection{Modelo de Índices de Tiempo}
 		\label{sec:time-index}
 
 			\paragraph{}
 			[TODO ]
 
+			\begin{eqfloat}
+				\begin{equation}
+					\begin{array}{ll@{}ll}
+						\text{Minimizar}	& \displaystyle\sum\limits_{j = 1}^{n}\displaystyle\sum\limits_{t = 1}^{T} w_{j}x_{jt}max(\{0, t-1+p_{j}-d_{j}\}) && \\
+						\text{sujeto a}		& \displaystyle\sum\limits_{t = 1}^{T - p_{j}+ 1} x_{j} &= 1, & \forall j \in \{1,...,n\}\\
+															&	\displaystyle\sum\limits_{j = 1}^{n} \displaystyle\sum\limits_{s = max(\{0,t-p_{j}+1\})}^{t} x_{js} &\leq 1, 	& \forall t \in \{1,...,T\}\\
+															&                               				&	x_{jt} 	\in \{0,1\}, 	& \forall j \in \{1,...,n\},  \forall t \in \{1,...,T\}
+					\end{array}
+				\end{equation}
+				\caption{Formulación de Índices de tiempo para el \emph{problema de programación de tareas (Scheduling)}.}
+				\label{eq:time-index-formulation}
+			\end{eqfloat}
 
 		\subsection{Heurística de Selección Aleatoria}
 		\label{sec:random-heuristic}
 
 			\paragraph{}
-			[TODO ]
+			La estrategia de selección aleatoria consiste en la generación de $N$ soluciones de manera aleatoria para seleccionar la mejor de entre todas ellas. Para ello se basa en al generación de números aleatorios de entre el conjunto de las $j$ tareas ($\{1,2,...n\}$) sin repetición. En cada iteración se compara la solución obtenida en la iteración anterior con la actual utilizando como medida la función objetivo descrita en la ecuación \eqref{eq:min-formula} para después seleccionar la que minimice dicha ecuación. Los resultados de esta estrategia suelen ser mucho peores que las de otras más sofisticadas, sin embargo su reducido coste computacional la convierte en una estrategia a considerar en algunos casos.
 
 		\subsection{Heurística de Búsqueda Local}
 		\label{sec:local-search-heuristic}
 
 			\paragraph{}
-			[TODO ]
+			La heurística de búsqueda local se basa en la mejora de una solución inicial calculada previamente a partir de otra estrategia como selección aleatoria u otras heurísticas más sofisticadas para después tratar de mejorarla. La estrategia que utiliza para ello es la búsqueda del intercambio entre el orden de dos tareas que más minimice la ecuación \eqref{eq:min-formula} para después realizar fijar dicho intercambio y buscar un nuevo itercambio de índices a partir de dicha solución parcial. El algoritmo termina cuando no se encuentran nuevos intercambios que minimicen la ecuación \eqref{eq:min-formula}. Nótese que esta estrategia encontrará soluciones óptimas en aquellos casos en que no entre en mínimos locales de los cuales no pueda salir para encontrar el mínimo global.
 
 
 	\section{Resolución de Problemas}
