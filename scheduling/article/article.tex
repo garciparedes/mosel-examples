@@ -22,7 +22,7 @@
 %-----------------------------
 
 	\begin{abstract}
-		\noindent [TODO ]
+		\noindent En este documento se describe el problema de la \emph{planificación de tareas (scheduling)} para el caso concreto de una única máquina y minimización de la tardanza total ponderada como objetivo a minimizar. Para este problema se presentan distintas formulaciones exactas así como heurísticas de resolución aproximada. Además se presentan los resultados obtenidos mediante las distintas estrategias para 6 conjuntos de datos concretos. Por último se realiza una comparación de los resultados obtenidos por dichas estrategias tratando de describir las ventaajas y desventajas de cada una de ellas.
 	\end{abstract}
 
 %-----------------------------
@@ -53,7 +53,7 @@
 		\label{sec:disyuntive}
 
 			\paragraph{}
-			[TODO ]
+			El modelo disyuntivo se apoya en la utilización de las variables de decisión $x_{j}, s_{j}, r_{j}$ de carácter real positivo y las variables de decisión binarias $y_{ij}$. La idea es realizar todas las tareas evitando solapamientos entre ellas apoyandose en las variables continuas. La variable $x_{j}$ representa el momento de inicio de la tarea $j$, $s_{j}$ el momento de finalización de la misma y $r_{j}$ el retraso referido a la tarea $j$. Para representar el orden de las tareas se utiliza la matriz de variables binarias constituida por $y_{ij}$ de tal manera que la tarea $j$ se realiza en el momento $i$. La formulación completa se muestra en la ecuación \eqref{eq:disjunctive-formulation}.(La constante $M$ representa un número suficientemente grande.)
 
 			\begin{eqfloat}
 				\begin{equation}
@@ -74,7 +74,7 @@
 		\label{sec:time-index}
 
 			\paragraph{}
-			[TODO ]
+			La formulación de índices de tiempo se apoya en la utilización de un único tipo de variables de decisión de caracter binario denotadas como $x_{jt}$ donde $j$ se refiere a la tarea $j$ y $t$ al momento de inicio de dicha tarea donde $t \in \{1,2,...T\}$ y $T$ representa el tiempo máximo de finalización de todas las tareas, de decir, la suma de la duración de las mismas ($T = \sum_{j=1}^n p_j$). En este modelo la secuencia se restringe únicamente por las restricciones de orden, es decir, no se apoya en variables de holgura, por lo tanto presenta un gran número de restricciones y variables. Sin embargo, en la práctica esta formulación es mucho más eficiente que la descrita en la seccion anterior puesto que se resuelve mediante combinaciones binarias en lugar de ajustes de valores numéricos. La formulación de esta estrategia se muestra en la ecuación \eqref{eq:time-index-formulation}.
 
 			\begin{eqfloat}
 				\begin{equation}
