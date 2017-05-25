@@ -248,18 +248,13 @@
 			\paragraph{}
 			[TODO ]
 
-			\begin{table}[h]
-				\centering
-				\begin{tabu}{ | c | c | p{.58\linewidth} |}
-					\hline
-					\bfseries Modelo & \bfseries Retraso & \bfseries Programación
-					\csvreader[head to column names]{../results/csv/sched_200_1.csv}{}
-					{\\\hline\model&\delay&\schedule}
-					\\\hline
-				\end{tabu}
-				\caption{[TODO ]}
-				\label{table:sol-sched_200_1}
-			\end{table}
+			\csvreader[
+			  longtable= | c | c | p{.58\linewidth} |,
+			  table head=\hline \bfseries Modelo & \bfseries Retraso & \bfseries Programación \\ \hline \endhead,
+  			table foot= \caption{[TODO ]}\label{table:sol-sched_200_1}\\,
+				late after line=\\\hline,
+  			before reading={\catcode`\#=12},after reading={\catcode`\#=6}
+			]{../results/csv/sched_200_1.csv}{1=\model,2=\delay,3=\schedule}{\model&\delay&\schedule}
 
 			\paragraph{}
 			[TODO ]
