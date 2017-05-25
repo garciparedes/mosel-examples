@@ -33,7 +33,21 @@
 	\label{sec:intro}
 
 		\paragraph{}
-		[TODO ]
+		El problema de la programación (o planificiación de tareas) consiste en la selección del orden de un conjunto de tareas o trabajos entre un número prefijado de máquinas o unidades de trabajo de tal manera que se minimice una determinada característica referida a las mismas. En este documento se trata el problema de la planificación de tareas referida a una única máquina, es decir, no se permite la paralelización de trabajo. La característica que se pretende minimizar es la tardanza total ponderada, la cual se define como la suma total de las unidades de tiempo de retraso de las tareas, cada una de las cuales tienen un peso (ponderación) diferente, por lo tanto, unas son más prioritarias que otras.
+
+		\paragraph{}
+		Para poder resolver este problema es necesario conocer un conjunto de valores referidos a cada tarea. Primero denotaremos cada tarea con el índice $j \in [1,n]$ siendo $n$ el número total de tareas a planificar. Para cada una de estas tareas se conoce $p_j$, que determina el tiempo de duración de la tarea $j$, $d_j$ que indica el momento de finalización máximo de la tarea $j$ y $w_j$ que se refiere al coste por unidad de tiempo de retraso de cada tarea.
+
+		\paragraph{}
+		Una vez conocidas dichas características y la medida que se pretende optimizar se está en condiciones de modelizar dicha expresión de manera matemática. Para ello es necesario declarar la variable $t_j$ que indica las unidades de tiempo de retraso de la tarea $j$. Por tanto, el objetivo del problema se muestra en la ecuación \eqref{eq:min-formula}.
+
+		\begin{equation}
+		\label{eq:min-formula}
+			\text{Minimizar} \displaystyle\sum\limits_{i = 1}^{n} t_{j}w_{j}
+		\end{equation}
+
+		\paragraph{}
+		A continuación se describen distintas formulaciones para resolver este problema. Las dos primeras (modelo disyuntivo y modelo de índices de tiempo) se corresponden con estrategias exactas mientras que las siguientes (heurística de selección aleatoria y heurística de búqueda local) se corresponden con soluciones aproximadas.
 
 		\subsection{Modelo Disyuntivo}
 		\label{sec:disyuntive}
@@ -65,14 +79,14 @@
 	\label{sec:problems}
 
 		\paragraph{}
-		En esta sección se presentan los resultados obtenidos tras resolver el \emph{problema de planificación de tareas} (Scheduling) con el objetivo de minimizar la tardanza ponderada sobre distintos conjuntos de datos de entrada. Dichos resultados se han agrupado por problema en lugar de por estrategia de resolución, lo cual permite comparar de manera más simple cada una de ellas.
+		En esta sección se presentan los resultados obtenidos tras resolver el \emph{problema de planificación de tareas} (Scheduling) con el objetivo de minimizar la tardanza ponderada sobre distintos conjuntos de datos de entrada. Dichos resultados se han agrupado por problema en lugar de por estrategia de resolución, lo cual permite comparar de manera más simple cada una de ellas. Las implementaciones se han llevado a cabo utilizando el entorno de desarrollo \emph{Xpress-Mosel} \cite{tool:xpress-mosel} utilizando el servidor \emph{Neos Server} \cite{tool:neos-server} para ejecutar las mismas. Puesto que las estrategias exactas presentan un elevado coste computacional se ha añadido la restricción de tiempo de cómputo de \emph{100 segundos}.
 
 		\subsection{\texttt{sched\_10\_1}}
 
 			\paragraph{}
 			El conjunto de datos está formado por los tiempos de procesado $p_j$, los costes de retraso $w_j$ por unidad de tiempoy el momento máximo de terminación $d_j$ a partir de los cuales se debn planificar \textbf{10 tareas} de tal manera que se minimice la tardanza ponderada total, es decir, la suma de todos los costes de retraso. El problema ha sido resuelteo a partir de las estrategias descritas anteriormente (\emph{Modelo Disyuntivo} en la sección \ref{sec:disyuntive},\emph{Modelo de Índices de Tiempo} en la sección \ref{sec:time-index}, \emph{Heurística de Selección Aleatoria} con $100$ y $1000$ iteraciones en la sección \ref{sec:random-heuristic} y \emph{Heurística de Búsqueda Local} con $1$ y $4$ iteracciones en la sección \ref{sec:local-search-heuristic} )
 
-			\begin{table}[h]
+			\begin{table}
 				\centering
 				\begin{tabu}{ | c | c | p{.58\linewidth} |}
 					\hline
@@ -88,7 +102,7 @@
 			\paragraph{}
 			Los resultados se muestran en la tabla \ref{table:sol-sched_10_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_10_1}.
 
-			\begin{figure}[h]
+			\begin{figure}
 				\begin{center}
 					\begin{tikzpicture}
 						\begin{axis}[
@@ -114,7 +128,7 @@
 			El conjunto de datos está formado por los tiempos de procesado $p_j$, los costes de retraso $w_j$ por unidad de tiempoy el momento máximo de terminación $d_j$ a partir de los cuales se debn planificar \textbf{20 tareas} de tal manera que se minimice la tardanza ponderada total, es decir, la suma de todos los costes de retraso. El problema ha sido resuelteo a partir de las estrategias descritas anteriormente (\emph{Modelo Disyuntivo} en la sección \ref{sec:disyuntive},\emph{Modelo de Índices de Tiempo} en la sección \ref{sec:time-index}, \emph{Heurística de Selección Aleatoria} con $100$ y $1000$ iteraciones en la sección \ref{sec:random-heuristic} y \emph{Heurística de Búsqueda Local} con $1$ y $4$ iteracciones en la sección \ref{sec:local-search-heuristic} )
 
 
-			\begin{table}[h]
+			\begin{table}
 				\centering
 				\begin{tabu}{ | c | c | p{.58\linewidth} |}
 					\hline
@@ -130,7 +144,7 @@
 			\paragraph{}
 			Los resultados se muestran en la tabla \ref{table:sol-sched_20_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_20_1}.
 
-			\begin{figure}[h]
+			\begin{figure}
 				\begin{center}
 					\begin{tikzpicture}
 						\begin{axis}[
@@ -156,7 +170,7 @@
 			El conjunto de datos está formado por los tiempos de procesado $p_j$, los costes de retraso $w_j$ por unidad de tiempoy el momento máximo de terminación $d_j$ a partir de los cuales se debn planificar \textbf{30 tareas} de tal manera que se minimice la tardanza ponderada total, es decir, la suma de todos los costes de retraso. El problema ha sido resuelteo a partir de las estrategias descritas anteriormente (\emph{Modelo Disyuntivo} en la sección \ref{sec:disyuntive},\emph{Modelo de Índices de Tiempo} en la sección \ref{sec:time-index}, \emph{Heurística de Selección Aleatoria} con $100$ y $1000$ iteraciones en la sección \ref{sec:random-heuristic} y \emph{Heurística de Búsqueda Local} con $1$ y $4$ iteracciones en la sección \ref{sec:local-search-heuristic} )
 
 
-			\begin{table}[h]
+			\begin{table}
 				\centering
 				\begin{tabu}{ | c | c | p{.58\linewidth} |}
 					\hline
@@ -173,7 +187,7 @@
 			Los resultados se muestran en la tabla \ref{table:sol-sched_30_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_30_1}.
 
 
-			\begin{figure}[h]
+			\begin{figure}
 				\begin{center}
 					\begin{tikzpicture}
 						\begin{axis}[
@@ -198,7 +212,7 @@
 			\paragraph{}
 			El conjunto de datos está formado por los tiempos de procesado $p_j$, los costes de retraso $w_j$ por unidad de tiempoy el momento máximo de terminación $d_j$ a partir de los cuales se debn planificar \textbf{40 tareas} de tal manera que se minimice la tardanza ponderada total, es decir, la suma de todos los costes de retraso. El problema ha sido resuelteo a partir de las estrategias descritas anteriormente (\emph{Modelo Disyuntivo} en la sección \ref{sec:disyuntive},\emph{Modelo de Índices de Tiempo} en la sección \ref{sec:time-index}, \emph{Heurística de Selección Aleatoria} con $100$ y $1000$ iteraciones en la sección \ref{sec:random-heuristic} y \emph{Heurística de Búsqueda Local} con $1$ y $4$ iteracciones en la sección \ref{sec:local-search-heuristic} )
 
-			\begin{table}[h]
+			\begin{table}
 				\centering
 				\begin{tabu}{ | c | c | p{.58\linewidth} |}
 					\hline
@@ -215,7 +229,7 @@
 			Los resultados se muestran en la tabla \ref{table:sol-sched_40_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_40_1}.
 
 
-			\begin{figure}[h]
+			\begin{figure}
 				\begin{center}
 					\begin{tikzpicture}
 						\begin{axis}[
@@ -241,7 +255,7 @@
 			El conjunto de datos está formado por los tiempos de procesado $p_j$, los costes de retraso $w_j$ por unidad de tiempoy el momento máximo de terminación $d_j$ a partir de los cuales se debn planificar \textbf{100 tareas} de tal manera que se minimice la tardanza ponderada total, es decir, la suma de todos los costes de retraso. El problema ha sido resuelteo a partir de las estrategias descritas anteriormente (\emph{Modelo Disyuntivo} en la sección \ref{sec:disyuntive},\emph{Modelo de Índices de Tiempo} en la sección \ref{sec:time-index}, \emph{Heurística de Selección Aleatoria} con $100$ y $1000$ iteraciones en la sección \ref{sec:random-heuristic} y \emph{Heurística de Búsqueda Local} con $1$ y $4$ iteracciones en la sección \ref{sec:local-search-heuristic} )
 
 
-			\begin{table}[h]
+			\begin{table}
 				\centering
 				\begin{tabu}{ | c | c | p{.58\linewidth} |}
 					\hline
@@ -258,7 +272,7 @@
 			Los resultados se muestran en la tabla \ref{table:sol-sched_100_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_100_1}.
 
 
-			\begin{figure}[h]
+			\begin{figure}
 				\begin{center}
 					\begin{tikzpicture}
 						\begin{axis}[
@@ -295,7 +309,7 @@
 			\paragraph{}
 			Los resultados se muestran en la tabla \ref{table:sol-sched_200_1}. Para facilitar la comprensión a nivel de Tardanza Ponderada se ha incluido un diagrama de barras que muestra la relación entre las distintas estrategias. Dicho diagrama se muestra en la figura \ref{plot:sol-sched_200_1}.
 
-			\begin{figure}[h]
+			\begin{figure}
 				\begin{center}
 					\begin{tikzpicture}
 						\begin{axis}[
