@@ -332,7 +332,13 @@
 	\section{Conclusiones}
 
 		\paragraph{}
-		[TODO ]
+		Tal y como se puede apreciar en los resultados que se muestran en la sección anterior, las distintas estrategias presentan una clara tendencia. En el caso de las estrategias exactas (y teniendo en cuenta la restricción fijada a priori de tiempo de cómputo de 100 segundos), la formulación de índices de tiempo encuentra la solución en tiempos mucho más reducidos (en problemas grandes la formulación disyuntiva no consigue encontrar soluciones aceptables).
+
+		\paragraph{}
+		En cuanto a las estrategias basadas en heurísticas, la selección aleatoria presenta malos resultados en todos los casos (a pesar de ello es la más simple a nivel conceptual) aunque se puede apreciar una clara tendencia: cuando se aumenta el número de iteraciones los resultados mejoran, lo cual es un suceso esperable si el generador de números aleatorios genera los valores siguiendo una distribución uniforme. La estrategia de búsqueda local por contra, presenta resultados muy cercanos al óptimo (en un gran número de ocasiones el óptimo) a partir de una única iteración (que cuando se repite 4 iteraciones siempre encuentra el óptimo para los conjuntos de datos utilizados). Por contra, esta estrategia presenta un elevado coste computacional con respecto del tamaño del problema, el cual deja de ser asumible para problemas con un elevado número de tareas.
+
+		\paragraph{}
+		En cuanto a la comparación entre las estrategias exactas (teniendo en cuenta la restricción de tiempo de cómputo) y las heurísticas, no es posible llevar a cabo una comparación apropiada puesto que los resultados de las heurísticas no han sido calculados teniendo en cuenta restricciones de tiempo. Sin embargo, para problemas de tamaño reducido en los cuales ambos tipos de estrategias terminan antes del tiempo acotado de 100 segundos, la estrategia basada en búsqueda local presenta soluciones muy cercanas al óptimo encontrado por el modelo de índices de tiempo utilizando tiempos de cómputo mucho menores.
 
 %-----------------------------
 %	BIBLIOGRAPHY
