@@ -1,7 +1,7 @@
 # Mosel Examples
 
 ## Contents
-  * ### Operation Research Models:
+  * ### Operation Research Models:
     * TODO: Write contents
   * ### Integer Programming:
     * TODO: Write contents
