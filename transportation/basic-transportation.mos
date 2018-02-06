@@ -1,0 +1,84 @@
+model "basic-transportation"
+
+	uses "mmxprs";
+
+	declarations
+		m = 3
+		n = 4
+
+		origins = 1..m
+		destinations = 1..n
+
+		capacity: array(origins) of integer
+		request: array(destinations) of integer
+		cost: array(origins, destinations) of integer
+
+		x: array(origins, destinations) of mpvar
+
+		capacity_total: real
+		request_total: real
+	end-declarations
+
+	capacity::[35, 60, 48]
+	request::[45, 20, 30, 30]
+	cost::[
+		8, 6, 10, 9,
+		9, 12, 13, 7,
+		14, 9, 16, 5]
+
+
+	cost_total := sum(i in origins, j in destinations) cost(i, j) * x(i, j)
+
+	forall(i in origins)
+		res1(i) := sum(j in destinations) x(i, j) <= capacity(i)
+
+	forall(j in destinations)
+		res2(j) := sum(i in origins) x(i, j) >= request(j)
+
+	minimize(cost_total)
+
+	writeln(getobjval)
+
+	if(getprobstat = XPRS_OPT) then
+		writeln("Soluci�n �ptima")
+	end-if
+	if(getprobstat = XPRS_INF) then
+		writeln("Problema no factible")
+		exit(0)
+	end-if
+
+	writeln("i\tj\tx\tcr")
+	forall(i in origins, j in destinations)
+		writeln(i, "\t", j, "\t", getsol(x(i, j)), "\t", x(i, j).rcost)
+
+	writeln
+
+	forall(i in origins) do
+		writeln
+		forall(j in destinations) do
+			write(getsol(x(i, j)), "\t")
+		end-do
+	end-do
+
+	writeln
+
+	forall(i in origins) do
+		writeln
+		forall(j in destinations) do
+			write(x(i, j).rcost, "\t")
+		end-do
+	end-do
+
+	writeln
+	writeln
+
+	writeln("i\tslack\tdual")
+	forall(i in origins)
+		writeln(i, "\t", res1(i).slack, "\t", res1(i).dual)
+
+	writeln
+	writeln("j\tslack\tdual")
+	forall(j in destinations)
+		writeln(j, "\t", res2(j).slack, "\t", res2(j).dual)
+
+end-model
