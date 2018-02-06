@@ -1,7 +1,11 @@
-# mosel-examples
+# Mosel Examples
 
 ## Contents
-  TODO: Write contents
+  * ### Operation Research Models:
+    * TODO: Write contents
+  * ### Integer Programming:
+    * TODO: Write contents
+    
 
 ## Authors
   - García Prado, Sergio: [@garciparedes](http://garciparedes.me)
