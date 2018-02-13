@@ -2,7 +2,7 @@
 
 ## Description
 
-Set of awesome Xpress-Mosel Examples Edit
+Set of awesome Xpress-Mosel Examples.
 
 
 ## Contents
