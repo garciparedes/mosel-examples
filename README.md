@@ -7,8 +7,8 @@
     * TODO: Write contents
     
 
-## Authors
-  - García Prado, Sergio: [@garciparedes](http://garciparedes.me)
+## Contributors
+  - Sergio García Prado - [@garciparedes](http://garciparedes.me)
 
 ## License
 [Mozilla Public License Version 2.0](LICENSE)
