@@ -1,0 +1,43 @@
+
+model "exercise-04"
+	uses "mmxprs"; 
+	
+	declarations
+		n = 4
+		m = 5
+		
+		origins = 1..n
+		destinations = 1..m
+		
+		capacity_origin: array(origins) of integer
+		capacity_transport: array(origins, destinations) of integer
+		
+		cost_origin: array(origins) of integer
+		cost_transport: array(origins, destinations) of integer
+		
+		x: array(origins, destinations) of mpvar
+		
+	end-declarations
+	
+	capacity_origin::[4000,	4500, 2700, 3000]
+	
+	capacity_transport::[0, 2000, 2000, 2000, 5000,
+						 3000,2000, 1000, 200, 0,
+					     1000, 2000, 1000, 1000, 300,
+					     0, 100, 1000, 1000, 2000]
+	
+	cost_origin::[2100, 2000, 1600, 1700]
+	
+	cost_transport::[800, 600, 300, 200, 400,
+					 200, 400, 500, 900, 0,
+				     500, 200, 200, 200, 400,
+					 0, 400, 400, 300, 100]
+	
+					
+	
+	objetive := sum(i in origins, j in destinations) x(i,j) * (cost_transport(i,j) + cost_origin(i))
+	
+	! TODO: Add restrictions
+	
+	minimize(objetive)
+end-model
