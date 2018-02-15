@@ -15,6 +15,8 @@ model "exercise-04"
 		cost_origin: array(origins) of integer
 		cost_transport: array(origins, destinations) of integer
 		
+		demands: array(destinations) of integer
+		
 		x: array(origins, destinations) of mpvar
 		
 	end-declarations
@@ -33,11 +35,24 @@ model "exercise-04"
 				     500, 200, 200, 200, 400,
 					 0, 400, 400, 300, 100]
 	
+	demands::[2840, 2800, 2600, 2820, 2750]
+	
 					
 	
 	objetive := sum(i in origins, j in destinations) x(i,j) * (cost_transport(i,j) + cost_origin(i))
 	
-	! TODO: Add restrictions
+	forall(i in origins) do
+		res1(i) := sum(j in destinations) x(i,j) <= minlist(capacity_origin(i), sum(j in destinations) capacity_transport(i,j))
+	end-do
+	
+	forall(j in destinations) do
+		res2(j) := sum(i in origins) x(i,j) >= minlist(demands(j), sum(i in origins) capacity_transport(i,j))
+	end-do
 	
 	minimize(objetive)
+	
+	writeln("i\tj\tx\tcr")
+	forall(i in origins, j in destinations)
+		writeln(i, "\t", j, "\t", getsol(x(i, j)), "\t", x(i, j).rcost)
+	writeln
 end-model
