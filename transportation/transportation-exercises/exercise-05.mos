@@ -1,0 +1,59 @@
+
+model "transportation-exercise-05"
+	uses "mmxprs"; 
+	
+	declarations
+		m = 3
+		n = 4
+		p = 2
+		
+		origins = 1..m
+		destinations = 1..n
+		modes = 1..p
+		
+		capacity: array(origins) of integer
+		demand: array(destinations) of integer
+		mode: array(modes) of integer
+		
+		distance: array(origins, destinations) of integer
+		
+		mode_cost: array(modes) of real
+		
+		x: array(origins, destinations, modes) of mpvar
+		
+	end-declarations
+	
+	capacity::[320, 250, 415]
+	demand::[220, 195, 310, 210]
+	mode::[600, MAX_INT]
+	
+	
+	distance::[80, 140, 50, 220,
+	           70, 120, 90, 130,
+	           110, 90, 140, 110]
+	
+	mode_cost::[1.20, 1.50]
+	
+	obj := sum(i in origins, j in destinations, k in modes) x(i, j, k) * distance(i, j) * mode_cost(k)
+    
+    
+    forall(i in origins) do
+        res1(i) := sum(j in destinations, k in modes) x(i, j, k) <= capacity(i)
+    end-do
+    
+    forall(j in destinations) do
+        res2(j) := sum(i in origins, k in modes) x(i, j, k) >= demand(j)
+    end-do
+    
+    forall(k in modes) do
+        res3(k) := sum(i in origins, j in destinations) x(i, j, k) <= mode(k)
+    end-do
+    
+    minimize(obj)
+    
+    writeln("i\tj\tk\tx(i, j, k)\n")
+    forall(i in origins, j in destinations, k in modes |  getsol(x(i, j, k)) > 0)
+		writeln(i, "\t", j, "\t", k, "\t", getsol(x(i, j, k)))
+	writeln
+    writeln("obj = ", getobjval)
+end-model
