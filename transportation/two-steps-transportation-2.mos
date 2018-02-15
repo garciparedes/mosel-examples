@@ -1,0 +1,57 @@
+
+model "two-steps-transportation-2"
+	uses "mmxprs"; 
+	
+	declarations
+		m = 3
+		n = 10
+		p = 5
+		
+		origins = 1..m
+		destinations = 1..n
+		warehouses = 1..p
+		
+		capacity: array(origins) of integer	
+		demand: array(destinations) of integer
+		!storage: array(warehouses) of integer
+		
+		cost_1: array(origins, warehouses) of integer
+		cost_2: array(warehouses, destinations) of integer
+		
+		x: array(origins, destinations, warehouses) of mpvar
+		
+	end-declarations
+	
+	capacity::[300, 450, 375]
+	demand::[150, 60, 42, 137, 66, 22, 90, 35, 173, 45]
+	!storage::[]
+	
+	cost_1::[16, 18, 29, 8, 9,
+			 16, 4, 27, 4, 10, 
+			 26, 5, 9, 6, 30]
+	
+	cost_2::[16, 9, 19, 18,9, 11, 19, 5, 19, 3, 
+			 3, 1, 8, 17, 13, 15, 6, 15, 20, 1,
+			 9, 20, 20, 6, 12, 17, 13, 18, 14, 3,
+			 9, 6, 14, 17, 7, 12, 1, 16, 18, 16,
+			 13, 9, 3, 17, 10, 13, 12, 11, 7, 7]
+					
+	
+	objetive := sum(i in origins, j in destinations, k in warehouses) x(i, j, k) * (cost_1(i, k) + cost_2(k, j))
+	
+	forall(i in origins) do
+		res1(i) := sum(j in destinations, k in warehouses) x(i, j, k) <= capacity(i)
+	end-do
+	
+	forall(j in destinations) do
+		res2(j) := sum(i in origins, k in warehouses) x(i, j, k) >= demand(j)
+	end-do
+	
+	minimize(objetive)
+	
+	writeln("i\tj\tk\tx\tcr")
+	forall(i in origins, j in destinations, k in warehouses |  getsol(x(i, j, k)) > 0)
+		writeln(i, "\t", j, "\t", k, "\t", getsol(x(i, j, k)), "\t", x(i, j, k).rcost)
+	writeln
+	writeln("obj = ", getobjval)
+end-model
