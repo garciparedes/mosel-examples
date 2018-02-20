@@ -1,0 +1,133 @@
+
+model "transportation-exercise-05"
+	uses "mmxprs"; 
+	
+	declarations
+		m: integer
+		n: integer
+		p: integer
+	end-declarations
+	
+	initializations from 'exercise-05.dat'
+        m n p
+	end-initializations
+	
+	declarations
+		origins = 1..m
+		destinations = 1..n
+		modes = 1..p
+		
+		capacity: array(origins) of integer
+		demand: array(destinations) of integer
+		mode: array(modes) of integer
+		
+		distance: array(origins, destinations) of integer
+		
+		mode_cost: array(modes) of real
+		cost: array(origins, destinations, modes) of real
+		
+		x: array(origins, destinations, modes) of mpvar
+		
+	end-declarations
+	
+    initializations from 'exercise-05.dat'
+        capacity 
+        demand
+        mode
+        distance
+        mode_cost
+    end-initializations
+	
+	
+	forall(i in origins, j in destinations, k in modes)
+	    cost(i, j, k) :=  distance(i, j) * mode_cost(k)
+	    
+	
+	! Exact Solution
+	
+	obj := sum(i in origins, j in destinations, k in modes) x(i, j, k) * cost(i, j, k)
+    
+    
+    forall(i in origins) do
+        res1(i) := sum(j in destinations, k in modes) x(i, j, k) <= capacity(i)
+    end-do
+    
+    forall(j in destinations) do
+        res2(j) := sum(i in origins, k in modes) x(i, j, k) >= demand(j)
+    end-do
+    
+    forall(k in modes) do
+        res3(k) := sum(i in origins, j in destinations) x(i, j, k) <= mode(k)
+    end-do
+    
+    minimize(obj)
+    
+    writeln("i\tj\tk\tx(i, j, k)\n")
+    forall(i in origins, j in destinations, k in modes |  getsol(x(i, j, k)) > 0)
+		writeln(i, "\t", j, "\t", k, "\t", getsol(x(i, j, k)))
+	writeln
+    writeln("obj = ", getobjval)
+    
+    
+    
+    ! Greedy Solution
+    
+    declarations 
+        covered: array(destinations) of integer
+        available_origin: array(origins) of integer
+        available_mode: array(modes) of integer
+        solution: array(origins, destinations, modes) of integer
+    end-declarations
+    
+  
+  
+    forall(i in origins) available_origin(i) := capacity(i)
+    forall(j in destinations) covered(j) := demand(j)
+    forall(k in modes) available_mode(k) := mode(k)  
+   
+    i_min := 1
+    j_min := 1
+    k_min := 1
+    
+    cost_total := 0.0
+        
+    f_run := true 
+    while(f_run = true) do 
+    
+        cost_min := MAX_REAL
+        forall(i in origins, j in destinations, k in modes | available_origin(i) > 0 and 
+                                                             available_mode(k) > 0 and 
+                                                             covered(j) > 0 and 
+                                                             cost(i, j, k) < cost_min) do
+            i_min := i
+            j_min := j
+            k_min := k
+            cost_min := cost(i, j, k)
+        end-do
+        
+        
+        quantity := minlist(available_origin(i_min), covered(j_min), available_mode(k_min))
+        
+        solution(i_min, j_min, k_min) := solution(i_min, j_min, k_min) + quantity
+        
+        covered(j_min) := covered(j_min) - quantity
+        available_mode(k_min) := available_mode(k_min) - quantity
+        available_origin(i_min) := available_origin(i_min) - quantity
+        
+        cost_total := cost_total + cost_min * quantity
+   
+        
+        f_run := false
+        forall(j in destinations | covered(j) > 0) do
+            f_run := true
+        end-do
+        
+    end-do
+    
+    writeln("i\tj\tk\tsolution(i, j, k)\n")
+    forall(i in origins, j in destinations, k in modes |  solution(i, j, k) > 0)
+		writeln(i, "\t", j, "\t", k, "\t", solution(i, j, k))
+	writeln
+    writeln("obj = ", cost_total)
+    
+end-model
