@@ -13,9 +13,6 @@ model "petrol-example-networks"
         A_dense: array(vertices, vertices) of real
         
         x: dynamic array(vertices, vertices) of mpvar
-        
-        y_in: array(vertices) of mpvar
-        y_out: array(vertices) of mpvar
     end-declarations
     
     demand::[20000000, -4000000, -12000000, -4000000, 0, 0, 0]
@@ -53,17 +50,12 @@ model "petrol-example-networks"
     end-do
     
     forall(i in vertices) do
-        res1(i) := sum(j in vertices) x(i, j) = y_out(i)
-        res2(i) := sum(j in vertices) x(j, i) = y_in(i)
-    end-do
-   
-    forall(i in vertices) do
         if demand(i) > 0 then
-            res3(i) := y_out(i) = demand(i)
+            res1(i) := sum(j in vertices) x(i, j) = demand(i)
         elif demand(i) < 0 then
-            res3(i) := y_in(i) = - demand(i)
+            res1(i) := sum(j in vertices) x(j, i) = - demand(i)
         else
-            res3(i) := y_in(i) = y_out(i)
+            res1(i) := sum(j in vertices) x(j, i) = sum(j in vertices) x(i, j)
         end-if
     end-do
 
