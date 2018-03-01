@@ -1,0 +1,74 @@
+model "networks-set-02-exercise-02-electra"
+    uses "mmxprs"; 
+    
+    declarations
+        n: integer
+    end-declarations
+    
+    
+    initializations from "exercise-02-electra.dat"
+        n
+    end-initializations
+        
+    declarations
+        vertices =  1..n
+        d: array(vertices) of real
+        c: array(vertices, vertices) of real
+        x: dynamic array(vertices, vertices) of mpvar
+    end-declarations
+    
+    initializations from "exercise-02-electra.dat"
+        d c
+    end-initializations
+    
+    
+    writeln
+    write("\t")
+    forall(j in vertices) do
+       write(j, "\t")
+    end-do
+    forall(i in vertices) do
+        writeln
+        write(i, "\t")
+        forall(j in vertices) do
+            write(c(i, j), "\t")
+        end-do
+    end-do
+    writeln
+    
+    forall(i in vertices, j in vertices | c(i, j) <> 0) do
+        create(x(i, j))
+    end-do
+    
+    writeln(sum(i in vertices) d(i))
+    
+    
+    forall(i in vertices) do
+        res2(i) := sum(j in vertices) x(i, j) - sum(j in vertices) x(j, i) = d(i)
+    end-do
+       
+   
+    objetive := sum(i in vertices, j in vertices) x(i,j) * c(i, j)
+    
+    ! setparam("XPRS_VERBOSE", true)
+    minimize(objetive)
+    
+    
+    writeln
+    write("\t")
+    forall(j in vertices) do
+       write(j, "\t")
+    end-do
+    forall(i in vertices) do
+        writeln
+        write(i, "\t")
+        forall(j in vertices) do
+            write(getsol(x(i, j)), "\t")
+        end-do
+    end-do
+    writeln
+    
+    writeln
+    writeln("objetive = ", getobjval)
+    
+end-model

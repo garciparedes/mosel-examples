@@ -32,13 +32,7 @@ model "petrol-example-networks"
     end-do
     
     forall(i in vertices) do
-        if demand(i) > 0 then
-            res1(i) := sum(j in vertices) x(i, j) = demand(i)
-        elif demand(i) < 0 then
-            res1(i) := sum(j in vertices) x(j, i) = - demand(i)
-        else
-            res1(i) := sum(j in vertices) x(j, i) = sum(j in vertices) x(i, j)
-        end-if
+        res2(i) := sum(j in vertices) x(i, j) - sum(j in vertices) x(j, i) = demand(i)
     end-do
 
     
