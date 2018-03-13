@@ -1,0 +1,50 @@
+model "ferry-multiproduct-networks"
+    uses "mmxprs"; 
+    
+    
+    declarations
+        n, p: integer
+    end-declarations
+    
+    initializations from "ferry-multiproduct-networks.dat"
+        n p
+    end-initializations
+    
+    declarations
+        vertices =  1..n
+        products = 1..p
+        
+        b: array(vertices, products) of real
+        u: array(vertices, vertices) of real
+        c: array(vertices, vertices) of real
+        
+        x: dynamic array(vertices, vertices, products) of mpvar
+    end-declarations
+   
+    initializations from "ferry-multiproduct-networks.dat"
+        b u c
+    end-initializations
+    
+    total_offer := sum(i in vertices, k in products | b(i, k) > 0) b(i, k)
+    forall(i in vertices, j in vertices | u(i, j) = 0 ) do
+        u(i,j) := total_offer
+    end-do
+
+    forall(i in vertices, j in vertices, k in products | c(i, j) <> 0) do
+        create(x(i,j,k))
+    end-do
+    
+    
+    forall(i in vertices, k in products) do
+        res1(i, k) := (sum(j in vertices) x(i, j, k)) - (sum(j in vertices)x(j, i, k)) = b(i,k)
+    end-do
+    
+    forall(i in vertices, j in vertices) do 
+        res2(i,j) := sum(k in products) x(i, j, k) <= u(i,j)
+    end-do
+    
+    min_func := sum(i in vertices, j in vertices, k in products) x(i, j, k) * c(i,j)
+
+    minimize(min_func)
+
+end-model
