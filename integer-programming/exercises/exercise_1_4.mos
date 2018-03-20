@@ -1,0 +1,62 @@
+model exercise_1_4
+uses "mmxprs";
+
+declarations
+    n, m: integer
+end-declarations
+
+initializations from "exercise_1_4.dat"
+    n m
+end-initializations
+
+declarations
+    origins = 1..m
+    destinations = 1..n
+    c: array(origins, destinations) of integer
+    f: array(origins, destinations) of integer
+    d: array(destinations) of integer
+    s: array(origins) of integer
+    
+    x: array(origins, destinations) of mpvar
+    y: array(origins, destinations) of mpvar
+end-declarations
+
+forall(i in origins, j in destinations) do
+    y(i, j)  is_binary
+end-do
+
+initializations from "exercise_1_4.dat"
+    c f d s
+end-initializations
+
+forall(i in origins, j in destinations) do 
+    res_f1(i, j) := x(i, j) <= maxlist(s(i), d(j)) * y(i, j)
+end-do
+
+forall(i in origins) do
+    res_s(i) := sum(j in destinations) x(i, j) <= s(i) 
+end-do
+
+forall(j in destinations) do
+    res_d(j) := sum(i in origins) x(i, j) >= d(j)
+end-do
+
+objetive := sum(i in origins, j in destinations) (x(i, j) * c(i, j) + f(i, j) * y(i, j))
+minimize(objetive)
+
+writeln("objetive = ", getobjval)
+
+writeln
+writeln("x(i, j) = amount")
+forall(i in origins, j in destinations | getsol(x(i, j)) > 0) do
+    writeln(" (", i, ", ", j, ") = ", getsol(x(i, j)))
+end-do
+
+
+writeln
+writeln("y(i, j) = 1")
+forall(i in origins, j in destinations | getsol(y(i, j)) > 0) do
+    writeln(" (", i, ", ", j, ")")
+end-do
+
+end-model
