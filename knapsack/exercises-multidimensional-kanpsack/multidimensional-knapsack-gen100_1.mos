@@ -1,0 +1,123 @@
+model "MPK example"
+	uses "mmxprs"
+
+    
+    ! Lectura de Datos
+    
+	declarations
+		n, m, index, c: integer
+	end-declarations
+	fopen("gen100_1.txt", F_INPUT)
+	read(n, c)
+    m := 3 ! Número de Contenedores
+	declarations
+		containers = 1..m;
+		objets = 1..n;
+		value: array(objets) of real
+		weight: array(objets) of real
+	end-declarations
+	forall(j in objets)
+		read(index, value(j), weight(j) )
+	fclose(F_INPUT)
+	
+	
+	! Modelos PL
+	! -------------------------------------------------------------------
+
+    writeln
+	writeln("Programacion Lineal:")
+	writeln
+	
+	
+    declarations
+		x: array(containers, objets) of mpvar
+	end-declarations
+	
+	obj := sum(i in containers, j in objets) value(j) * x(i, j)
+	forall(i in containers)
+		res_size(i):= sum(j in objets) weight(j) * x(i, j) <= c
+	forall(j in objets)
+	    res_unique(j) := sum(i in containers) x(i, j) <= 1
+	
+	! Modelo de Programación Lineal Relajado:
+	
+	maximize(obj)
+	obj_value := sum(i in containers, j in objets | getsol(x(i, j)) > 0.95) value(j)
+	writeln("PL Relajado:")
+	writeln("\tobj = ", obj_value)
+	forall(i in containers) do
+	    write("\tC = ", i, ":")
+	    forall(j in objets | getsol(x(i, j)) > 0.95) do
+	        write(" ", j)
+	    end-do
+	    writeln
+	end-do
+	writeln
+	
+	! PL con Heurística de Redondeo Simple:
+	
+	
+	
+	maximize(obj)
+	obj_value := sum(i in containers, j in objets | round(getsol(x(i, j))) = 1) value(j)
+	writeln("PL Redondeo Simple:")
+	writeln("\tobj = ", obj_value)
+	forall(i in containers) do
+	    write("\tC = ", i, ":")
+	    forall(j in objets | round(getsol(x(i, j))) = 1) do
+	        write(" ", j)
+	    end-do
+	    writeln
+	end-do
+	writeln
+	
+	! Acotación sobre el valor óptimo z: zp <= z <= z_LP:
+
+    
+    
+    writeln("PL con Acotacion:")
+
+    writeln
+
+	! Modelo Programación Lineal Exacto:
+	
+	forall(i in containers, j in objets)
+		x(i, j) is_binary
+	maximize(obj)
+
+    obj_value := getobjval
+    writeln("PL Exacto:")
+	writeln("\tobj = ", obj_value)
+	forall(i in containers) do
+	    write("\tC = ", i, ":")
+	    forall(j in objets | getsol(x(i, j)) > 0.95) do
+	        write(" ", j)
+	    end-do
+	    writeln
+	end-do
+	writeln
+	
+	
+	! Modelos HEURISTICOS:
+	! -------------------------------------------------------------------
+	
+	writeln
+	writeln("Heuristicas:")
+	writeln
+	
+	declarations
+		! TODO
+	end-declarations
+	
+	! Heurística Greedy:
+	
+	
+	! Heurística de Intercambios:
+	
+	
+	! Heurística Greedy Aleatorizado:
+	
+	
+	! Heurística GRASP:
+
+end-model
