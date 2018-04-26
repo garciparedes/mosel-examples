@@ -12,11 +12,11 @@ model "MPK example"
     m := 3 ! Número de Contenedores
 	declarations
 		containers = 1..m;
-		objets = 1..n;
-		value: array(objets) of real
-		weight: array(objets) of real
+		objects = 1..n;
+		value: array(objects) of real
+		weight: array(objects) of real
 	end-declarations
-	forall(j in objets)
+	forall(j in objects)
 		read(index, value(j), weight(j) )
 	fclose(F_INPUT)
 	
@@ -30,24 +30,24 @@ model "MPK example"
 	
 	
     declarations
-		x: array(containers, objets) of mpvar
+		x: array(containers, objects) of mpvar
 	end-declarations
 	
-	obj := sum(i in containers, j in objets) value(j) * x(i, j)
+	obj := sum(i in containers, j in objects) value(j) * x(i, j)
 	forall(i in containers)
-		res_size(i):= sum(j in objets) weight(j) * x(i, j) <= c
-	forall(j in objets)
+		res_size(i):= sum(j in objects) weight(j) * x(i, j) <= c
+	forall(j in objects)
 	    res_unique(j) := sum(i in containers) x(i, j) <= 1
 	
 	! Modelo de Programación Lineal Relajado:
 	
 	maximize(obj)
-	obj_value := sum(i in containers, j in objets | getsol(x(i, j)) > 0.95) value(j)
+	obj_value := sum(i in containers, j in objects | getsol(x(i, j)) > 0.95) value(j)
 	writeln("PL Relajado:")
 	writeln("\tobj = ", obj_value)
 	forall(i in containers) do
 	    write("\tC = ", i, ":")
-	    forall(j in objets | getsol(x(i, j)) > 0.95) do
+	    forall(j in objects | getsol(x(i, j)) > 0.95) do
 	        write(" ", j)
 	    end-do
 	    writeln
@@ -59,12 +59,12 @@ model "MPK example"
 	
 	
 	maximize(obj)
-	obj_value := sum(i in containers, j in objets | round(getsol(x(i, j))) = 1) value(j)
+	obj_value := sum(i in containers, j in objects | round(getsol(x(i, j))) = 1) value(j)
 	writeln("PL Redondeo Simple:")
 	writeln("\tobj = ", obj_value)
 	forall(i in containers) do
 	    write("\tC = ", i, ":")
-	    forall(j in objets | round(getsol(x(i, j))) = 1) do
+	    forall(j in objects | round(getsol(x(i, j))) = 1) do
 	        write(" ", j)
 	    end-do
 	    writeln
@@ -81,7 +81,7 @@ model "MPK example"
 
 	! Modelo Programación Lineal Exacto:
 	
-	forall(i in containers, j in objets)
+	forall(i in containers, j in objects)
 		x(i, j) is_binary
 	maximize(obj)
 
@@ -90,7 +90,7 @@ model "MPK example"
 	writeln("\tobj = ", obj_value)
 	forall(i in containers) do
 	    write("\tC = ", i, ":")
-	    forall(j in objets | getsol(x(i, j)) > 0.95) do
+	    forall(j in objects | getsol(x(i, j)) > 0.95) do
 	        write(" ", j)
 	    end-do
 	    writeln
@@ -107,6 +107,7 @@ model "MPK example"
 	
 	declarations
 		! TODO
+		x_h: array(containers, objects) of integer
 	end-declarations
 	
 	! Heurística Greedy:
