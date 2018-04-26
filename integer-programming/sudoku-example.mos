@@ -1,0 +1,64 @@
+model sudoku_solver
+    uses "mmxprs";
+    
+    declarations
+        n = 9
+        indices = 1..n
+        x: array(indices, indices, indices) of mpvar
+        a: array(indices, indices) of integer
+    end-declarations
+    
+    initializations from "sudoku-example.dat"
+        a
+    end-initializations
+    
+    forall(i in indices, j in indices, k in indices) do
+        x(i, j, k) is_binary
+    end-do
+    
+    forall(i in indices) do 
+        writeln
+        forall(j in indices) do
+            if (a(i, j) <> 0) then
+                write(a(i, j), " ")
+            else 
+                write("  ")
+            end-if
+        end-do
+    end-do
+    writeln
+    
+    
+    forall(i in indices, j in indices | a(i, j) <> 0) do
+        res_input(i, j) := x(i, j, a(i, j)) = 1
+    end-do
+    
+    forall(i in indices, j in indices) do
+        res_nums(i, j) := sum(k in indices) x(i, j, k) = 1
+    end-do
+    
+    forall(j in indices, k in indices) do
+        res_rows(j, k) := sum(i in indices) x(i, j, k) = 1
+    end-do
+    
+    forall(i in indices, k in indices) do
+        res_cols(i, k) := sum(j in indices) x(i, j, k) = 1
+    end-do
+    
+     
+    forall(k in indices, ii in 0..2, jj in 0..2) do
+        res_squares(k, ii, jj) := sum(i in 1..3, j in 1..3) x(i + ii * 3, j + jj * 3, k) = 1
+    end-do
+    minimize(1)
+    
+    
+    
+    
+    forall(i in indices) do 
+        writeln
+        forall(j in indices, k in indices | getsol(x(i, j, k)) = 1) do
+            write(k, " ")
+        end-do
+    end-do
+    
+end-model

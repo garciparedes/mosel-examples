@@ -1,0 +1,93 @@
+model ModelName
+    uses "mmxprs"; 
+    
+    declarations 
+        m, n, max_m: integer
+    end-declarations
+    
+    initializations from "exercise_1_5.dat"
+        m n max_m
+    end-initializations
+
+    declarations
+        origins = 1..m
+        destinations = 1..n
+        c: array(origins, destinations) of integer
+        d: array(destinations) of integer
+        
+        x: array(origins, destinations) of mpvar
+        y: array(origins) of mpvar
+        z: mpvar
+    end-declarations
+    
+    initializations from "exercise_1_5.dat"
+        c d
+    end-initializations
+    
+    forall(i in origins) do
+        y(i) is_binary
+    end-do
+    
+    objetive := sum(i in origins, j in destinations) (x(i, j) * c(i, j))
+    
+    
+    
+    
+    forall(j in destinations) do
+        res_dem(j) := sum(i in origins) x(i, j) >= d(j)
+    end-do
+    
+    forall(i in origins) do
+       res_y(i) := sum(j in destinations) x(i, j) <= (sum(j in destinations) d(j)) * y(i)
+    end-do
+    
+    minimize(objetive)
+   
+    writeln("objetive_1 = ", getobjval)   
+    writeln("x(i, j) = amount")
+    forall(i in origins, j in destinations | getsol(x(i, j)) > 0) do
+        writeln(" (", i, ", ", j, ") = ", getsol(x(i, j)))
+    end-do
+    writeln("y(i) = 1")
+    forall(i in origins | getsol(y(i)) > 0) do
+        writeln(" (", i, ")")
+    end-do
+    writeln
+    
+    
+    res_max_m := sum(i in origins) y(i) = max_m
+    
+    minimize(objetive)
+   
+    writeln("objetive_2 = ", getobjval) 
+    writeln("x(i, j) = amount")
+    forall(i in origins, j in destinations | getsol(x(i, j)) > 0) do
+        writeln(" (", i, ", ", j, ") = ", getsol(x(i, j)))
+    end-do
+    writeln("y(i) = 1")
+    forall(i in origins | getsol(y(i)) > 0) do
+        writeln(" (", i, ")")
+    end-do
+    writeln
+    
+    minimize(objetive)
+    
+    
+    res_1_5 := y(1) + y(5) = 1
+    
+    res_2_3_1 := sum(j in destinations) x(2, j) * c(2, j) <= 3000 * (1 - z)
+    res_2_3_2 := sum(j in destinations) x(3, j) * c(3, j) >= 2000 * z
+    
+    writeln("objetive_3 = ", getobjval)
+    writeln("x(i, j) = amount")
+    forall(i in origins, j in destinations | getsol(x(i, j)) > 0) do
+        writeln(" (", i, ", ", j, ") = ", getsol(x(i, j)))
+    end-do
+    writeln("y(i) = 1")
+    forall(i in origins | getsol(y(i)) > 0) do
+        writeln(" (", i, ")")
+    end-do
+    
+    writeln(" z = ", getsol(z))
+    
+end-model
