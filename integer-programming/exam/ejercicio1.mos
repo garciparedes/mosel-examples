@@ -1,0 +1,110 @@
+!@encoding CP1252
+model ModelName
+uses "mmxprs"; 
+
+
+declarations
+	n: integer
+	m: integer
+	p: integer
+end-declarations
+
+initializations from "ejercicio1.dat"
+	n m p
+end-initializations
+
+declarations
+	c_unit: real
+	origins = 1..m
+	destinations = 1..n
+	modes = 1..p
+	c: array(destinations, origins) of integer
+	u: array(modes, origins) of integer
+	f: array(modes, origins) of integer
+	d: array(destinations) of integer
+	
+	y: array(origins, destinations) of mpvar
+	x: array(origins, modes) of mpvar
+end-declarations
+
+
+initializations from "ejercicio1.dat"
+	c_unit c u f d
+end-initializations
+
+
+writeln
+writeln("Problema de localizacion con costos fijos multimodal:")
+
+forall(i in origins, k in modes) do
+	x(i, k) is_binary
+end-do
+obj := sum(i in origins) (sum(k in modes) f(k, i) * x(i, k) + sum(j in destinations) c_unit * c(j, i) * d(j) * y(i, j) )
+forall(j in destinations) do
+	res_1(j) := sum(i in origins) y(i,j) = 1 
+end-do
+forall(i in origins) do
+	res_2(i) := sum(k in modes) x(i, k) <= 1
+end-do
+forall(i in origins) do
+	res_3(i) := sum(j in destinations) d(j) * y(i, j) - sum(k in modes) u(k, i) * x(i, k) <= 0
+end-do
+minimize(obj)
+
+
+writeln
+writeln("obj:")
+writeln(getobjval)
+
+writeln
+writeln("y(i, j):")
+forall(i in origins) do
+	forall(j in destinations) do
+		write(getsol(y(i, j)) * d(j), "\t")
+	end-do
+	writeln
+end-do
+writeln
+
+writeln
+writeln("x(i, k):")
+forall(i in origins) do
+	forall(k in modes) do
+		write(getsol(x(i, k)), "\t")
+	end-do
+	writeln
+end-do
+
+writeln
+writeln
+writeln("Problema de localizacion con costos fijos multimodal y fuente unica:")
+forall(i in origins, j in destinations) do
+	y(i, j) is_binary
+end-do
+minimize(obj)
+
+writeln
+writeln("obj:")
+writeln(getobjval)
+
+writeln
+writeln("y(i, j):")
+forall(i in origins) do
+	forall(j in destinations) do
+		write(getsol(y(i, j)) * d(j) , "\t")
+	end-do
+	writeln
+end-do
+writeln
+
+writeln
+writeln("x(i, k):")
+forall(i in origins) do
+	forall(k in modes) do
+		write(getsol(x(i, k)), "\t")
+	end-do
+	writeln
+end-do
+
+
+end-model
