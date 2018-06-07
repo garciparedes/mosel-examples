@@ -1,0 +1,27 @@
+model ModelName
+    uses "mmxprs";
+
+    declarations
+        x1, x2, y: mpvar
+        objetive: linctr
+    end-declarations
+    
+    x1 is_integer
+    x2 is_integer
+    y is_binary
+    
+    objetive := 6000 * x1 + 8000 * x2 - 1.2e6 * y - 2.8e6 * (1 - y)
+    
+    
+    res1 := x1 + x2 <= 10000
+    res2 := 3 * x2 - x1 + 30000 * y <= 30000
+    
+    exportprob(EP_MAX, "", objetive)
+    maximize(objetive)
+    
+    writeln("objetive = ", getobjval)
+    
+    writeln("x1 = ", getsol(x1))
+    writeln("x2 = ", getsol(x2))
+    writeln("y = ", getsol(y))
+end-model

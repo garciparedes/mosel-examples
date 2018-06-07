@@ -1,0 +1,23 @@
+model ModelName
+    uses "mmxprs";
+    
+    declarations
+        x1, x2: mpvar
+    end-declarations
+
+    obj := 120 * x1 + 80 * x2
+    
+    r1 := 2 * x1 + x2 <= 6
+    r2 := 7 * x1 + 8 * x2 <= 28
+    r3 := x1 >= 3
+    
+    x1 is_integer
+    x2 is_integer
+    
+    maximize(XPRS_LIN, obj)
+    
+    writeln("obj = ", getobjval)
+    writeln("x1 = ", getsol(x1))
+    writeln("x2 = ", getsol(x2))
+    
+end-model
